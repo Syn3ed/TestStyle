@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { useEffect } from "react"
 import OperIndex from './Operator/OperIndex'
 
 const App = () => {
