@@ -17,7 +17,7 @@ body {
 
 .custom-table th,
 .custom-table td {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid  var(--tg-theme-bg-color);
   padding: 12px;
   text-align: center;
 }
