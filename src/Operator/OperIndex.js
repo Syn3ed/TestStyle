@@ -1,9 +1,15 @@
 import React, { useEffect, useState } from "react";
 import Table from './OperReq';
 import axios from 'axios';
+import {useTelegram } from '../hooks/telegram.js'
 
 const OperIndex = () => {
-  const [dataArray, setDataArray] = useState([]);
+    const {tg} = useTelegram();
+    const [dataArray, setDataArray] = useState([]);
+
+  useEffect(()=>{
+    tg.MainButton.show()
+  },[])
 
   useEffect(() => {
     const fetchData = async () => {
