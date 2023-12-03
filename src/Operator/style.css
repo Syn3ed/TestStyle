@@ -1,0 +1,19 @@
+.request-list {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #373b47;
+  }
+  .request-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #373b47;
+    color: #c0bebd;
+    font-weight: bold;
+    align-items: center;
+  }
