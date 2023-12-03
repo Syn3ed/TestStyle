@@ -1,89 +1,37 @@
-import './App.css';
-import { Link, useParams } from 'react-router-dom';
-import { useEffect } from "react";
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import './OperReq.css';
 
+const Table = ({ data }) => {
+  const navigate = useNavigate();
 
-function App() {
-
-  const requestList = [
-    { id: 1, subject: 'Заявка 1', address: 'Адрес 1', status: 'В ожидании' },
-    { id: 2, subject: 'Заявка 2', address: 'Адрес 2', status: 'В обработке' },
-    { id: 3, subject: 'Заявка 3', address: 'Адрес 3', status: 'Завершено' },
-    { id: 1, subject: 'Заявка 1', address: 'Адрес 1', status: 'В ожидании' },
-    { id: 2, subject: 'Заявка 2', address: 'Адрес 2', status: 'В обработке' },
-    { id: 3, subject: 'Заявка 3', address: 'Адрес 3', status: 'Завершено' },
-    { id: 1, subject: 'Заявка 1', address: 'Адрес 1', status: 'В ожидании' },
-    { id: 2, subject: 'Заявка 2', address: 'Адрес 2', status: 'В обработке' },
-    { id: 3, subject: 'Заявка 3', address: 'Адрес 3', status: 'Завершено' },
-    { id: 1, subject: 'Заявка 1', address: 'Адрес 1', status: 'В ожидании' },
-    { id: 2, subject: 'Заявка 2', address: 'Адрес 2', status: 'В обработке' },
-    { id: 3, subject: 'Заявка 3', address: 'Адрес 3', status: 'Завершено' },
-    { id: 1, subject: 'Заявка 1', address: 'Адрес 1', status: 'В ожидании' },
-    { id: 2, subject: 'Заявка 2', address: 'Адрес 2', status: 'В обработке' },
-    { id: 3, subject: 'Заявка 3', address: 'Адрес 3', status: 'Завершено' },
-    { id: 1, subject: 'Заявка 1', address: 'Адрес 1', status: 'В ожидании' },
-    { id: 2, subject: 'Заявка 2', address: 'Адрес 2', status: 'В обработке' },
-    { id: 3, subject: 'Заявка 3', address: 'Адрес 3', status: 'Завершено' },
-    { id: 1, subject: 'Заявка 1', address: 'Адрес 1', status: 'В ожидании' },
-    { id: 2, subject: 'Заявка 2', address: 'Адрес 2', status: 'В обработке' },
-    { id: 3, subject: 'Заявка 3', address: 'Адрес 3', status: 'Завершено' },
-    { id: 1, subject: 'Заявка 1', address: 'Адрес 1', status: 'В ожидании' },
-    { id: 2, subject: 'Заявка 2', address: 'Адрес 2', status: 'В обработке' },
-    { id: 3, subject: 'Заявка 3', address: 'Адрес 3', status: 'Завершено' },
-    { id: 1, subject: 'Заявка 1', address: 'Адрес 1', status: 'В ожидании' },
-    { id: 2, subject: 'Заявка 2', address: 'Адрес 2', status: 'В обработке' },
-    { id: 3, subject: 'Заявка 3', address: 'Адрес 3', status: 'Завершено' },
-    { id: 1, subject: 'Заявка 1', address: 'Адрес 1', status: 'В ожидании' },
-    { id: 2, subject: 'Заявка 2', address: 'Адрес 2', status: 'В обработке' },
-    { id: 3, subject: 'Заявка 3', address: 'Адрес 3', status: 'Завершено' },
-    { id: 1, subject: 'Заявка 1', address: 'Адрес 1', status: 'В ожидании' },
-    { id: 2, subject: 'Заявка 2', address: 'Адрес 2', status: 'В обработке' },
-    { id: 3, subject: 'Заявка 3', address: 'Адрес 3', status: 'Завершено' },
-    { id: 1, subject: 'Заявка 1', address: 'Адрес 1', status: 'В ожидании' },
-    { id: 2, subject: 'Заявка 2', address: 'Адрес 2', status: 'В обработке' },
-    { id: 3, subject: 'Заявка 3', address: 'Адрес 3', status: 'Завершено' },
-    { id: 1, subject: 'Заявка 1', address: 'Адрес 1', status: 'В ожидании' },
-    { id: 2, subject: 'Заявка 2', address: 'Адрес 2', status: 'В обработке' },
-    { id: 3, subject: 'Заявка 3', address: 'Адрес 3', status: 'Завершено' },
-    { id: 1, subject: 'Заявка 1', address: 'Адрес 1', status: 'В ожидании' },
-    { id: 2, subject: 'Заявка 2', address: 'Адрес 2', status: 'В обработке' },
-    { id: 3, subject: 'Заявка 3', address: 'Адрес 3', status: 'Завершено' },
-    { id: 1, subject: 'Заявка 1', address: 'Адрес 1', status: 'В ожидании' },
-    { id: 2, subject: 'Заявка 2', address: 'Адрес 2', status: 'В обработке' },
-    { id: 3, subject: 'Заявка 3', address: 'Адрес 3', status: 'Завершено' },
-    { id: 1, subject: 'Заявка 1', address: 'Адрес 1', status: 'В ожидании' },
-    { id: 2, subject: 'Заявка 2', address: 'Адрес 2', status: 'В обработке' },
-    { id: 3, subject: 'Заявка 3', address: 'Адрес 3', status: 'Завершено' },
-  ];
-
-
-  const tg = window.Telegram.WebApp
-  useEffect(() => {
-    tg.ready();
-  }, [])
+  const handleRowClick = (id) => {
+    // Navigate to the other page with the corresponding id
+    navigate(`/otherPage/${id}`);
+  };
 
   return (
-    <div className='req-list' >
-      <div className='req-header'>
-        <h1>Номер заявки</h1>
-        <h1>Никнейм пользователя</h1>
-        <h1>Тема заявки</h1>
-        <h1>Статус заявки</h1>
-      </div>
-      {requestList.length > 0 ? (
-        requestList.map((request) => (
-            <div className="request-item">
-              <div className="request-id">{request.id}</div>
-              <div className="request-subject">{request.subject}</div>
-              <div className="request-subject">{request.address}</div>
-              <div className="request-status">{request.status}</div>
-            </div>
-        ))
-      ) : (
-        <div>Загрузка данных...</div>
-      )}
-    </div>
+    <table className="custom-table">
+      <thead>
+        <tr>
+          <th>Номер заявки</th>
+          <th>Имя пользователя</th>
+          <th>Тема заявки</th>
+          <th>Статус заявки</th>
+        </tr>
+      </thead>
+      <tbody>
+        {data.map((row) => (
+          <tr key={row.id} onClick={() => handleRowClick(row.id)}>
+            <td>{row.id}</td>
+            <td>{row.username}</td>
+            <td>{row.category}</td>
+            <td>{row.status}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
   );
-}
+};
 
-export default App;
+export default Table;
