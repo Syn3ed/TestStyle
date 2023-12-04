@@ -4,7 +4,6 @@ import axios from 'axios';
 import {useTelegram } from '../hooks/telegram.js'
 
 const OperIndex = () => {
-    const {tg} = useTelegram();
     const [dataArray, setDataArray] = useState([]);
 
   useEffect(()=>{
