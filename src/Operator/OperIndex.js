@@ -8,7 +8,7 @@ const OperIndex = () => {
     const [dataArray, setDataArray] = useState([]);
 
   useEffect(()=>{
-    tg.MainButton.show()
+    window.Telegram.WebApp.MainButton.show()
   },[])
 
   useEffect(() => {
