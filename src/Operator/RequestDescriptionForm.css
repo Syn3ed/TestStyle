@@ -30,6 +30,10 @@
     color: var(--tg-theme-text-color);
     border-radius: 4px;
   }
+
+  textarea{
+    height: 60px;
+  }
   
   button {
     background-color:var(--tg-theme-button-color);
