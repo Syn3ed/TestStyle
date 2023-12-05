@@ -12,10 +12,13 @@ const UserIndex = () => {
     window.Telegram.WebApp.BackButton.hide()
   },[])
 
+
+  const idj  = id
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`https://tg-server-0ckm.onrender.com/reqUser/${id}`);
+        const response = await axios.get(`https://tg-server-0ckm.onrender.com/reqUser/${idj}`);
         setDataArray(response.data.map(item => ({
           id: item.id,
           status: item.status,
@@ -30,7 +33,7 @@ const UserIndex = () => {
 
     fetchData(); 
 
-  }, [id]); 
+  }, [idj]); 
 
   return (
     <div>
