@@ -1,13 +1,10 @@
 import React, {useEffect, useState } from 'react';
-// import { useParams, useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import RequestDescriptionForm from './RequestDescriptionForm'
 
 const Req = () => {
-    const { id } = useParams();
-    // const navigate = useNavigate();
-    // const tg = window.Telegram.WebApp;
+    const { id } = useParams();;
     const [dataArray, setDataArray] = useState([]);
 
     useEffect(() => {

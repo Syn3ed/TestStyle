@@ -21,6 +21,7 @@
   input,
   textarea {
     width: 100%;
+    height: auto;
     padding: 8px;
     border: 1px solid var(--tg-theme-hint-color);
     background-color: var(--tg-theme-secondary-bg-color);
