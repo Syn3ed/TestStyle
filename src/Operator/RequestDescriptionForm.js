@@ -19,7 +19,7 @@ const RequestDescriptionForm = ({ request }) => {
             return () => {
                 tg.BackButton.offClick(handleBackButton);
             };
-        }, [navigate]);
+        }, [navigate,tg.BackButton]);
     const onSendData = useCallback(() => {
         const data = {
             userRequestId: request.userRequestId,
