@@ -1,12 +1,12 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import './OperReq.css';
+import './UserReq.css';
 
 const Table = ({ data }) => {
   const navigate = useNavigate();
 
   const handleRowClick = (id) => {
-    navigate(`/requestsOperator/${id}`);
+    navigate(`/requests/${id}`);
   };
 
   return (
@@ -14,7 +14,6 @@ const Table = ({ data }) => {
       <thead>
         <tr>
           <th>Номер заявки</th>
-          <th>Имя пользователя</th>
           <th>Тема заявки</th>
           <th>Статус заявки</th>
         </tr>
@@ -23,7 +22,6 @@ const Table = ({ data }) => {
         {data.map((row) => (
           <tr key={row.id} onClick={() => handleRowClick(row.id)}>
             <td>{row.id}</td>
-            <td>{row.username}</td>
             <td>{row.category}</td>
             <td>{row.status}</td>
           </tr>
