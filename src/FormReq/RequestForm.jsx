@@ -5,7 +5,7 @@ const RequestForm = () => {
     const [category, setCategory] = useState('');
     const [description, setDescription] = useState('');
 
-
+    const tg = window.Telegram.WebApp;
     const onSendData = useCallback(() => {
         const data = {
             address,
@@ -14,7 +14,7 @@ const RequestForm = () => {
         }
         tg.sendData(JSON.stringify(data));
         console.log(JSON.stringify(data))
-    }, [address, category, description])
+    }, [address, category, description,tg])
 
     const handleSubmit = (e) => {
         e.preventDefault();
