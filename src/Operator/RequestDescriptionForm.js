@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState,useNavigate } from 'react';
 import axios from 'axios';
 
 
@@ -6,8 +6,19 @@ const RequestDescriptionForm = ({ request }) => {
     const [dataArray, setDataArray] = useState([]);
     const tg = window.Telegram.WebApp;
     const queryId = tg.initDataUnsafe?.query_id;
-
-
+    const navigate = useNavigate();
+    useEffect(() => {
+            tg.BackButton.hide();
+        }, [navigate,tg]);
+    useEffect(() => {
+            const handleBackButton = () => {
+                navigate(-1);
+            };
+            tg.BackButton.onClick(handleBackButton);
+            return () => {
+                tg.BackButton.offClick(handleBackButton);
+            };
+        }, [navigate]);
     const onSendData = useCallback(() => {
         const data = {
             userRequestId: request.userRequestId,
