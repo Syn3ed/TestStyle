@@ -7,8 +7,12 @@ import RequestDescriptionForm from './RequestDescriptionForm'
 const Req = () => {
     const { id } = useParams();
     // const navigate = useNavigate();
-    // const tg = window.Telegram.WebApp;
+    const tg = window.Telegram.WebApp;
     const [dataArray, setDataArray] = useState([]);
+
+    useEffect(() => {
+        tg.BackButton.hide();
+    }, [tg]);
     
     useEffect(() => {
         const fetchData = async () => {
@@ -33,17 +37,6 @@ const Req = () => {
 
         fetchData();
     }, [id]);
-
-    // useEffect(() => {
-    //     const handleBackButton = () => {
-    //         navigate(-1);
-    //     };
-    //     tg.BackButton.onClick(handleBackButton);
-    //     return () => {
-    //         tg.BackButton.offClick(handleBackButton);
-    //     };
-    // }, [navigate]);
-
 
 
     return (
