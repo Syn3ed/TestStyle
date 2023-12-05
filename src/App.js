@@ -6,6 +6,7 @@ import UserReq from './User/UserIndex'
 import UsereRequest from './User/Req'
 import InlineReq from './InlineMode/Operator/Req'
 import InlineUsereRequest from './InlineMode/User/Req'
+import FormReq from './FormReq/RequestForm'
 
 const App = () => {
   return (
@@ -17,7 +18,7 @@ const App = () => {
         <Route path="/requests/:id" element={<UsereRequest />} />
         <Route path="/Inlinerequests/:id" element={<InlineUsereRequest />} />
         <Route path="/InlinerequestsOperator/:id" element={<InlineReq />} />
-        <Route path="/FormReq" element={<Req />} />
+        <Route path="/FormReq" element={< FormReq/>} />
       </Routes>
     </BrowserRouter>
   );
