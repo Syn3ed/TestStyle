@@ -4,6 +4,8 @@ import OperIndex from './Operator/OperIndex'
 import Req from './Operator/Req'
 import UserReq from './User/UserIndex'
 import UsereRequest from './User/Req'
+import InlineReq from './InlineMode/Operator/Req'
+import InlineUsereRequest from './InlineMode/User/Req'
 
 const App = () => {
   return (
@@ -13,8 +15,8 @@ const App = () => {
         <Route path="/requestsOperator/:id" element={<Req />} />
         <Route path="/RequestUserList/:id" element={<UserReq />} />
         <Route path="/requests/:id" element={<UsereRequest />} />
-        <Route path="/Inlinerequests/:id" element={<Req />} />
-        <Route path="/InlinerequestsOperator/:id" element={<Req />} />
+        <Route path="/Inlinerequests/:id" element={<InlineUsereRequest />} />
+        <Route path="/InlinerequestsOperator/:id" element={<InlineReq />} />
         <Route path="/FormReq" element={<Req />} />
       </Routes>
     </BrowserRouter>
