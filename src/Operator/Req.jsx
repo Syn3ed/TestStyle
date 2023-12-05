@@ -7,7 +7,7 @@ import RequestDescriptionForm from './RequestDescriptionForm'
 const Req = () => {
     const { id } = useParams();
     // const navigate = useNavigate();
-    const tg = window.Telegram.WebApp;
+    // const tg = window.Telegram.WebApp;
     const [dataArray, setDataArray] = useState([]);
 
     useEffect(() => {
