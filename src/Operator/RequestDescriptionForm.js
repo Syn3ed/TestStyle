@@ -9,7 +9,7 @@ const RequestDescriptionForm = ({ request }) => {
     const queryId = tg.initDataUnsafe?.query_id;
     const navigate = useNavigate();
     useEffect(() => {
-            tg.BackButton.hide();
+            tg.BackButton.show();
         }, [navigate,tg]);
     useEffect(() => {
             const handleBackButton = () => {
