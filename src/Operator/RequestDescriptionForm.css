@@ -18,10 +18,8 @@
     font-weight: bold;
   }
   
-  input,
-  textarea {
+  input {
     width: 100%;
-    height: auto;
     padding: 8px;
     border: 1px solid var(--tg-theme-hint-color);
     background-color: var(--tg-theme-secondary-bg-color);
@@ -29,6 +27,37 @@
     border-radius: 4px;
   }
   
+
+  textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid var(--tg-theme-hint-color);
+    background-color: var(--tg-theme-secondary-bg-color);
+    border-radius: 4px;
+    overflow-y: hidden; /* Скрытие вертикальной полосы прокрутки */
+    resize: none; /* Запрет изменения размера textarea пользователем */
+    transition: height 0.3s ease; /* Анимация изменения высоты */
+  }
+  textarea.auto-height {
+    height: auto; /* Автоматическая высота */
+    min-height: 30px; /* Минимальная высота (по вашему усмотрению) */
+  }
+  
+
+  textarea.auto-height-textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid var(--tg-theme-hint-color);
+    background-color: var(--tg-theme-secondary-bg-color);
+    border-radius: 4px;
+    overflow-y: hidden;
+    resize: none;
+    transition: height 0.3s ease;
+    height: auto;
+    min-height: 60px;
+  }
+  
+
   button {
     background-color:var(--tg-theme-button-color);
     color: var(--tg-theme-button-text-color);
