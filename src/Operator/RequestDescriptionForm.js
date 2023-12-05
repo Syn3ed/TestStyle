@@ -28,23 +28,7 @@ const RequestDescriptionForm = ({ request }) => {
 
 
         
-    const onSendData = useCallback(() => {
-        const data = {
-            userRequestId: request.userRequestId,
-            username: request.username,
-            queryId,
-            userId: request.userId
-        }
-        fetch('https://tg-server-0ckm.onrender.com/replyToUser', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data)
-        });
-        tg.close();
-    }, [request,queryId,tg])
-
+   
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -81,21 +65,53 @@ const RequestDescriptionForm = ({ request }) => {
         })
     };
 
-    const onSendPhoto = useCallback(() => {
-        const data = {
-            userRequestId: request.userRequestId,
-            username: request.username,
-            queryId,
-        }
-        fetch('https://tg-server-0ckm.onrender.com/replyToOperatorPhoto', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data)
-        })
+    
+
+    const sendPhoto = useCallback(() => {
+        tg.sendData(`/resToOperatorPhoto ${idu}`);
         tg.close();
-    }, [request,queryId,tg]);
+    },[tg]);
+
+    const sendData = useCallback(() => {
+       
+        tg.sendData(`/resToOperator ${idu}`);
+        tg.close();
+    },[tg]);
+
+    // const onSendPhoto = useCallback(() => {
+    //     const data = {
+    //         userRequestId: request.userRequestId,
+    //         username: request.username,
+    //         queryId,
+    //     }
+    //     fetch('https://tg-server-0ckm.onrender.com/replyToOperatorPhoto', {
+    //         method: 'POST',
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //         },
+    //         body: JSON.stringify(data)
+    //     })
+    //     tg.close();
+    // }, [request,queryId,tg]);
+
+    // const onSendData = useCallback(() => {
+    //     const data = {
+    //         userRequestId: request.userRequestId,
+    //         username: request.username,
+    //         queryId,
+    //         userId: request.userId
+    //     }
+    //     fetch('https://tg-server-0ckm.onrender.com/replyToUser', {
+    //         method: 'POST',
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //         },
+    //         body: JSON.stringify(data)
+    //     });
+    //     tg.close();
+    // }, [request,queryId,tg])
+
+
 
     const closeReq = useCallback(() => {
         tg.close();
@@ -118,16 +134,16 @@ const RequestDescriptionForm = ({ request }) => {
             return (
                 <div>
                     <button type="button" onClick={closeReq}>Закрыть заявку</button>
-                    <button type="button" onClick={onSendData}>Ответить</button>
-                    <button type="button" onClick={onSendPhoto}>Отправить фото</button>
+                    <button type="button" onClick={sendData}>Ответить</button>
+                    <button type="button" onClick={sendPhoto}>Отправить фото</button>
                 </div>
             );
         } else if (request.status === 'Заявка в обработке!') {
             return (
                 <div>
                     <button type="button" onClick={closeReq}>Закрыть заявку</button>
-                    <button type="button" onClick={onSendData}>Ответить</button>
-                    <button type="button" onClick={onSendPhoto}>Отправить фото</button>
+                    <button type="button" onClick={sendData}>Ответить</button>
+                    <button type="button" onClick={sendPhoto}>Отправить фото</button>
                 </div>
             );
         }
