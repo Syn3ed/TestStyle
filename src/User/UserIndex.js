@@ -30,7 +30,7 @@ const UserIndex = () => {
 
     fetchData(); 
 
-  }, []); 
+  }, [id]); 
 
   return (
     <div>
