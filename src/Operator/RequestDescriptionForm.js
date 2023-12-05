@@ -157,7 +157,6 @@ const RequestDescriptionForm = ({ request }) => {
                         dataArray.map((med) => (
                             <div className="request-item">
                                 <div className="request-id">{med.id}</div>
-                                <div className="request-nicknameUser">{med.idMedia}</div>
                                 <div className="request-subject">{med.UserRequestId}</div>
                                 <div>
                                     <button type="button" onClick={() => handleShowPhoto(med.id)}>Показать фото</button>
