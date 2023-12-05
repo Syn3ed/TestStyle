@@ -114,13 +114,13 @@ const RequestDescriptionForm = ({ request }) => {
     const sendPhoto = useCallback(() => {
         tg.sendData(`/resToOperatorPhoto ${idu}`);
         tg.close();
-    },[tg]);
+    },[tg,idu]);
 
     const sendData = useCallback(() => {
        
         tg.sendData(`/resToOperator ${idu}`);
         tg.close();
-    },[tg])
+    },[tg,idu])
 
     const renderButtons = () => {
         if (request.status === 'ожидает ответа оператора') {
