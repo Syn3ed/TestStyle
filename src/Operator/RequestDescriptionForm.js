@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './RequestDescriptionForm.css'
 import axios from 'axios';
 
 
@@ -9,7 +10,7 @@ const RequestDescriptionForm = ({ request }) => {
     const queryId = tg.initDataUnsafe?.query_id;
     const navigate = useNavigate();
 
-    
+
     useEffect(() => {
             tg.BackButton.show();
         }, [navigate,tg]);

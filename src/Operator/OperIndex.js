@@ -7,6 +7,7 @@ const OperIndex = () => {
 
   useEffect(()=>{
     window.Telegram.WebApp.MainButton.show()
+    window.Telegram.WebApp.BackButton.hide()
   },[])
 
   useEffect(() => {
