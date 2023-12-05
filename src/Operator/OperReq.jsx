@@ -6,7 +6,7 @@ const Table = ({ data }) => {
   const navigate = useNavigate();
 
   const handleRowClick = (id) => {
-    navigate(`/otherPage/${id}`);
+    navigate(`/req/${id}`);
   };
 
   return (
