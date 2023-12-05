@@ -38,8 +38,9 @@ const RequestDescriptionForm = ({ request }) => {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(data)
-        })
-    }, [request,queryId])
+        });
+        tg.close();
+    }, [request,queryId,tg])
 
     useEffect(() => {
         const fetchData = async () => {

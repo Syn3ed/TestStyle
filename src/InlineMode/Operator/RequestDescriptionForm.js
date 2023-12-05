@@ -12,7 +12,7 @@ const RequestDescriptionForm = ({ request }) => {
 
 
     useEffect(() => {
-            tg.BackButton.show();
+            tg.BackButton.hide();
         }, [navigate,tg]);
 
         
@@ -25,6 +25,8 @@ const RequestDescriptionForm = ({ request }) => {
                 tg.BackButton.offClick(handleBackButton);
             };
         }, [navigate,tg.BackButton]);
+
+
     const onSendData = useCallback(() => {
         const data = {
             userRequestId: request.userRequestId,
@@ -38,8 +40,9 @@ const RequestDescriptionForm = ({ request }) => {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(data)
-        })
-    }, [request,queryId])
+        });
+        tg.close();
+    }, [request,queryId,tg])
 
     useEffect(() => {
         const fetchData = async () => {
@@ -74,7 +77,8 @@ const RequestDescriptionForm = ({ request }) => {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(data)
-        })
+        });
+        
     };
 
     const onSendPhoto = useCallback(() => {

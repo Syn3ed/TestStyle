@@ -12,19 +12,20 @@ const RequestDescriptionForm = ({ request }) => {
 
 
     useEffect(() => {
-            tg.BackButton.show();
-        }, [navigate,tg]);
+        tg.BackButton.show();
+    }, [navigate, tg]);
 
-        
+
     useEffect(() => {
-            const handleBackButton = () => {
-                navigate(-1);
-            };
-            tg.BackButton.onClick(handleBackButton);
-            return () => {
-                tg.BackButton.offClick(handleBackButton);
-            };
-        }, [navigate,tg.BackButton]);
+        const handleBackButton = () => {
+            navigate(-1);
+        };
+        tg.BackButton.onClick(handleBackButton);
+        return () => {
+            tg.BackButton.offClick(handleBackButton);
+        };
+    }, [navigate, tg.BackButton]);
+
     const onSendData = useCallback(() => {
         const data = {
             userRequestId: request.userRequestId,
@@ -38,8 +39,9 @@ const RequestDescriptionForm = ({ request }) => {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(data)
-        })
-    }, [request,queryId])
+        });
+        tg.close();
+    }, [request, queryId, tg])
 
     useEffect(() => {
         const fetchData = async () => {
@@ -91,7 +93,7 @@ const RequestDescriptionForm = ({ request }) => {
             body: JSON.stringify(data)
         })
         tg.close();
-    }, [request,queryId,tg]);
+    }, [request, queryId, tg]);
 
     const closeReq = useCallback(() => {
         tg.close();
@@ -107,7 +109,7 @@ const RequestDescriptionForm = ({ request }) => {
             },
             body: JSON.stringify(data)
         })
-    }, [request,queryId,tg]);
+    }, [request, queryId, tg]);
 
     const renderButtons = () => {
         if (request.status === 'ожидает ответа оператора') {
