@@ -12,12 +12,12 @@ const Req = () => {
 
     useEffect(() => {
         tg.BackButton.hide();
-    }, [tg]);
+    }, [tg.BackButton]);
     
     useEffect(() => {
         const fetchData = async () => {
             try {
-               
+                tg.BackButton.hide();
                 const response = await axios.get(`https://tg-server-0ckm.onrender.com/mes/${id}`);
                 const dataArray = response.data.map(item => ({
                     dialog: item.dialog,
@@ -36,7 +36,7 @@ const Req = () => {
         };
 
         fetchData();
-    }, [id]);
+    }, [id,tg]);
 
 
     return (
