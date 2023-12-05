@@ -90,7 +90,7 @@ const RequestDescriptionForm = ({ request }) => {
             },
             body: JSON.stringify(data)
         })
-    }, [request,queryId]);
+    }, [request,queryId,tg]);
 
     const renderButtons = () => {
         if (request.status === 'ожидает ответа оператора') {
