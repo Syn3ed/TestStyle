@@ -33,15 +33,15 @@ const Req = () => {
         fetchData();
     }, [id]);
 
-    useEffect(() => {
-        const handleBackButton = () => {
-            navigate(-1);
-        };
-        tg.BackButton.onClick(handleBackButton);
-        return () => {
-            tg.BackButton.offClick(handleBackButton);
-        };
-    }, [navigate]);
+    // useEffect(() => {
+    //     const handleBackButton = () => {
+    //         navigate(-1);
+    //     };
+    //     tg.BackButton.onClick(handleBackButton);
+    //     return () => {
+    //         tg.BackButton.offClick(handleBackButton);
+    //     };
+    // }, [navigate]);
 
 
 

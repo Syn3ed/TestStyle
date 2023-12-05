@@ -22,7 +22,7 @@ const RequestDescriptionForm = ({ request }) => {
             },
             body: JSON.stringify(data)
         })
-    }, [request])
+    }, [request,queryId])
 
     useEffect(() => {
         const fetchData = async () => {
@@ -74,7 +74,7 @@ const RequestDescriptionForm = ({ request }) => {
             },
             body: JSON.stringify(data)
         })
-    }, [request]);
+    }, [request,queryId]);
 
     const closeReq = useCallback(() => {
         tg.close();
@@ -90,7 +90,7 @@ const RequestDescriptionForm = ({ request }) => {
             },
             body: JSON.stringify(data)
         })
-    }, [request]);
+    }, [request,queryId]);
 
     const renderButtons = () => {
         if (request.status === 'ожидает ответа оператора') {
