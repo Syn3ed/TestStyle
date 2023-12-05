@@ -14,7 +14,6 @@ const Req = () => {
             try {
                 tg.BackButton.show();
                 const response = await axios.get(`https://tg-server-0ckm.onrender.com/mes/${id}`);
-                setReqLL(response.data);
                 const dataArray = response.data.map(item => ({
                     dialog: item.dialog,
                     userRequestId: item.userRequestId,
