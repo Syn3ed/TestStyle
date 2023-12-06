@@ -25,13 +25,15 @@ const RequestDescriptionForm = ({ request }) => {
             tg.BackButton.offClick(handleBackButton);
         };
     }, [navigate, tg.BackButton]);
+    const operatorId = tg.initDataUnsafe.user.id;
 
     const onSendData = useCallback(() => {
         const data = {
             userRequestId: request.userRequestId,
             username: request.username,
             queryId,
-            userId: request.userId
+            userId: request.userId,
+            operatorId:operatorId
         }
         fetch('https://tg-server-0ckm.onrender.com/replyToOperator', {
             method: 'POST',
@@ -41,7 +43,7 @@ const RequestDescriptionForm = ({ request }) => {
             body: JSON.stringify(data)
         });
         tg.close();
-    }, [request, queryId, tg])
+    }, [request, queryId, tg,operatorId])
 
     useEffect(() => {
         const fetchData = async () => {
