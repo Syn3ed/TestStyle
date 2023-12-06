@@ -73,7 +73,7 @@ const RequestDescriptionForm = ({ request }) => {
     },[tg,idu]);
 
     const sendData = useCallback(() => {
-        tg.sendData(`/resToUser ${id}`);
+        tg.sendData(`/resToUser ${idu}`);
         tg.close();
     },[tg,idu]);
 
