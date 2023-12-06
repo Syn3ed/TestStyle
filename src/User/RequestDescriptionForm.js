@@ -117,7 +117,7 @@ const RequestDescriptionForm = ({ request }) => {
     },[tg,idu]);
 
     const sendData = useCallback(() => {
-       
+
         tg.sendData(`/resToOperator ${idu}`);
         tg.close();
     },[tg,idu])
