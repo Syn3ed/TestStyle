@@ -9,7 +9,8 @@ const RequestDescriptionForm = ({ request }) => {
     const tg = window.Telegram.WebApp;
     const queryId = tg.initDataUnsafe?.query_id;
     const navigate = useNavigate();
-
+    const operatorId = tg.initDataUnsafe.user.id;
+    console.log(operatorId)
 
     useEffect(() => {
             tg.BackButton.hide();
