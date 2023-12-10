@@ -43,7 +43,7 @@ const RequestDescriptionForm = ({ request }) => {
             },
             body: JSON.stringify(data)
         });
-        tg.close();
+        // tg.close();
     }, [request,queryId,tg,operatorId])
 
     useEffect(() => {
