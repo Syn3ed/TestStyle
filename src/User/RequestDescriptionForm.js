@@ -1,11 +1,12 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './RequestDescriptionForm.css'
-// import Chat from '../Chat/Chat';
+import '../Chat/Chat.css';
 import axios from 'axios';
 
 
 const RequestDescriptionForm = ({ request }) => {
+    const [chatMessages, setChatMessages] = useState([]);
     const [dataArray, setDataArray] = useState([]);
     const tg = window.Telegram.WebApp;
     const queryId = tg.initDataUnsafe?.query_id;
