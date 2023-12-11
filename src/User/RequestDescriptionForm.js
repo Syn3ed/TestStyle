@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './RequestDescriptionForm.css'
+import Chat from '../Chat/Chat';
 import axios from 'axios';
 
 
@@ -166,6 +167,7 @@ const RequestDescriptionForm = ({ request }) => {
                     <label htmlFor="dialog">Диалог с оператором</label>
                     <textarea type="text" id="dialog" name="dialog" value={request.dialog} readOnly />
                 </div>
+                <Chat/>
                 {renderButtons()}
                 <div>
                     {dataArray.length > 0 ? (
