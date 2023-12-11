@@ -39,7 +39,7 @@ const RequestDescriptionForm = ({ request }) => {
         };
     
         fetchChatMessages();
-      }, []);
+      }, [request]);
     useEffect(() => {
         const fetchData = async () => {
             try {
