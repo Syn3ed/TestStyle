@@ -7,6 +7,9 @@ import UsereRequest from './User/Req'
 import InlineReq from './InlineMode/Operator/Req'
 import InlineUsereRequest from './InlineMode/User/Req'
 import FormReq from './FormReq/RequestForm'
+import Chat from './Chat/Chat';
+
+
 
 const App = () => {
   return (
@@ -19,6 +22,7 @@ const App = () => {
         <Route path="/Inlinerequests/:id" element={<InlineUsereRequest />} />
         <Route path="/InlinerequestsOperator/:id" element={<InlineReq />} />
         <Route path="/FormReq" element={< FormReq/>} />
+        <Route path="/Chat" element={< Chat/>} />
       </Routes>
     </BrowserRouter>
   );

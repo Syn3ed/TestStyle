@@ -1,0 +1,25 @@
+/* Chat.css */
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+  }
+  
+  .user-message {
+    align-self: flex-end;
+    background-color: #e0f7fa;
+    padding: 8px;
+    margin: 5px;
+    border-radius: 8px;
+  }
+  
+  .operator-message {
+    align-self: flex-start;
+    background-color: #ffecb3;
+    padding: 8px;
+    margin: 5px;
+    border-radius: 8px;
+  }
+  
+  /* Дополнительные стили при необходимости */
+  
