@@ -2,14 +2,14 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Chat.css';
 
-const Chat = ({ request }) => {
+const Chat = ({ dataArray }) => {
     const [chatMessages, setChatMessages] = useState([]);
   
     useEffect(() => {
       console.log('asdasdasdasd',request)
       const fetchChatMessages = async () => {
         try {
-          const response = await axios.get(`https://tg-server-0ckm.onrender.com/chat/${request}`);
+          const response = await axios.get(`https://tg-server-0ckm.onrender.com/chat/${dataArray.UserRequestId}`);
           setChatMessages(response.data);
         } catch (error) {
           console.error('Ошибка при получении сообщений чата', error);
@@ -17,7 +17,7 @@ const Chat = ({ request }) => {
       };
   
       fetchChatMessages();
-    }, [request]);
+    }, [dataArray]);
   
     return (
       <div className="chat-container">
