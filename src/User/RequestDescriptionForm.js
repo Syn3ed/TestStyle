@@ -167,7 +167,7 @@ const RequestDescriptionForm = ({ request }) => {
                     <label htmlFor="dialog">Диалог с оператором</label>
                     <textarea type="text" id="dialog" name="dialog" value={request.dialog} readOnly />
                 </div>
-                <Chat data={request}/>
+                <Chat data={request.userRequestId}/>
                 {renderButtons()}
                 <div>
                     {dataArray.length > 0 ? (

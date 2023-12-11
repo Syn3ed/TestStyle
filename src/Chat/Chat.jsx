@@ -9,7 +9,7 @@ const Chat = ({ request }) => {
       console.log('asdasdasdasd',request)
       const fetchChatMessages = async () => {
         try {
-          const response = await axios.get(`https://tg-server-0ckm.onrender.com/chat/${request.userRequestId}`);
+          const response = await axios.get(`https://tg-server-0ckm.onrender.com/chat/${request}`);
           setChatMessages(response.data);
         } catch (error) {
           console.error('Ошибка при получении сообщений чата', error);
