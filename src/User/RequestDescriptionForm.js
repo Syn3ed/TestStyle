@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './RequestDescriptionForm.css'
-import Chat from '../Chat/Chat';
+// import Chat from '../Chat/Chat';
 import axios from 'axios';
 
 
@@ -13,19 +13,33 @@ const RequestDescriptionForm = ({ request }) => {
     const idu = request.userRequestId;
 
     useEffect(() => {
-            tg.BackButton.show();
-        }, [navigate,tg]);
+        tg.BackButton.show();
+    }, [navigate, tg]);
 
-        
+
     useEffect(() => {
-            const handleBackButton = () => {
-                navigate(-1);
-            };
-            tg.BackButton.onClick(handleBackButton);
-            return () => {
-                tg.BackButton.offClick(handleBackButton);
-            };
-        }, [navigate,tg.BackButton]);
+        const handleBackButton = () => {
+            navigate(-1);
+        };
+        tg.BackButton.onClick(handleBackButton);
+        return () => {
+            tg.BackButton.offClick(handleBackButton);
+        };
+    }, [navigate, tg.BackButton]);
+
+    useEffect(() => {
+        console.log('asdasdasdasd',dataArray)
+        const fetchChatMessages = async () => {
+          try {
+            const response = await axios.get(`https://tg-server-0ckm.onrender.com/chat/${request.userRequestId}`);
+            setChatMessages(response.data);
+          } catch (error) {
+            console.error('Ошибка при получении сообщений чата', error);
+          }
+        };
+    
+        fetchChatMessages();
+      }, []);
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -109,19 +123,19 @@ const RequestDescriptionForm = ({ request }) => {
             },
             body: JSON.stringify(data)
         })
-    }, [request,queryId,tg]);
+    }, [request, queryId, tg]);
 
 
     const sendPhoto = useCallback(() => {
         tg.sendData(`/resToOperatorPhoto ${idu}`);
         tg.close();
-    },[tg,idu]);
+    }, [tg, idu]);
 
     const sendData = useCallback(() => {
 
         tg.sendData(`/resToOperator ${idu}`);
         tg.close();
-    },[tg,idu])
+    }, [tg, idu])
 
     const renderButtons = () => {
         if (request.status === 'ожидает ответа оператора') {
@@ -167,7 +181,14 @@ const RequestDescriptionForm = ({ request }) => {
                     <label htmlFor="dialog">Диалог с оператором</label>
                     <textarea type="text" id="dialog" name="dialog" value={request.dialog} readOnly />
                 </div>
-                <Chat data={dataArray}/>
+                <div className="chat-container">
+                    {chatMessages.map((message, index) => (
+                        <div key={index} className={message.roleUser === 'User' ? 'User' : 'Operator'}>
+                            <div className="message-header">{message.idUser}</div>
+                            {message.textMessage}
+                        </div>
+                    ))}
+                </div>
                 {renderButtons()}
                 <div>
                     {dataArray.length > 0 ? (

@@ -9,7 +9,7 @@ const Chat = ({ dataArray }) => {
       console.log('asdasdasdasd',dataArray)
       const fetchChatMessages = async () => {
         try {
-          const response = await axios.get(`https://tg-server-0ckm.onrender.com/chat/${dataArray.UserRequestId}`);
+          const response = await axios.get(`https://tg-server-0ckm.onrender.com/chat`);
           setChatMessages(response.data);
         } catch (error) {
           console.error('Ошибка при получении сообщений чата', error);
@@ -17,7 +17,7 @@ const Chat = ({ dataArray }) => {
       };
   
       fetchChatMessages();
-    }, [dataArray]);
+    }, []);
   
     return (
       <div className="chat-container">
