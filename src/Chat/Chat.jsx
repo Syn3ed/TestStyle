@@ -6,7 +6,7 @@ const Chat = ({ dataArray }) => {
     const [chatMessages, setChatMessages] = useState([]);
   
     useEffect(() => {
-      console.log('asdasdasdasd',request)
+      console.log('asdasdasdasd',dataArray)
       const fetchChatMessages = async () => {
         try {
           const response = await axios.get(`https://tg-server-0ckm.onrender.com/chat/${dataArray.UserRequestId}`);
