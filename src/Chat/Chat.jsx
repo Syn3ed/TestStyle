@@ -16,7 +16,7 @@ const Chat = ({ request }) => {
       };
   
       fetchChatMessages();
-    }, [request.userRequestId]);
+    }, [request]);
   
     return (
       <div className="chat-container">
