@@ -5,21 +5,42 @@
     padding: 10px;
   }
   
-  .user-message {
+  .User, .Operator {
+    max-width: 70%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 10px;
+  }
+  
+  .User {
     align-self: flex-end;
-    background-color: #e0f7fa;
-    padding: 8px;
-    margin: 5px;
-    border-radius: 8px;
+    background-color: #4caf50;
+    color: white;
   }
   
-  .operator-message {
+  .Operator {
     align-self: flex-start;
-    background-color: #ffecb3;
-    padding: 8px;
-    margin: 5px;
-    border-radius: 8px;
+    background-color: #2196f3;
+    color: white;
+  }
+  /* Обновленные стили в Chat.css */
+.User, .Operator {
+    max-width: 70%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    position: relative; /* Добавлено для позиционирования .message-header */
   }
   
-  /* Дополнительные стили при необходимости */
+  .message-header {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #ccc;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 12px;
+  }
+  
   
