@@ -29,7 +29,6 @@ const RequestDescriptionForm = ({ request }) => {
     }, [navigate, tg.BackButton]);
 
     useEffect(() => {
-        console.log('asdasdasdasd',dataArray)
         const fetchChatMessages = async () => {
           try {
             const response = await axios.get(`https://tg-server-0ckm.onrender.com/chat/${request.userRequestId}`);
