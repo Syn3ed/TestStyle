@@ -40,6 +40,8 @@ const RequestDescriptionForm = ({ request }) => {
     
         fetchChatMessages();
       }, [request]);
+
+
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -59,56 +61,24 @@ const RequestDescriptionForm = ({ request }) => {
         fetchData();
     }, [request]);
 
-    const handleShowPhoto = (idMedia) => {
-        console.log(idMedia);
-        const data = {
-            userRequestId: request.userRequestId,
-            username: request.username,
-            queryId,
-            idMedia,
-        }
-        fetch('https://tg-server-0ckm.onrender.com/handleShowPhoto', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data)
-        })
-    };
-
-    // const onSendData = useCallback(() => {
+    // const handleShowPhoto = (idMedia) => {
+    //     console.log(idMedia);
     //     const data = {
     //         userRequestId: request.userRequestId,
     //         username: request.username,
     //         queryId,
-    //         userId: request.userId
+    //         idMedia,
     //     }
-    //     fetch('https://tg-server-0ckm.onrender.com/replyToUser', {
+    //     fetch('https://tg-server-0ckm.onrender.com/handleShowPhoto', {
     //         method: 'POST',
     //         headers: {
     //             'Content-Type': 'application/json',
     //         },
     //         body: JSON.stringify(data)
     //     })
-    // }, [request,queryId])
+    // };
 
-
-    // const onSendPhoto = useCallback(() => {
-    //     const data = {
-    //         userRequestId: request.userRequestId,
-    //         username: request.username,
-    //         queryId,
-    //     }
-    //     fetch('https://tg-server-0ckm.onrender.com/replyToOperatorPhoto', {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //         },
-    //         body: JSON.stringify(data)
-    //     })
-    //     tg.close();
-    // }, [request,queryId,tg]);
-
+   
     const closeReq = useCallback(() => {
         tg.close();
         const data = {
@@ -132,10 +102,14 @@ const RequestDescriptionForm = ({ request }) => {
     }, [tg, idu]);
 
     const sendData = useCallback(() => {
-
         tg.sendData(`/resToOperator ${idu}`);
         tg.close();
     }, [tg, idu])
+
+    const sendPhotoChat = useCallback((id) => {
+        tg.sendData(`/handleShowPhoto ${id}`);
+        tg.close();
+    }, [tg])
 
     const renderButtons = () => {
         if (request.status === 'ожидает ответа оператора') {
@@ -196,7 +170,7 @@ const RequestDescriptionForm = ({ request }) => {
                             <div className="request-item">
                                 <div className="request-id">ID медии:{med.id}</div>
                                 <div>
-                                    <button type="button" onClick={() => handleShowPhoto(med.id)}>Показать фото</button>
+                                    <button type="button" onClick={() => sendPhotoChat(med.id)}>Показать фото</button>
                                 </div>
                             </div>
                         ))

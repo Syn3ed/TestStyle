@@ -7,29 +7,43 @@ import axios from 'axios';
 
 const RequestDescriptionForm = ({ request }) => {
     const [dataArray, setDataArray] = useState([]);
+    const [chatMessages, setChatMessages] = useState([]);
     const tg = window.Telegram.WebApp;
     const queryId = tg.initDataUnsafe?.query_id;
     const navigate = useNavigate();
 
     const idu = request.userRequestId;
     useEffect(() => {
-            tg.BackButton.show();
-        }, [navigate,tg]);
+        tg.BackButton.show();
+    }, [navigate, tg]);
 
-        
+
     useEffect(() => {
-            const handleBackButton = () => {
-                navigate(-1);
-            };
-            tg.BackButton.onClick(handleBackButton);
-            return () => {
-                tg.BackButton.offClick(handleBackButton);
-            };
-        }, [navigate,tg.BackButton]);
+        const handleBackButton = () => {
+            navigate(-1);
+        };
+        tg.BackButton.onClick(handleBackButton);
+        return () => {
+            tg.BackButton.offClick(handleBackButton);
+        };
+    }, [navigate, tg.BackButton]);
 
 
-        
-   
+    useEffect(() => {
+        const fetchChatMessages = async () => {
+            try {
+                const response = await axios.get(`https://tg-server-0ckm.onrender.com/chat/${request.userRequestId}`);
+                setChatMessages(response.data);
+            } catch (error) {
+                console.error('Ошибка при получении сообщений чата', error);
+            }
+        };
+
+        fetchChatMessages();
+    }, [request]);
+
+
+
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -49,67 +63,26 @@ const RequestDescriptionForm = ({ request }) => {
         fetchData();
     }, [request]);
 
-    const handleShowPhoto = (idMedia) => {
-        console.log(idMedia);
-        const data = {
-            userRequestId: request.userRequestId,
-            username: request.username,
-            queryId,
-            idMedia,
-        }
-        fetch('https://tg-server-0ckm.onrender.com/handleShowPhoto', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data)
-        })
-    };
 
-    
+
+
 
     const sendPhoto = useCallback(() => {
         tg.sendData(`/resToOperatorPhoto ${idu}`);
         tg.close();
-    },[tg,idu]);
+    }, [tg, idu]);
 
     const sendData = useCallback(() => {
         tg.sendData(`/resToUser ${idu}`);
         tg.close();
-    },[tg,idu]);
+    }, [tg, idu]);
 
-    // const onSendPhoto = useCallback(() => {
-    //     const data = {
-    //         userRequestId: request.userRequestId,
-    //         username: request.username,
-    //         queryId,
-    //     }
-    //     fetch('https://tg-server-0ckm.onrender.com/replyToOperatorPhoto', {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //         },
-    //         body: JSON.stringify(data)
-    //     })
-    //     tg.close();
-    // }, [request,queryId,tg]);
 
-    // const onSendData = useCallback(() => {
-    //     const data = {
-    //         userRequestId: request.userRequestId,
-    //         username: request.username,
-    //         queryId,
-    //         userId: request.userId
-    //     }
-    //     fetch('https://tg-server-0ckm.onrender.com/replyToUser', {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //         },
-    //         body: JSON.stringify(data)
-    //     });
-    //     tg.close();
-    // }, [request,queryId,tg])
+
+    const sendPhotoChat = useCallback((id) => {
+        tg.sendData(`/handleShowPhoto ${id}`);
+        tg.close();
+    }, [tg])
 
 
 
@@ -127,7 +100,7 @@ const RequestDescriptionForm = ({ request }) => {
             },
             body: JSON.stringify(data)
         })
-    }, [request,queryId,tg]);
+    }, [request, queryId, tg]);
 
     const renderButtons = () => {
         if (request.status === 'ожидает ответа оператора') {
@@ -173,7 +146,14 @@ const RequestDescriptionForm = ({ request }) => {
                     <label htmlFor="dialog">Диалог с оператором</label>
                     <textarea type="text" id="dialog" name="dialog" value={request.dialog} readOnly />
                 </div>
-                <Chat/>
+                <div className="chat-container">
+                    {chatMessages.map((message, index) => (
+                        <div key={index} className={message.roleUser === 'User' ? 'User' : 'Operator'}>
+                            <div className="message-header">{message.idUser}</div>
+                            {message.textMessage}
+                        </div>
+                    ))}
+                </div>
                 {renderButtons()}
                 <div>
                     {dataArray.length > 0 ? (
@@ -181,7 +161,7 @@ const RequestDescriptionForm = ({ request }) => {
                             <div className="request-item">
                                 <div className="request-id">ID медии:{med.id}</div>
                                 <div>
-                                    <button type="button" onClick={() => handleShowPhoto(med.id)}>Показать фото</button>
+                                    <button type="button" onClick={() => sendPhotoChat(med.id)}>Показать фото</button>
                                 </div>
                             </div>
                         ))
