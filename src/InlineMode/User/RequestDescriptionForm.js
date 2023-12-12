@@ -71,6 +71,7 @@ const RequestDescriptionForm = ({ request }) => {
             username: request.username,
             queryId,
             idMedia,
+            operatorId,
         }
         fetch('https://tg-server-0ckm.onrender.com/handleShowPhoto', {
             method: 'POST',
