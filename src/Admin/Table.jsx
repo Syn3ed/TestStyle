@@ -8,7 +8,14 @@ const Table = ({ data }) => {
   const handleRowClick = (id) => {
     navigate(`/requestsOperator/${id}`);
   };
+
+
   const tg = window.Telegram.WebApp;
+
+  useEffect(() => {
+    tg.BackButton.show();
+}, [navigate, tg]);
+
   useEffect(() => {
     const handleBackButton = () => {
       navigate(-1);
