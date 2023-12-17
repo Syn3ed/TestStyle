@@ -22,13 +22,13 @@ const AdminIndex = () => {
                 </tr>
             </thead>
             <tbody>
-                <tr onClick={() => handleRowClickFullList}>
+                <tr onClick={() => handleRowClickFullList()}>
                     <td>Полный список пользователей</td>
                 </tr>
-                <tr onClick={() => handleRowClickOperatorList}>
+                <tr onClick={() => handleRowClickOperatorList()}>
                     <td>Список операторов</td>
                 </tr>
-                <tr onClick={() => handleRowClickUserList}>
+                <tr onClick={() => handleRowClickUserList()}>
                     <td>Список пользователей</td>
                 </tr>
             </tbody>
