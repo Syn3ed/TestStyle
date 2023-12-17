@@ -7,8 +7,9 @@ const OperatorList = () => {
 
   useEffect(()=>{
     window.Telegram.WebApp.MainButton.hide()
-    window.Telegram.WebApp.BackButton.hide()
+    window.Telegram.WebApp.BackButton.show()
   },[]);
+
   
 
   useEffect(() => {

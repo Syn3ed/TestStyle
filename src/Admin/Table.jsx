@@ -1,20 +1,20 @@
-import React,{ useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './OperReq.css';
 
 const Table = ({ data }) => {
   const navigate = useNavigate();
 
-  const handleRowClick = (id) => {
-    navigate(`/requestsOperator/${id}`);
-  };
+  // const handleRowClick = (id) => {
+  //   navigate(`/requestsOperator/${id}`);
+  // };
 
 
   const tg = window.Telegram.WebApp;
 
   useEffect(() => {
     tg.BackButton.show();
-}, [navigate, tg]);
+  }, [navigate, tg]);
 
   useEffect(() => {
     const handleBackButton = () => {
@@ -24,7 +24,7 @@ const Table = ({ data }) => {
     return () => {
       tg.BackButton.offClick(handleBackButton);
     };
-  }, [navigate, tg.BackButton]);
+  }, [navigate, tg]);
 
 
   return (
@@ -39,7 +39,7 @@ const Table = ({ data }) => {
       </thead>
       <tbody>
         {data.map((row) => (
-          <tr key={row.id} onClick={() => handleRowClick(row.id)}>
+          <tr key={row.id}>
             <td>{row.id}</td>
             <td>{row.username}</td>
             <td>{row.telegramId}</td>
