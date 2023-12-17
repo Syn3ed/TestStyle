@@ -8,7 +8,10 @@ import InlineReq from './InlineMode/Operator/Req'
 import InlineUsereRequest from './InlineMode/User/Req'
 import FormReq from './FormReq/RequestForm'
 import Chat from './Chat/Chat';
-
+import AdminIndex from './Admin/AdminIndex';
+import FullList from './Admin/FullList';
+import OperatorList from './Admin/OperatorList';
+import UserList from './Admin/UserList';
 
 
 const App = () => {
@@ -23,6 +26,10 @@ const App = () => {
         <Route path="/InlinerequestsOperator/:id" element={<InlineReq />} />
         <Route path="/FormReq" element={< FormReq/>} />
         <Route path="/Chat" element={< Chat/>} />
+        <Route path="/AdminIndex" element={< AdminIndex/>} />
+        <Route path="/AdminIndex/FullList" element={< FullList/>} />
+        <Route path="/AdminIndex/OperatorList" element={< OperatorList/>} />
+        <Route path="/AdminIndex/UserList" element={< UserList/>} />
       </Routes>
     </BrowserRouter>
   );
