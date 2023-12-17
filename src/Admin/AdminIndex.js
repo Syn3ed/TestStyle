@@ -4,9 +4,15 @@ import './OperReq.css';
 
 const AdminIndex = () => {
     const navigate = useNavigate();
-    const handleRowClick = (id) => {
-        navigate(`/requestsOperator/${id}`);
-      };
+    const handleRowClickFullList = () => {
+        navigate(`/AdminIndex/FullList`);
+    };
+    const handleRowClickOperatorList = () => {
+        navigate(`/AdminIndex/OperatorList`);
+    };
+    const handleRowClickUserList = () => {
+        navigate(`/AdminIndex/UserList`);
+    };
 
     return (
         <table className="custom-table">
@@ -16,13 +22,13 @@ const AdminIndex = () => {
                 </tr>
             </thead>
             <tbody>
-                <tr onClick={() => handleRowClick(1)}>
+                <tr onClick={() => handleRowClickFullList}>
                     <td>Полный список пользователей</td>
                 </tr>
-                <tr onClick={() => handleRowClick(1)}>
+                <tr onClick={() => handleRowClickOperatorList}>
                     <td>Список операторов</td>
                 </tr>
-                <tr onClick={() => handleRowClick(1)}>
+                <tr onClick={() => handleRowClickUserList}>
                     <td>Список пользователей</td>
                 </tr>
             </tbody>
