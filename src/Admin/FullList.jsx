@@ -9,6 +9,7 @@ const FullList = () => {
     window.Telegram.WebApp.MainButton.hide()
     window.Telegram.WebApp.BackButton.hide()
   }, [])
+  
 
   useEffect(() => {
     const fetchData = async () => {

@@ -8,6 +8,17 @@ const Table = ({ data }) => {
   const handleRowClick = (id) => {
     navigate(`/requestsOperator/${id}`);
   };
+  const tg = window.Telegram.WebApp;
+  useEffect(() => {
+    const handleBackButton = () => {
+      navigate(-1);
+    };
+    tg.BackButton.onClick(handleBackButton);
+    return () => {
+      tg.BackButton.offClick(handleBackButton);
+    };
+  }, [navigate, tg.BackButton]);
+
 
   return (
     <table className="custom-table">
