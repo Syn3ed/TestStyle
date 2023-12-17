@@ -1,0 +1,43 @@
+body {
+  background-color: var(--tg-theme-bg-color); /* Цвет фона страницы */
+  color: var(--tg-theme-text-color); /* Цвет текста на странице */
+  margin: 0; /* Убираем внешние отступы у body */
+  font-family: 'Arial', sans-serif; /* Указываем шрифт текста */
+}
+
+.custom-table {
+  border-spacing: 0;
+  width: 100%;
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+  overflow: hidden;
+  border-radius: 8px;
+  margin-top: 16px;
+  background-color: var(--tg-theme-secondary-bg-color); /* Цвет фона таблицы */
+}
+
+.custom-table th,
+.custom-table td {
+  border-bottom: 1px solid  var(--tg-theme-bg-color);
+  padding: 12px;
+  text-align: center;
+}
+
+.custom-table th {
+  background-color: var(--tg-theme-button-color);
+  color: var(--tg-theme-button-text-color);
+}
+
+.custom-table tbody tr:hover {
+  background-color: var(--tg-theme-hint-color);
+  transition: background-color 0.3s ease;
+}
+
+.custom-table td:first-child,
+.custom-table th:first-child {
+  border-left: none;
+}
+
+.custom-table td:last-child,
+.custom-table th:last-child {
+  border-right: none;
+}
