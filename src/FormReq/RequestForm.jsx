@@ -28,7 +28,7 @@ const RequestForm = () => {
             <h2>Форма заполнения заявки</h2>
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
-                    <label htmlFor="address">Адрес:</label>
+                    <label htmlFor="address">Адрес ПЗУ:</label>
                     <input
                         type="text"
                         id="address"
