@@ -86,11 +86,11 @@ const RequestDescriptionForm = ({ request }) => {
 
 
 
-   
+
     const closeReq = useCallback(() => {
         tg.sendData(`/closeReq ${idu}`);
         tg.close();
-    }, [tg,idu]);
+    }, [tg, idu]);
 
 
     const renderButtons = () => {
@@ -140,8 +140,13 @@ const RequestDescriptionForm = ({ request }) => {
                 <div className="chat-container">
                     {chatMessages.map((message, index) => (
                         <div key={index} className={message.roleUser === 'User' ? 'User' : 'Operator'}>
-                            <div className="message-header">{message.idUser}</div>
+                            <div className="message-header">{message.username}</div>
                             {message.textMessage}
+                            {message.idMedia && (
+                                <button onClick={() => sendPhotoChat(message.idMedia)}>
+                                    Показать файл
+                                </button>
+                            )}
                         </div>
                     ))}
                 </div>
