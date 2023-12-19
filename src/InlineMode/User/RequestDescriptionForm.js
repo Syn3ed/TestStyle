@@ -6,6 +6,7 @@ import axios from 'axios';
 
 const RequestDescriptionForm = ({ request }) => {
     const [dataArray, setDataArray] = useState([]);
+    const [chatMessages, setChatMessages] = useState([]);
     const tg = window.Telegram.WebApp;
     const queryId = tg.initDataUnsafe?.query_id;
     const navigate = useNavigate();
@@ -15,6 +16,18 @@ const RequestDescriptionForm = ({ request }) => {
         tg.BackButton.show();
     }, [navigate, tg]);
 
+    useEffect(() => {
+        const fetchChatMessages = async () => {
+            try {
+                const response = await axios.get(`https://tg-server-0ckm.onrender.com/chat/${request.userRequestId}`);
+                setChatMessages(response.data);
+            } catch (error) {
+                console.error('Ошибка при получении сообщений чата', error);
+            }
+        };
+
+        fetchChatMessages();
+    }, [request]);
 
     useEffect(() => {
         const handleBackButton = () => {
@@ -33,7 +46,7 @@ const RequestDescriptionForm = ({ request }) => {
             username: request.username,
             queryId,
             userId: request.userId,
-            operatorId:operatorId
+            operatorId: operatorId
         }
         fetch('https://tg-server-0ckm.onrender.com/replyToOperator', {
             method: 'POST',
@@ -43,7 +56,7 @@ const RequestDescriptionForm = ({ request }) => {
             body: JSON.stringify(data)
         });
         // tg.close();
-    }, [request, queryId,operatorId])
+    }, [request, queryId, operatorId])
 
     useEffect(() => {
         const fetchData = async () => {
@@ -104,6 +117,8 @@ const RequestDescriptionForm = ({ request }) => {
             userRequestId: request.userRequestId,
             username: request.username,
             queryId,
+            idMedia,
+            operatorId,
         }
         fetch('https://tg-server-0ckm.onrender.com/closeReq', {
             method: 'POST',
@@ -156,7 +171,15 @@ const RequestDescriptionForm = ({ request }) => {
                 </div>
                 <div className="form-group">
                     <label htmlFor="dialog">Диалог с оператором</label>
-                    <textarea type="text" id="dialog" name="dialog" value={request.dialog} readOnly />
+                    {/* <textarea type="text" id="dialog" name="dialog" value={request.dialog} readOnly /> */}
+                </div>
+                <div className="chat-container">
+                    {chatMessages.map((message, index) => (
+                        <div key={index} className={message.roleUser === 'User' ? 'User' : 'Operator'}>
+                            <div className="message-header">{message.idUser}</div>
+                            {message.textMessage}
+                        </div>
+                    ))}
                 </div>
                 {renderButtons()}
                 <div>

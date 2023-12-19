@@ -87,20 +87,9 @@ const RequestDescriptionForm = ({ request }) => {
 
 
     const closeReq = useCallback(() => {
+        tg.sendData(`/closeReq ${id}`);
         tg.close();
-        const data = {
-            userRequestId: request.userRequestId,
-            username: request.username,
-            queryId,
-        }
-        fetch('https://tg-server-0ckm.onrender.com/closeReq', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data)
-        })
-    }, [request, queryId, tg]);
+    }, [tg]);
 
     const renderButtons = () => {
         if (request.status === 'ожидает ответа оператора') {
@@ -144,7 +133,7 @@ const RequestDescriptionForm = ({ request }) => {
                 </div>
                 <div className="form-group">
                     <label htmlFor="dialog">Диалог с оператором</label>
-                    <textarea type="text" id="dialog" name="dialog" value={request.dialog} readOnly />
+                    {/* <textarea type="text" id="dialog" name="dialog" value={request.dialog} readOnly /> */}
                 </div>
                 <div className="chat-container">
                     {chatMessages.map((message, index) => (
