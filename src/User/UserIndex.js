@@ -8,7 +8,7 @@ const UserIndex = () => {
     const { id } = useParams();
 
   useEffect(()=>{
-    window.Telegram.WebApp.MainButton.show()
+    window.Telegram.WebApp.MainButton.hide()
     window.Telegram.WebApp.BackButton.hide()
   },[])
 

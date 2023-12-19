@@ -6,7 +6,7 @@ const OperIndex = () => {
     const [dataArray, setDataArray] = useState([]);
 
   useEffect(()=>{
-    window.Telegram.WebApp.MainButton.show()
+    window.Telegram.WebApp.MainButton.hide()
     window.Telegram.WebApp.BackButton.hide()
   },[])
 
