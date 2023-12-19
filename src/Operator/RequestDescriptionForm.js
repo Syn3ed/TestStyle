@@ -82,7 +82,7 @@ const RequestDescriptionForm = ({ request }) => {
 
     const sendPhotoChat = useCallback((id) => {
         tg.sendData(`/handleShowPhoto ${id}`);
-        tg.close();
+        // tg.close();
     }, [tg])
 
 
