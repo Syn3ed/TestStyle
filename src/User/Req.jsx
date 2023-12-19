@@ -12,7 +12,6 @@ const Req = () => {
             try {
                 const response = await axios.get(`https://tg-server-0ckm.onrender.com/mes/${id}`);
                 const dataArray = response.data.map(item => ({
-                    dialog: item.dialog,
                     userRequestId: item.userRequestId,
                     status: item.status,
                     description: item.description,
@@ -37,7 +36,6 @@ const Req = () => {
             {dataArray.length > 0 ? (
                 <RequestDescriptionForm
                     request={{
-                        dialog: dataArray[0].dialog,
                         userRequestId: dataArray[0].userRequestId,
                         status: dataArray[0].status,
                         description: dataArray[0].description,
