@@ -145,12 +145,19 @@ const RequestDescriptionForm = ({ request }) => {
                     {/* <textarea type="text" id="dialog" name="dialog" value={request.dialog} readOnly /> */}
                 </div>
                 <div className="chat-container">
+                <div className="chat-container">
                     {chatMessages.map((message, index) => (
                         <div key={index} className={message.roleUser === 'User' ? 'User' : 'Operator'}>
-                            <div className="message-header">{message.idUser}</div>
+                            <div className="message-header">{message.username}</div>
                             {message.textMessage}
+                            {message.IdMedia && (
+                                <button onClick={() => sendPhotoChat(message.IdMedia)}>
+                                    Показать файл
+                                </button>
+                            )}
                         </div>
                     ))}
+                </div>
                 </div>
                 {renderButtons()}
                 <div>
