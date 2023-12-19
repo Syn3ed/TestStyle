@@ -143,7 +143,7 @@ const RequestDescriptionForm = ({ request }) => {
                         <div key={index} className={message.roleUser === 'User' ? 'User' : 'Operator'}>
                             <div className="message-header">{message.username}</div>
                             {message.textMessage}
-                            {message.idMedia && (
+                            {message.IdMedia && (
                                 <button onClick={() => sendPhotoChat(message.idMedia)}>
                                     Показать файл
                                 </button>
