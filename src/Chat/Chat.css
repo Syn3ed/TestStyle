@@ -14,13 +14,13 @@
   
   .User {
     align-self: flex-end;
-    background-color: #4caf50;  
+    background-color: var(--tg-theme-button-color);  
     color: white;
   }
   
   .Operator {
     align-self: flex-start;
-    background-color: #2196f3;
+    background-color: var(--tg-theme-button-color);
     color: white;
   }
   /* Обновленные стили в Chat.css */
