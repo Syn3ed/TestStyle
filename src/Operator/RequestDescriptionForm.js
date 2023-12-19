@@ -144,7 +144,7 @@ const RequestDescriptionForm = ({ request }) => {
                             <div className="message-header">{message.username}</div>
                             {message.textMessage}
                             {message.IdMedia && (
-                                <button onClick={() => sendPhotoChat(message.idMedia)}>
+                                <button onClick={() => sendPhotoChat(message.IdMedia)}>
                                     Показать файл
                                 </button>
                             )}
