@@ -117,7 +117,6 @@ const RequestDescriptionForm = ({ request }) => {
             userRequestId: request.userRequestId,
             username: request.username,
             queryId,
-            idMedia,
             operatorId,
         }
         fetch('https://tg-server-0ckm.onrender.com/closeReq', {
@@ -127,7 +126,7 @@ const RequestDescriptionForm = ({ request }) => {
             },
             body: JSON.stringify(data)
         })
-    }, [request, queryId, tg]);
+    }, [request, queryId, tg,operatorId]);
 
     const renderButtons = () => {
         if (request.status === 'ожидает ответа оператора') {

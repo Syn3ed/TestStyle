@@ -80,11 +80,9 @@ const RequestDescriptionForm = ({ request }) => {
 
    
     const closeReq = useCallback(() => {
-        const closeReq = useCallback(() => {
-            tg.sendData(`/closeReq ${id}`);
-            tg.close();
-        }, [tg]);
-    }, [tg]);
+        tg.sendData(`/closeReq ${idu}`);
+        tg.close();
+    }, [tg,idu]);
 
 
     const sendPhoto = useCallback(() => {

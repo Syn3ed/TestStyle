@@ -86,10 +86,12 @@ const RequestDescriptionForm = ({ request }) => {
 
 
 
+   
     const closeReq = useCallback(() => {
-        tg.sendData(`/closeReq ${id}`);
+        tg.sendData(`/closeReq ${idu}`);
         tg.close();
-    }, [tg]);
+    }, [tg,idu]);
+
 
     const renderButtons = () => {
         if (request.status === 'ожидает ответа оператора') {
