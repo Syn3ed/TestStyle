@@ -6,7 +6,7 @@ import axios from 'axios';
 
 
 const RequestDescriptionForm = ({ request }) => {
-    const [chatMessages, setChatMessages] = useState([]);
+    // const [chatMessages, setChatMessages] = useState([]);
     const [dataArray, setDataArray] = useState([]);
     const tg = window.Telegram.WebApp;
     // const queryId = tg.initDataUnsafe?.query_id;
@@ -42,24 +42,24 @@ const RequestDescriptionForm = ({ request }) => {
       }, [request]);
 
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await axios.get(`https://tg-server-0ckm.onrender.com/reqPhoto/${request.userRequestId}`);
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         try {
+    //             const response = await axios.get(`https://tg-server-0ckm.onrender.com/reqPhoto/${request.userRequestId}`);
 
-                const dataArray = response.data.map(item => ({
-                    id: item.id,
-                    idMedia: item.idMedia,
-                    UserRequestId: item.UserRequestId
-                }));
-                setDataArray(dataArray);
-                console.log(dataArray);
-            } catch (error) {
-                console.error('Ошибка при получении данных', error);
-            }
-        };
-        fetchData();
-    }, [request]);
+    //             const dataArray = response.data.map(item => ({
+    //                 id: item.id,
+    //                 idMedia: item.idMedia,
+    //                 UserRequestId: item.UserRequestId
+    //             }));
+    //             setDataArray(dataArray);
+    //             console.log(dataArray);
+    //         } catch (error) {
+    //             console.error('Ошибка при получении данных', error);
+    //         }
+    //     };
+    //     fetchData();
+    // }, [request]);
 
     // const handleShowPhoto = (idMedia) => {
     //     console.log(idMedia);
