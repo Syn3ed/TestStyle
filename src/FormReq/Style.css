@@ -6,7 +6,7 @@
     margin: 0;
     position: absolute;
     z-index: 1;
-    background-color: var(--tg-theme-text-color);
+    background-color: var(--tg-theme-secondary-bg-color);
     border: 1px solid #ccc;
     border-radius: 4px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
