@@ -42,5 +42,12 @@
     border-radius: 5px;
     font-size: 12px;
   }
-  
+  .message-Time {
+    position: absolute;
+    transform: translateX(-50%);
+    background-color: #ccc;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 12px;
+  }
   

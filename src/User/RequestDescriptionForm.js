@@ -156,7 +156,7 @@ const RequestDescriptionForm = ({ request }) => {
                                     Показать файл
                                 </button>
                             )}
-                            <div >{message.Time}</div>
+                            <div className="message-Time">{message.Time}</div>
                         </div>
                     ))}
                 </div>
