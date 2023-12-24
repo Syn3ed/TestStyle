@@ -99,7 +99,7 @@ const RequestDescriptionForm = ({ request }) => {
             return (
                 <div>
                     <button type="button" onClick={closeReq}>Закрыть заявку</button>
-                    <button type="button" onClick={sendData}>Ответить</button>
+                    <button type="button" onClick={sendData}>Обработать заявку и отправить ответ</button>
                     <button type="button" onClick={sendPhoto}>Отправить фото</button>
                 </div>
             );

@@ -133,7 +133,7 @@ const RequestDescriptionForm = ({ request }) => {
             return (
                 <div>
                     <button type="button" onClick={closeReq}>Закрыть заявку</button>
-                    <button type="button" onClick={onSendData}>Ответить</button>
+                    <button type="button" onClick={onSendData}>Отправить ответ</button>
                     <button type="button" onClick={onSendPhoto}>Отправить фото</button>
                 </div>
             );
@@ -141,7 +141,7 @@ const RequestDescriptionForm = ({ request }) => {
             return (
                 <div>
                     <button type="button" onClick={closeReq}>Закрыть заявку</button>
-                    <button type="button" onClick={onSendData}>Ответить</button>
+                    <button type="button" onClick={onSendData}>Отправить ответ</button>
                     <button type="button" onClick={onSendPhoto}>Отправить фото</button>
                 </div>
             );
