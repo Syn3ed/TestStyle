@@ -6,7 +6,7 @@ const RequestForm = () => {
     const [address, setAddress] = useState('');
     const [category, setCategory] = useState('');
     const [description, setDescription] = useState('');
-    const [suggestions, setSuggestions] = useState([]);
+    const [suggestedAddresses, setSuggestedAddresses] = useState([]);
 
     const tg = window.Telegram.WebApp;
 
@@ -60,7 +60,7 @@ const RequestForm = () => {
                 <div className="form-group">
                     <label htmlFor="address">Адрес ПЗУ:</label>
                     <Autosuggest
-                        suggestions={suggestions}
+                        suggestions={suggestedAddresses}
                         onSuggestionsFetchRequested={({ value }) => setSuggestions(getSuggestions(value))}
                         onSuggestionsClearRequested={() => setSuggestions([])}
                         getSuggestionValue={(suggestion) => suggestion}
@@ -72,6 +72,15 @@ const RequestForm = () => {
                             required: true
                         }}
                     />
+                    {Boolean(suggestedAddresses.length) && (
+                        <ul className="suggested-addresses">
+                            {suggestedAddresses.map((suggestedAddress, index) => (
+                                <li key={index} onClick={() => handleAddressSelection(suggestedAddress)}>
+                                    {suggestedAddress}
+                                </li>
+                            ))}
+                        </ul>
+                    )}
                 </div>
 
                 <div className="form-group">
@@ -95,9 +104,11 @@ const RequestForm = () => {
                     />
                 </div>
 
-                <button type="submit" onClick={onSendData} disabled={!isFormValid}>
-                    Отправить заявку
-                </button>
+                {isFormValid && (
+                    <button type="submit" onClick={onSendData}>
+                        Отправить заявку
+                    </button>
+                )}
             </form>
         </div>
     );
