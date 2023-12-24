@@ -1,5 +1,4 @@
 import React, { useCallback, useState } from 'react';
-import Autosuggest from 'react-autosuggest';
 import './Style.css';
 
 const RequestForm = () => {
@@ -38,26 +37,6 @@ const RequestForm = () => {
         // ... добавьте другие адреса, если необходимо
     ];
 
-    const getSuggestions = (value) => {
-        const inputValue = value.trim().toLowerCase();
-        const inputLength = inputValue.length;
-
-        return inputLength === 0 ? [] : suggestedAddressesList.filter(address =>
-            address.toLowerCase().includes(inputValue)
-        );
-    };
-
-    const renderSuggestion = (suggestion) => (
-        <div>
-            {suggestion}
-        </div>
-    );
-
-    const handleAddressChange = (event, { newValue }) => {
-        setAddress(newValue);
-        setSuggestedAddresses(getSuggestions(newValue));
-    };
-
     const handleAddressSelection = (selectedAddress) => {
         setAddress(selectedAddress);
         setSuggestedAddresses([]);
@@ -69,18 +48,22 @@ const RequestForm = () => {
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label htmlFor="address">Адрес ПЗУ:</label>
-                    <Autosuggest
-                        suggestions={suggestedAddresses}
-                        onSuggestionsFetchRequested={({ value }) => setSuggestedAddresses(getSuggestions(value))}
-                        onSuggestionsClearRequested={() => setSuggestedAddresses([])}
-                        getSuggestionValue={(suggestion) => suggestion}
-                        renderSuggestion={renderSuggestion}
-                        inputProps={{
-                            id: 'address',
-                            value: address,
-                            onChange: handleAddressChange,
-                            required: true
+                    <input
+                        type="text"
+                        id="address"
+                        value={address}
+                        onChange={(e) => {
+                            const value = e.target.value;
+                            setAddress(value);
+                            setSuggestedAddresses(
+                                value.trim() !== ''
+                                    ? suggestedAddressesList.filter(addr =>
+                                        addr.toLowerCase().includes(value.toLowerCase())
+                                    )
+                                    : []
+                            );
                         }}
+                        required
                     />
                     {Boolean(suggestedAddresses.length) && (
                         <ul className="suggested-addresses">
