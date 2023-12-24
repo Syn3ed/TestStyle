@@ -1,11 +1,12 @@
 import React, { useCallback, useState } from 'react';
+import Autosuggest from 'react-autosuggest';
 import './Style.css';
 
 const RequestForm = () => {
     const [address, setAddress] = useState('');
     const [category, setCategory] = useState('');
     const [description, setDescription] = useState('');
-    const [suggestedAddresses, setSuggestedAddresses] = useState([]);
+    const [suggestions, setSuggestions] = useState([]);
 
     const tg = window.Telegram.WebApp;
 
@@ -37,21 +38,20 @@ const RequestForm = () => {
         // ... добавьте другие адреса, если необходимо
     ];
 
-    const handleAddressChange = (e) => {
-        const enteredAddress = e.target.value;
-        setAddress(enteredAddress);
+    const getSuggestions = (value) => {
+        const inputValue = value.trim().toLowerCase();
+        const inputLength = inputValue.length;
 
-        const matchingAddresses = suggestedAddressesList.filter((suggestedAddress) =>
-            suggestedAddress.toLowerCase().includes(enteredAddress.toLowerCase())
+        return inputLength === 0 ? [] : suggestedAddressesList.filter(address =>
+            address.toLowerCase().includes(inputValue)
         );
-
-        setSuggestedAddresses(matchingAddresses);
     };
 
-    const handleAddressSelection = (selectedAddress) => {
-        setAddress(selectedAddress);
-        setSuggestedAddresses([]);
-    };
+    const renderSuggestion = (suggestion) => (
+        <div>
+            {suggestion}
+        </div>
+    );
 
     return (
         <div className="request-description-form">
@@ -59,22 +59,19 @@ const RequestForm = () => {
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label htmlFor="address">Адрес ПЗУ:</label>
-                    <input
-                        type="text"
-                        id="address"
-                        value={address}
-                        onChange={handleAddressChange}
-                        required
+                    <Autosuggest
+                        suggestions={suggestions}
+                        onSuggestionsFetchRequested={({ value }) => setSuggestions(getSuggestions(value))}
+                        onSuggestionsClearRequested={() => setSuggestions([])}
+                        getSuggestionValue={(suggestion) => suggestion}
+                        renderSuggestion={renderSuggestion}
+                        inputProps={{
+                            id: 'address',
+                            value: address,
+                            onChange: (event, { newValue }) => setAddress(newValue),
+                            required: true
+                        }}
                     />
-                    {Boolean(suggestedAddresses.length) && (
-                        <ul className="suggested-addresses">
-                            {suggestedAddresses.map((suggestedAddress, index) => (
-                                <li key={index} onClick={() => handleAddressSelection(suggestedAddress)}>
-                                    {suggestedAddress}
-                                </li>
-                            ))}
-                        </ul>
-                    )}
                 </div>
 
                 <div className="form-group">
