@@ -6,8 +6,8 @@ import axios from 'axios';
 
 
 const RequestDescriptionForm = ({ request }) => {
-    // const [chatMessages, setChatMessages] = useState([]);
-    const [dataArray, setDataArray] = useState([]);
+    const [chatMessages, setChatMessages] = useState([]);
+    // const [dataArray, setDataArray] = useState([]);
     const tg = window.Telegram.WebApp;
     // const queryId = tg.initDataUnsafe?.query_id;
     const navigate = useNavigate();
