@@ -5,6 +5,7 @@ const RequestForm = () => {
     const [address, setAddress] = useState('');
     const [category, setCategory] = useState('');
     const [description, setDescription] = useState('');
+    const [suggestedAddresses, setSuggestedAddresses] = useState([]);
 
     const tg = window.Telegram.WebApp;
 
@@ -25,8 +26,32 @@ const RequestForm = () => {
         console.log('Description:', description);
     };
 
-    // Проверка, все ли поля формы заполнены
     const isFormValid = address.trim() !== '' && category.trim() !== '' && description.trim() !== '';
+
+    const suggestedAddressesList = [
+        "Улица Первая, дом 1",
+        "Проспект Главный, дом 10",
+        "Переулок Тихий, дом 5",
+        "Бульвар Центральный, дом 20",
+        "Площадь Солнечная, дом 3",
+        // ... добавьте другие адреса, если необходимо
+    ];
+
+    const handleAddressChange = (e) => {
+        const enteredAddress = e.target.value;
+        setAddress(enteredAddress);
+
+        const matchingAddresses = suggestedAddressesList.filter((suggestedAddress) =>
+            suggestedAddress.toLowerCase().includes(enteredAddress.toLowerCase())
+        );
+
+        setSuggestedAddresses(matchingAddresses);
+    };
+
+    const handleAddressSelection = (selectedAddress) => {
+        setAddress(selectedAddress);
+        setSuggestedAddresses([]);
+    };
 
     return (
         <div className="request-description-form">
@@ -38,9 +63,18 @@ const RequestForm = () => {
                         type="text"
                         id="address"
                         value={address}
-                        onChange={(e) => setAddress(e.target.value)}
+                        onChange={handleAddressChange}
                         required
                     />
+                    {Boolean(suggestedAddresses.length) && (
+                        <ul className="suggested-addresses">
+                            {suggestedAddresses.map((suggestedAddress, index) => (
+                                <li key={index} onClick={() => handleAddressSelection(suggestedAddress)}>
+                                    {suggestedAddress}
+                                </li>
+                            ))}
+                        </ul>
+                    )}
                 </div>
 
                 <div className="form-group">
@@ -62,7 +96,8 @@ const RequestForm = () => {
                         onChange={(e) => setDescription(e.target.value)}
                         required
                     />
-                </div> 
+                </div>
+
                 <button type="submit" onClick={onSendData} disabled={!isFormValid}>
                     Отправить заявку
                 </button>
