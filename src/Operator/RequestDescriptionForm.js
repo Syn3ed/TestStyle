@@ -152,21 +152,7 @@ const RequestDescriptionForm = ({ request }) => {
                     ))}
                 </div>
                 {renderButtons()}
-                <div>
-                    {dataArray.length > 0 ? (
-                        dataArray.map((med) => (
-                            <div className="request-item">
-                                <div className="request-id">ID медии:{med.id}</div>
-                                <div>
-                                    <button type="button" onClick={() => sendPhotoChat(med.id)}>Показать фото</button>
-                                </div>
-                            </div>
-                        ))
-                    ) : (
-                        <div>Загрузка данных...</div>
-                    )}
-                </div>
-
+                
             </form>
         </div>
     );
