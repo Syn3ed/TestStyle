@@ -53,6 +53,16 @@ const RequestForm = () => {
         </div>
     );
 
+    const handleAddressChange = (event, { newValue }) => {
+        setAddress(newValue);
+        setSuggestedAddresses(getSuggestions(newValue));
+    };
+
+    const handleAddressSelection = (selectedAddress) => {
+        setAddress(selectedAddress);
+        setSuggestedAddresses([]);
+    };
+
     return (
         <div className="request-description-form">
             <h2>Форма заполнения заявки</h2>
@@ -61,14 +71,14 @@ const RequestForm = () => {
                     <label htmlFor="address">Адрес ПЗУ:</label>
                     <Autosuggest
                         suggestions={suggestedAddresses}
-                        onSuggestionsFetchRequested={({ value }) => setSuggestions(getSuggestions(value))}
-                        onSuggestionsClearRequested={() => setSuggestions([])}
+                        onSuggestionsFetchRequested={({ value }) => setSuggestedAddresses(getSuggestions(value))}
+                        onSuggestionsClearRequested={() => setSuggestedAddresses([])}
                         getSuggestionValue={(suggestion) => suggestion}
                         renderSuggestion={renderSuggestion}
                         inputProps={{
                             id: 'address',
                             value: address,
-                            onChange: (event, { newValue }) => setAddress(newValue),
+                            onChange: handleAddressChange,
                             required: true
                         }}
                     />
