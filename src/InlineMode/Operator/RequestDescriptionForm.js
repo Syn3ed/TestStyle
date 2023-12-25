@@ -156,8 +156,12 @@ const RequestDescriptionForm = ({ request }) => {
             <h2>Описание заявки</h2>
             <form>
                 <div className="form-group">
-                    <label htmlFor="username">Никенейм пользователя</label>
+                    <label htmlFor="username">Никнейм пользователя</label>
                     <input type="text" id="username" name="username" value={request.username} readOnly />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="subject">Статус заявки</label>
+                    <input type="text" id="subject" name="subject" value={request.status} readOnly />
                 </div>
                 <div className="form-group">
                     <label htmlFor="subject">Тема заявки</label>
