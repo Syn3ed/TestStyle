@@ -95,7 +95,7 @@ const RequestDescriptionForm = ({ request }) => {
 
 
     const renderButtons = () => {
-        if (request.с === 'ожидает ответа оператора') {
+        if (request.status === 'ожидает ответа оператора') {
             return (
                 <div>
                     <button type="button" onClick={closeReq}>Закрыть заявку</button>
