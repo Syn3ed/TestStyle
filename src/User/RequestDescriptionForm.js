@@ -81,23 +81,23 @@ const RequestDescriptionForm = ({ request }) => {
    
     const closeReq = useCallback(() => {
         tg.sendData(`/closeReq ${idu}`);
-        tg.close();
+        // tg.close();
     }, [tg,idu]);
 
 
     const sendPhoto = useCallback(() => {
         tg.sendData(`/resToOperatorPhoto ${idu}`);
-        tg.close();
+        // tg.close();
     }, [tg, idu]);
 
     const sendData = useCallback(() => {
         tg.sendData(`/resToOperator ${idu}`);
-        tg.close();
+        // tg.close();
     }, [tg, idu])
 
     const sendPhotoChat = useCallback((id) => {
         tg.sendData(`/handleShowPhoto ${id}`);
-        tg.close();
+        // tg.close();
     }, [tg])
 
     const renderButtons = () => {

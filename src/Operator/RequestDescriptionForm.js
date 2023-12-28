@@ -70,12 +70,12 @@ const RequestDescriptionForm = ({ request }) => {
 
     const sendPhoto = useCallback(() => {
         tg.sendData(`/resToOperatorPhoto ${idu}`);
-        tg.close();
+        // tg.close();
     }, [tg, idu]);
 
     const sendData = useCallback(() => {
         tg.sendData(`/resToUser ${idu}`);
-        tg.close();
+        // tg.close();
     }, [tg, idu]);
 
 
@@ -90,7 +90,7 @@ const RequestDescriptionForm = ({ request }) => {
 
     const closeReq = useCallback(() => {
         tg.sendData(`/closeReq ${idu}`);
-        tg.close();
+        // tg.close();
     }, [tg, idu]);
 
 
