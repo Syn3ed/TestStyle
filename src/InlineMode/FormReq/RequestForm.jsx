@@ -8,7 +8,7 @@ const InlineFormReq = () => {
     const [description, setDescription] = useState('');
     const [suggestedAddresses, setSuggestedAddresses] = useState([]);
     const [selectedFiles, setSelectedFiles] = useState([]);
-    const tg = window.Telegram.WebApp;
+    // const tg = window.Telegram.WebApp;
 
     const onSendData = useCallback(() => {
         const formData = new FormData();
