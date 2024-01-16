@@ -1,8 +1,7 @@
 body {
-  background-color: var(--tg-theme-bg-color); /* Цвет фона страницы */
-  color: var(--tg-theme-text-color); /* Цвет текста на странице */
-  margin: 0; /* Убираем внешние отступы у body */
-  font-family: 'Arial', sans-serif; /* Указываем шрифт текста */
+  background-color: var(--tg-theme-bg-color); 
+  margin: 0; 
+  font-family: 'Arial', sans-serif; 
 }
 
 .custom-table {
@@ -12,7 +11,7 @@ body {
   overflow: hidden;
   border-radius: 8px;
   margin-top: 16px;
-  background-color: var(--tg-theme-secondary-bg-color); /* Цвет фона таблицы */
+  background-color: var(--tg-theme-secondary-bg-color); 
 }
 
 .custom-table th,
