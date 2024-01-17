@@ -13,7 +13,7 @@ const OperIndex = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('https://tg-server-0ckm.onrender.com/req');
+        const response = await axios.get('https://192.168.0.2:3000/req');
         setDataArray(response.data.map(item => ({
           id: item.id,
           username: item.username,
