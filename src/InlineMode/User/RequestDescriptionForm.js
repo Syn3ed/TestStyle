@@ -19,7 +19,7 @@ const RequestDescriptionForm = ({ request }) => {
     useEffect(() => {
         const fetchChatMessages = async () => {
             try {
-                const response = await axios.get(`http://85.119.146.125:8000/chat/${request.userRequestId}`);
+                const response = await axios.get(`https://85.119.146.125:8000/chat/${request.userRequestId}`);
                 setChatMessages(response.data);
             } catch (error) {
                 console.error('Ошибка при получении сообщений чата', error);
@@ -48,7 +48,7 @@ const RequestDescriptionForm = ({ request }) => {
             userId: request.userId,
             operatorId: operatorId
         }
-        fetch('http://85.119.146.125:8000/replyToOperator', {
+        fetch('https://85.119.146.125:8000/replyToOperator', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -86,7 +86,7 @@ const RequestDescriptionForm = ({ request }) => {
             idMedia,
             operatorId,
         }
-        fetch('http://85.119.146.125:8000/handleShowPhoto', {
+        fetch('https://85.119.146.125:8000/handleShowPhoto', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -101,7 +101,7 @@ const RequestDescriptionForm = ({ request }) => {
             username: request.username,
             queryId,
         }
-        fetch('http://85.119.146.125:8000/replyToOperatorPhoto', {
+        fetch('https://85.119.146.125:8000/replyToOperatorPhoto', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -119,7 +119,7 @@ const RequestDescriptionForm = ({ request }) => {
             queryId,
             operatorId,
         }
-        fetch('http://85.119.146.125:8000.com/closeReq', {
+        fetch('https://85.119.146.125:8000.com/closeReq', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

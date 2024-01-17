@@ -10,7 +10,7 @@ const Req = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`http://tg-server-0ckm.onrender.com/mes/${id}`);
+                const response = await axios.get(`https://tg-server-0ckm.onrender.com/mes/${id}`);
                 const dataArray = response.data.map(item => ({
                     userRequestId: item.userRequestId,
                     status: item.status,

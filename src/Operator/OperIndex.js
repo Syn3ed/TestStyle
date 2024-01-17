@@ -13,7 +13,7 @@ const OperIndex = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://85.119.146.125:8000/req');
+        const response = await axios.get('https://85.119.146.125:8000/req');
         setDataArray(response.data.map(item => ({
           id: item.id,
           username: item.username,
