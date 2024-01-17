@@ -32,7 +32,7 @@ const RequestDescriptionForm = ({ request }) => {
     useEffect(() => {
         const fetchChatMessages = async () => {
             try {
-                const response = await axios.get(`https://85.119.146.125:8000/chat/${request.userRequestId}`);
+                const response = await axios.get(`https://85.119.146.125:3000/chat/${request.userRequestId}`);
                 setChatMessages(response.data);
                 console.log(response.data)
             } catch (error) {

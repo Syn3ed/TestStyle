@@ -10,7 +10,7 @@ const Req = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`https://85.119.146.125:8000/mes/${id}`);
+                const response = await axios.get(`https://85.119.146.125:3000/mes/${id}`);
                 const dataArray = response.data.map(item => ({
                     userRequestId: item.userRequestId,
                     status: item.status,
