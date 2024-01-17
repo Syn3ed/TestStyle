@@ -15,7 +15,7 @@ const OperatorList = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('https://85.119.146.125:8000/adminListOperator');
+        const response = await axios.get('http://85.119.146.125:8000/adminListOperator');
         setDataArray(response.data.map(item => ({
           id: item.id,
           telegramId: item.telegramId,

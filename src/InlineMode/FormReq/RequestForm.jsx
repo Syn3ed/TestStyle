@@ -21,7 +21,7 @@ const InlineFormReq = () => {
             formData.append(`file${index + 1}`, file);
         });
 
-        axios.post('https://85.119.146.125:8000/upload', formData)
+        axios.post('http://85.119.146.125:8000/upload', formData)
             .then(response => {
                 // Обработка успешного ответа
                 console.log(response.data);
