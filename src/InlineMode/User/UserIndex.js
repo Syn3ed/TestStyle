@@ -18,7 +18,7 @@ const UserIndex = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`https://tg-server-0ckm.onrender.com/reqUser/${idj}`);
+        const response = await axios.get(`https://85.119.146.125:8000/reqUser/${idj}`);
         setDataArray(response.data.map(item => ({
           id: item.id,
           status: item.status,

@@ -31,7 +31,7 @@ const RequestDescriptionForm = ({ request }) => {
     useEffect(() => {
         const fetchChatMessages = async () => {
           try {
-            const response = await axios.get(`https://tg-server-0ckm.onrender.com/chat/${request.userRequestId}`);
+            const response = await axios.get(`https://85.119.146.125:8000/chat/${request.userRequestId}`);
             setChatMessages(response.data);
           } catch (error) {
             console.error('Ошибка при получении сообщений чата', error);

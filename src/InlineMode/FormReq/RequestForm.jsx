@@ -21,7 +21,7 @@ const InlineFormReq = () => {
             formData.append(`file${index + 1}`, file);
         });
 
-        axios.post('https://tg-server-0ckm.onrender.com/upload', formData)
+        axios.post('https://85.119.146.125:8000/upload', formData)
             .then(response => {
                 // Обработка успешного ответа
                 console.log(response.data);
