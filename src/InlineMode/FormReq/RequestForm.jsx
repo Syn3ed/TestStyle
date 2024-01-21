@@ -21,7 +21,7 @@ const InlineFormReq = () => {
             formData.append(`file${index + 1}`, file);
         });
 
-        axios.post('https://85.119.146.125:3000/upload', formData)
+        axios.post('https://www.tgbottp.ru/upload', formData)
             .then(response => {
                 // Обработка успешного ответа
                 console.log(response.data);
