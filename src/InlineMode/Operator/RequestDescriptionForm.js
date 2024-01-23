@@ -50,7 +50,7 @@ const RequestDescriptionForm = ({ request }) => {
             userId: request.userId,
             operatorId: operatorId
         }
-        fetch('https://85.119.146.125:8000/replyToUser', {
+        fetch('https://www.tgbottp.ru/replyToUser', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -89,7 +89,7 @@ const RequestDescriptionForm = ({ request }) => {
             operatorId,
             
         }
-        fetch('https://85.119.146.125:8000/handleShowPhoto', {
+        fetch('https://www.tgbottp.ru/handleShowPhoto', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -105,7 +105,7 @@ const RequestDescriptionForm = ({ request }) => {
             username: request.username,
             queryId,
         }
-        fetch('https://85.119.146.125:8000/replyToOperatorPhoto', {
+        fetch('https://www.tgbottp.ru/replyToOperatorPhoto', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -123,7 +123,7 @@ const RequestDescriptionForm = ({ request }) => {
             queryId,
             operatorId,
         }
-        fetch('https://85.119.146.125:8000/closeReq', {
+        fetch('https://www.tgbottp.ru/closeReq', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
