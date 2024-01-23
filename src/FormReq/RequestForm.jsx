@@ -6,24 +6,26 @@ const RequestForm = () => {
     const [category, setCategory] = useState('');
     const [description, setDescription] = useState('');
     const [suggestedAddresses, setSuggestedAddresses] = useState([]);
-
+    const [isSwitchOn, setIsSwitchOn] = useState(false); // Новое состояние для свитча
     const tg = window.Telegram.WebApp;
 
     const onSendData = useCallback(() => {
         const data = {
             address,
             category,
-            description
+            description,
+            isSwitchOn
         };
         tg.sendData(JSON.stringify(data));
-        console.log(JSON.stringify(data));
-    }, [address, category, description, tg]);
+        console.log('Отправка данных:', JSON.stringify(data));
+    }, [address, category, description, isSwitchOn, tg]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log('Address:', address);
-        console.log('Category:', category);
-        console.log('Description:', description);
+        console.log('Адрес:', address);
+        console.log('Категория:', category);
+        console.log('Описание:', description);
+        console.log('Свитч:', isSwitchOn);
     };
 
     const isFormValid = address.trim() !== '' && category.trim() !== '' && description.trim() !== '';
@@ -153,6 +155,18 @@ const RequestForm = () => {
                         onChange={(e) => setDescription(e.target.value)}
                         required
                     />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="switch">Свитч:</label>
+                    <label className="switch">
+                        <input
+                            type="checkbox"
+                            id="switch"
+                            checked={isSwitchOn}
+                            onChange={() => setIsSwitchOn(!isSwitchOn)}
+                        />
+                        <span className="slider round"></span>
+                    </label>
                 </div>
 
                 {isFormValid && (
