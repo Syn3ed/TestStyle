@@ -157,7 +157,7 @@ const RequestForm = () => {
                     />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="switch">Свитч:</label>
+                    <label htmlFor="switch">Прикрепить к заявке файлы</label>
                     <label className="switch">
                         <input
                             type="checkbox"
