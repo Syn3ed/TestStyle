@@ -72,6 +72,7 @@ export const OpApplicInline = () => {
             },
             body: JSON.stringify(data)
         });
+        console.log(data)
         // tg.close();
     }, [dataArray,queryId,operatorId])
 
