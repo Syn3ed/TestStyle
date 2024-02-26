@@ -59,10 +59,10 @@ export const OpApplicInline = () => {
    
     const onSendData = useCallback(() => {
         const data = {
-            userRequestId: dataArray.userRequestId,
-            username: dataArray.username,
+            userRequestId: dataArray[0].userRequestId,
+            username: dataArray[0].username,
             queryId,
-            userId: dataArray.userId,
+            userId: dataArray[0].userId,
             operatorId: operatorId
         }
         fetch('https://www.tgbottp.ru/replyToUser', {
@@ -78,8 +78,8 @@ export const OpApplicInline = () => {
 
     const onSendPhoto = useCallback(() => {
         const data = {
-            userRequestId: dataArray.userRequestId,
-            username: dataArray.username,
+            userRequestId: dataArray[0].userRequestId,
+            username: dataArray[0].username,
             queryId,
         }
         fetch('https://www.tgbottp.ru/replyToUserPhoto', {
@@ -96,8 +96,8 @@ export const OpApplicInline = () => {
     const handleShowPhoto = (idMedia) => {
         console.log(idMedia);
         const data = {
-            userRequestId: dataArray.userRequestId,
-            username: dataArray.username,
+            userRequestId: dataArray[0].userRequestId,
+            username: dataArray[0].username,
             queryId,
             idMedia,
             operatorId,
@@ -116,8 +116,8 @@ export const OpApplicInline = () => {
     const closeReq = useCallback(() => {
         tg.close();
         const data = {
-            userRequestId: dataArray.userRequestId,
-            username: dataArray.username,
+            userRequestId: dataArray[0].userRequestId,
+            username: dataArray[0].username,
             queryId,
             operatorId,
         }
