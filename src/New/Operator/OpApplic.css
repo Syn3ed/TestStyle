@@ -51,6 +51,7 @@
     padding-top: 1px;
     border-bottom: 1px black;
     height: 40px;
+    resize: vertical; /* Разрешить изменение высоты только по вертикали */
 }
 
 .textIn:focus {

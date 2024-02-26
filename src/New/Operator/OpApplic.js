@@ -141,7 +141,7 @@ export const OpApplic = () => {
                         // placeholder="Введите описание заявки"
                         value={dataArray.length > 0 ? dataArray[0]?.description : ''}
                         // onChange={(e) => setDescription(e.target.value)}
-                        onInput={autoResizeTextarea}
+                        onChange={autoResizeTextarea}
                         autoComplete="off"
                     />
                 </div>
