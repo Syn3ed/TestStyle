@@ -1,0 +1,229 @@
+.UserApplicForm {
+    background: linear-gradient(130.36deg, #47D69D 0%, #47D69D 0.01%, #009966 100%);
+    justify-content: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+}
+
+
+.UserApplicGreeting {
+    color: rgba(255, 255, 255, 1);
+    /* font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; */
+    width: 93%;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 32px;
+    letter-spacing: 0em;
+    text-align: left;
+    height: 86px;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    margin-left: 17px;
+    align-items: flex-start;
+    flex-direction: column;
+
+}
+
+.UserApplicFormFilling {
+    background: rgba(255, 255, 255, 1);
+}
+
+.textIn {
+    background-color: rgba(255, 255, 255, 1);
+    text-align: center;
+    border: none;
+    width: 93%;
+    overflow-wrap: break-word;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    /* font-family: cursive; */
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: left;
+    overflow: auto;
+    resize: none;
+    margin-left: 7px;
+    padding-top: 1px;
+    border-bottom: 1px black;
+    height: 40px;
+}
+
+.textIn:focus {
+    outline: none;
+}
+
+.lable-filling {
+    /* font-family: cursive;
+    
+    */
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-align: left;
+    background-color: rgba(255, 255, 255, 1);
+    color: rgba(99, 113, 117, 1);
+    margin-left: 15px;
+    margin-top: 20px;
+    padding-top: 1px;
+}
+
+.UserApplicFormFilling {
+    background-color: rgba(255, 255, 255, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    min-height: 800px;
+}
+
+.adres,
+.theme,
+.category,
+.description {
+    width: 100%;
+    margin-bottom: 1px;
+    background-color: rgba(255, 255, 255, 1);
+    /* border: 1px solid rgba(218, 229, 232, 1); */
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.38);
+    /* border-radius: 10px;*/
+    /* display: flex; */
+    padding-bottom: 12px;
+}
+
+.User,
+.Operator {
+    max-width: 70%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.User {
+    align-self: flex-end;
+    color: rgba(255, 255, 255, 1);
+    /* background-color: var(--tg-theme-button-color);  
+    color: white; */
+    background-color: rgba(35, 183, 129, 1);
+}
+
+.Operator {
+    align-self: flex-start;
+    /* background-color: var(--tg-theme-button-color);
+    color: white; */
+    background-color: rgb(128, 131, 131);
+}
+
+/* Обновленные стили в Chat.css */
+.User,
+.Operator {
+    max-width: 80%;
+    min-width: 35%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    position: relative;
+    /* Добавлено для позиционирования .message-header */
+}
+
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    width: 93%;
+}
+
+.message-Time {
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 13px;
+    letter-spacing: 0em;
+    text-align: left;
+
+}
+
+.UserTextMessage {
+    text-align: right;
+    /* margin-top: 5px; */
+    margin-bottom: 10px
+}
+
+.OperatorTextMessage {
+    /* text-align: right; */
+    margin-top: 5px;
+    margin-bottom: 10px
+}
+
+.UserMessage {
+    height: 0px;
+    opacity: 0;
+}
+
+.OperatorMessage {
+    /* color:  rgba(0, 156, 99, 1); */
+    font-weight: 600;
+}
+
+.lolSvg {
+    opacity: 0;
+    height: 0px;
+}
+
+.OpSvg {
+    height: 0px;
+    margin-left: -11.0%;
+    /* margin-bottom: 5px; */
+    top: 83%;
+    position: absolute;
+}
+
+.UsSvg {
+    height: 0px;
+    margin-left: 87.7%;
+    /* margin-bottom: 5px; */
+    top: 77%;
+    position: absolute;
+}
+
+.button-list {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    /* left: -115px; */
+    margin-bottom: 0px;
+    width: 93%;
+}
+
+.buttonEl {
+    margin-right: 1px;
+    border: none;
+    border-radius: 8px;
+    background-color: #009C63;
+    height: 40px;
+    margin-bottom: 5px;
+    color: rgba(255, 255, 255, 1);
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: 0.03em;
+    text-align: center;
+}
+.UsMessageTime{
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 13px;
+    letter-spacing: 0em;
+    text-align: right;
+}
+.OpMessageTime{
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 13px;
+    letter-spacing: 0em;
+    text-align: right;
+}

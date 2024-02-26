@@ -1,0 +1,250 @@
+body {
+    background: linear-gradient(130.36deg, #47D69D 0%, #47D69D 0.01%, #009966 100%);
+}
+
+.form {
+    background: linear-gradient(130.36deg, #47D69D 0%, #47D69D 0.01%, #009966 100%);
+    justify-content: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    /* overflow: hidden; */
+}
+
+.applic-list {
+    display: flex;
+    font-size: 14px;
+    /* font-weight: 500; */
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-align: left;
+    white-space: nowrap;
+    overflow-x: scroll;
+    width: auto;
+}
+
+
+.all-list,
+.processing-list,
+.close-list,
+.wait-list {
+    border-radius: 20px;
+    gap: 8px;
+    padding: 5px;
+    background: rgba(255, 255, 255, 0.35);
+    margin-right: 6px;
+    margin-bottom: 10px;
+}
+
+.selected {
+    background-color: rgba(255, 255, 255, 1); /* Измените цвет на желаемый */
+    color: rgba(40, 43, 47, 1);
+}
+.applic {
+    opacity: 0; /* Начальное состояние - элемент скрыт */
+    transition: opacity 0.5s ease;
+}
+.applic.appear {
+    opacity: 1; /* Конечное состояние - элемент отображается */
+}
+.applic-statusstatus-in-progress {
+    padding: 3px;
+    /* padding-top: 5px; */
+    width: auto;
+    height: 20px;
+    /* font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; */
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 0em;
+    text-align: left;
+    /* border: 1px solid rgb(0, 0, 0); */
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.08);
+    border-radius: 20px;
+    color:rgba(255, 255, 255, 1);
+    background-color: rgba(80, 76, 201, 1); /* Цвет для статуса "В обработке" */
+}
+
+.applic-statusstatus-awaiting-operator {
+    padding: 3px;
+    /* padding-top: 5px; */
+    width: auto;
+    height: 20px;
+    /* font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; */
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 0em;
+    text-align: left;
+    /* border: 1px solid rgb(0, 0, 0); */
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.08);
+    border-radius: 20px;
+    color:rgba(255, 255, 255, 1);
+    background-color: rgba(250, 154, 0, 1);
+}
+
+.applic-statusstatus-closed {
+    padding: 3px;
+    /* padding-top: 5px; */
+    width: auto;
+    height: 20px;
+    /* font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; */
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 0em;
+    text-align: left;
+    /* border: 1px solid rgb(0, 0, 0); */
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.08);
+    border-radius: 20px;
+    color:rgba(255, 255, 255, 1);
+    background-color:rgba(0, 156, 57, 1); /* Цвет для статуса "Закрыты" */
+}
+.greeting {
+    color: rgba(255, 255, 255, 1);
+    /* font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; */
+    width: 93%;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 32px;
+    letter-spacing: 0em;
+    text-align: left;
+    height: 86px;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    margin-left: 17px;
+    align-items: flex-start;
+    flex-direction: column;
+
+}
+
+.form-filling1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 0px;
+    min-height: 800px;
+    /* background: linear-gradient(180deg, rgba(18, 168, 116, 0.07) 0%, rgba(18, 168, 116, 0) 100%),
+        linear-gradient(0deg, #FFFFFF, #FFFFFF); */
+    padding-top: 10px;
+}
+.applic{
+    height: 0px;
+    transition: opacity 0.5s ease;
+}
+.applic.appear{
+    height: auto;
+    transition: opacity 0.5s ease;
+}
+.applic-status {
+    /* padding-left: 60%; */
+    padding: 3px;
+    padding-top: 5px;
+    width: auto;
+    height: 20px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 0em;
+    text-align: left;
+    /* border: 1px solid rgb(0, 0, 0); */
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.08);
+    border-radius: 20px;
+    background-color:rgba(80, 76, 201, 1);
+    color:rgba(255, 255, 255, 1);
+    ;
+}
+
+.applic-numb {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: rgba(40, 43, 47, 1);
+}
+
+.adres .theme .category .description {
+    width: 98%;
+    border-bottom: 1px rgba(218, 229, 232, 1);
+}
+
+.textForList{
+    padding: 2px;
+}
+.applic {
+    width: 93%;
+    margin-bottom: 1px;
+    background-color: rgba(255, 255, 255, 1);
+    border: 1px solid rgba(218, 229, 232, 1);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.08);
+    border-radius: 10px;
+}
+
+.applic {
+    display: flex;
+    /* background: rgba(255, 255, 255, 1); */
+    height: auto;
+    flex-direction: column;
+    align-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.8);
+    margin-bottom: 15px;
+}
+.applic-text{
+    margin-bottom: 10px;
+}
+.applic-nickname,.applic-theme {
+    display: flex;
+    width: 96%;
+    flex-direction: column;
+}
+.applic-theme{
+    padding-top: 10px;
+    padding-bottom: 15px;
+}
+.nick-label {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: rgba(99, 113, 117, 1);
+}
+
+.nick {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    /* font-size: 14px; */
+    font-weight: 700;
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: rgba(40, 43, 47, 1);
+}
+
+.applic-label {
+    display: flex;
+    padding: 10px;
+    justify-content: space-between;
+    width: 96%;
+    
+}
+
+
+.appear {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+  .disappear {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+    height: auto;
+  }
+  
