@@ -17,9 +17,9 @@ export const OpApplic = () => {
 
 
     const autoResizeTextarea = (e) => {
-        const textarea = e.target;
-        textarea.style.height = 'auto';
-        textarea.style.height = `${textarea.scrollHeight}px`;
+        // const textarea = e.target;
+        // textarea.style.height = 'auto';
+        // textarea.style.height = `${textarea.scrollHeight}px`;
     };
 
 
