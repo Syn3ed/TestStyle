@@ -1,0 +1,119 @@
+body {
+    background: linear-gradient(90.36deg, #47D69D 0%, #47D69D 0.01%, #009966 100%);
+  }
+  
+  .form {
+    background: linear-gradient(90.36deg, #47D69D 0%, #47D69D 0.01%, #009966 100%);
+    justify-content: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  .greeting {
+    /* background: linear-gradient(130.36deg, #47D69D 0%, #47D69D 0.01%, #009966 100%); */
+    color: rgba(255, 255, 255, 1);
+    /* font-family: cursive;
+     */
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 32px;
+    letter-spacing: 0em;
+    text-align: left;
+    height: 86px;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .form-filling {
+    background-color: rgba(255, 255, 255, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    min-height: 800px;
+  }
+  
+  .adres .theme .category .description {
+    width: 98%;
+    border-bottom: 1px rgba(218, 229, 232, 1);
+  }
+  
+  .adres,
+  .theme,
+  .category,
+  .description {
+    width:100%;
+    margin-bottom: 1px;
+    background-color: rgba(255, 255, 255, 1);
+    /* border: 1px solid rgba(218, 229, 232, 1); */
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.08);
+    /* border-radius: 10px;*/
+    /* display: flex; */
+    
+  }
+  .Skrepka{
+    display: flex;
+    position: relative;
+    /* top: 1px; */
+    padding-right: 6px;
+  }
+  .button-send {
+    width: 93%;
+    height: 40px;
+    background-color: rgb(186, 189, 189);
+    margin-top: 17px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    /* font-family: Onest; */
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-align: left;
+    justify-content: center;
+  }
+  
+  .textIn:focus {
+    outline: none;
+  }
+  
+  .textIn {
+    background-color: rgba(255, 255, 255, 1);
+    text-align: center;
+    border: none;
+    width: 93%;
+    overflow-wrap: break-word;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    /* font-family: cursive; */
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: left;
+    overflow: auto;
+    resize: none;
+    margin-left: 13px;
+    padding-top: 1px;
+  }
+  
+  .lable-filling {
+    /* font-family: cursive;
+    
+    */
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-align: left;
+    background-color: rgba(255, 255, 255, 1);
+    color: rgba(99, 113, 117, 1);
+    margin-left: 15px;
+  }

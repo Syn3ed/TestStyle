@@ -7,7 +7,7 @@ import OpApplic from './New/Operator/OpApplic';
 // import UsereRequest from './User/Req'
 import InlineReq from './InlineMode/Operator/Req'
 import InlineUsereRequest from './InlineMode/User/Req'
-import FormReq from './FormReq/RequestForm'
+// import FormReq from './FormReq/RequestForm'
 import Chat from './Chat/Chat';
 import AdminIndex from './Admin/AdminIndex';
 import FullList from './Admin/FullList';
@@ -17,7 +17,7 @@ import InlineFormReq from './InlineMode/FormReq/RequestForm'
 import OpListApplic from './New/Operator/OpListApplic';
 import UsApplic from './New/User/UsApplic';
 import UsListApplic from './New/User/UsApplicList';
-
+import Form from './New/Form/Form';
 
 const App = () => {
   return (
@@ -29,7 +29,7 @@ const App = () => {
         <Route path="/requests/:id" element={<UsApplic />} />
         <Route path="/Inlinerequests/:id" element={<InlineUsereRequest />} />
         <Route path="/InlinerequestsOperator/:id" element={<InlineReq />} />
-        <Route path="/FormReq" element={< FormReq/>} />
+        <Route path="/FormReq" element={< Form/>} />
         <Route path="/Chat" element={< Chat/>} />
         <Route path="/AdminIndex" element={< AdminIndex/>} />
         <Route path="/AdminIndex/FullList" element={< FullList/>} />
