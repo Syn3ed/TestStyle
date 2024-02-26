@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useCallback } from 'react';
 // import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './OpApplic.css';
 // import OpSvg from '../component/OpSvg';
@@ -7,7 +8,9 @@ import './OpApplic.css';
 import { useParams } from 'react-router-dom';
 
 export const OpApplic = () => {
-    const { id } = useParams();;
+    const { id } = useParams();
+    const tg = window.Telegram.WebApp;
+    const navigate = useNavigate();
     // const [address, setAddress] = useState('');
     // const [theme, setTheme] = useState('');
     // const [category, setCategory] = useState('');
@@ -39,6 +42,45 @@ export const OpApplic = () => {
 
         fetchData();
     }, [id]);
+
+    useEffect(() => {
+        tg.BackButton.show();
+    }, [navigate, tg]);
+
+
+    useEffect(() => {
+        const handleBackButton = () => {
+            navigate(-1);
+        };
+        tg.BackButton.onClick(handleBackButton);
+        return () => {
+            tg.BackButton.offClick(handleBackButton);
+        };
+    }, [navigate, tg.BackButton]);
+
+    const sendPhoto = useCallback(() => {
+        tg.sendData(`/resToOperatorPhoto ${id}`);
+        tg.close();
+    }, [tg, id]);
+
+    const sendData = useCallback(() => {
+        tg.sendData(`/resToUser ${id}`);
+        tg.close();
+    }, [tg, id]);
+
+
+
+    const sendPhotoChat = useCallback((ids) => {
+        tg.sendData(`/handleShowPhoto ${ids}`);
+        tg.close();
+    }, [tg])
+
+
+    const closeReq = useCallback(() => {
+        tg.sendData(`/closeReq ${id}`);
+        tg.close();
+    }, [tg, id]);
+
     useEffect(() => {
         const fetchChatMessages = async () => {
             try {
@@ -52,25 +94,22 @@ export const OpApplic = () => {
         fetchChatMessages();
     }, [id]);
 
-    const sendPhotoChat = useCallback((id) => {
-        // tg.sendData(`/handleShowPhoto ${id}`);
-        // tg.close();
-    }, [])
+
     const renderButtons = () => {
         if (dataArray.length > 0 && dataArray[0].status === 'ожидает ответа оператора') {
             return (
                 <div className='button-list'>
-                    <button type="button" className='buttonEl' >Закрыть заявку</button>
-                    <button type="button" className='buttonEl' >Отправить ответ</button>
-                    <button type="button" className='buttonEl' >Отправить фото</button>
+                    <button type="button" className='buttonEl' onClick={closeReq}>Закрыть заявку</button>
+                    <button type="button" className='buttonEl' onClick={sendData}>Обработать заявку и отправить ответ</button>
+                    <button type="button" className='buttonEl' onClick={sendPhoto}>Отправить фото</button>
                 </div>
             );
         } else if (dataArray.length > 0 && dataArray[0].status === 'Заявка в обработке!') {
             return (
                 <div className='button-list'>
-                    <button type="button" className='buttonEl' >Закрыть заявку</button>
-                    <button type="button" className='buttonEl' >Отправить ответ</button>
-                    <button type="button" className='buttonEl' >Отправить фото</button>
+                    <button type="button" className='buttonEl' onClick={closeReq}>Закрыть заявку</button>
+                    <button type="button" className='buttonEl' onClick={sendData}>Ответить</button>
+                    <button type="button" className='buttonEl' onClick={sendPhoto}>Отправить фото</button>
                 </div>
             );
         } else {
