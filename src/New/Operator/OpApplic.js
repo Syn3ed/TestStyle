@@ -17,9 +17,9 @@ export const OpApplic = () => {
 
 
     const autoResizeTextarea = (e) => {
-        // const textarea = e.target;
-        // textarea.style.height = 'auto';
-        // textarea.style.height = `${textarea.scrollHeight}px`;
+        const textarea = e.target;
+        textarea.style.height = 'auto';
+        textarea.style.height = `${textarea.scrollHeight}px`;
     };
 
 
@@ -136,13 +136,11 @@ export const OpApplic = () => {
                 
                     <label className='lable-filling'>Описание</label>
                     <textarea
-                        id="description"
-                        className='textIn'
-                        // placeholder="Введите описание заявки"
-                        value={dataArray.length > 0 ? dataArray[0]?.description : ''}
-                        // onChange={(e) => setDescription(e.target.value)}
-                        onChange={autoResizeTextarea}
-                        autoComplete="off"
+                           id="description"
+                           className='textIn'
+                           value={dataArray.length > 0 ? dataArray[0]?.description : ''}
+                           onInput={autoResizeTextarea}
+                           autoComplete="off"
                     />
                 </div>
                 <div className='chat-container'>
