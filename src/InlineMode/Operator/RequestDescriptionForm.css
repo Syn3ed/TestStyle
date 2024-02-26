@@ -23,10 +23,10 @@
     font-size: 16px; /* Размер шрифта для label */
   }
   
-  .request-description-form input,
+  /* .request-description-form input,
   .request-description-form textarea {
-    font-size: 14px; /* Размер шрифта для input и textarea */
-  }
+    font-size: 14px; 
+  } */
   
   .request-item {
     font-size: 18px; /* Размер шрифта для .request-item */
