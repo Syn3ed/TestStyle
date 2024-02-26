@@ -16,13 +16,6 @@ export const OpApplic = () => {
     const [chatMessages, setChatMessages] = useState([]);
 
 
-    const autoResizeTextarea = (e) => {
-        const textarea = e.target;
-        textarea.style.height = 'auto';
-        textarea.style.height = `${textarea.scrollHeight}px`;
-    };
-
-
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -101,7 +94,7 @@ export const OpApplic = () => {
                         // placeholder="Введите адрес ПЗУ"
                         value={dataArray.length > 0 ? dataArray[0]?.username : ''}
                         // onChange={(e) => setAddress(e.target.value)}
-                        onInput={autoResizeTextarea}
+                        
                         autoComplete="off"
                     >{ }</textarea>
                 </div>
@@ -114,7 +107,7 @@ export const OpApplic = () => {
                         // placeholder="Введите адрес ПЗУ"
                         value={dataArray.length > 0 ? dataArray[0]?.address : ''}
                         // onChange={(e) => setAddress(e.target.value)}
-                        onInput={autoResizeTextarea}
+                    
                         autoComplete="off"
                     >{ }</textarea>
                 </div>
@@ -127,7 +120,7 @@ export const OpApplic = () => {
                         // placeholder="Введите тему заявки"
                         value={dataArray.length > 0 ? dataArray[0]?.subject : ''}
                         // onChange={(e) => setTheme(e.target.value)}
-                        onInput={autoResizeTextarea}
+                       
                         autoComplete="off"
                     />
                 </div>
@@ -137,9 +130,9 @@ export const OpApplic = () => {
                     <label className='lable-filling'>Описание</label>
                     <textarea
                            id="description"
-                           className='textIndescription'
+                           className='textIn'
                            value={dataArray.length > 0 ? dataArray[0]?.description : ''}
-                           onInput={autoResizeTextarea}
+                        
                            autoComplete="off"
                     />
                 </div>
