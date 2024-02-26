@@ -52,7 +52,7 @@
     border-bottom: 1px black;
     /* height: 40px; */
     min-height: 25px;
-    max-height: 500px;
+    max-height: 501px;
     height: auto;
 }
 
@@ -71,7 +71,7 @@
     text-align: left;
     background-color: rgba(255, 255, 255, 1);
     color: rgba(99, 113, 117, 1);
-    margin-left: 15px;
+    margin-left: 9px;
     margin-top: 9px;
     padding-top: 1px;
 }
