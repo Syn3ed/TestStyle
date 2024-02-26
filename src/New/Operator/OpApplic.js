@@ -59,7 +59,7 @@ export const OpApplic = () => {
     }, [navigate, tg.BackButton]);
 
     const sendPhoto = useCallback(() => {
-        tg.sendData(`/resToOperatorPhoto ${id}`);
+        tg.sendData(`/resToUserPhoto ${id}`);
         tg.close();
     }, [tg, id]);
 

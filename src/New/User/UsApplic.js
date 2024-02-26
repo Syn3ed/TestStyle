@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useCallback } from 'react';
 // import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './UsApplic.css';
 import OpSvg from '../component/OpSvg';
@@ -7,20 +8,47 @@ import UsSvg from '../component/UsSvg';
 import { useParams } from 'react-router-dom';
 
 export const UsApplic = () => {
-    const { id } = useParams();;
-    // const [address, setAddress] = useState('');
-    // const [theme, setTheme] = useState('');
-    // const [category, setCategory] = useState('');
-    // const [description, setDescription] = useState('');
+    const { id } = useParams();
+    const tg = window.Telegram.WebApp;
+    const navigate = useNavigate();
     const [dataArray, setDataArray] = useState([]);
     const [chatMessages, setChatMessages] = useState([]);
 
+    useEffect(() => {
+        tg.BackButton.show();
+    }, [navigate, tg]);
 
-    const autoResizeTextarea = (e) => {
-        const textarea = e.target;
-        textarea.style.height = 'auto';
-        textarea.style.height = `${textarea.scrollHeight}px`;
-    };
+    useEffect(() => {
+        const handleBackButton = () => {
+            navigate(-1);
+        };
+        tg.BackButton.onClick(handleBackButton);
+        return () => {
+            tg.BackButton.offClick(handleBackButton);
+        };
+    }, [navigate, tg.BackButton]);
+
+
+    const closeReq = useCallback(() => {
+        tg.sendData(`/closeReq ${id}`);
+        // tg.close();
+    }, [tg,id]);
+
+
+    const sendPhoto = useCallback(() => {
+        tg.sendData(`/resToOperatorPhoto ${id}`);
+        // tg.close();
+    }, [tg, id]);
+
+    const sendData = useCallback(() => {
+        tg.sendData(`/resToOperator ${id}`);
+        tg.close();
+    }, [tg, id])
+
+    const sendPhotoChat = useCallback((id) => {
+        tg.sendData(`/handleShowPhoto ${id}`);
+        tg.close();
+    }, [tg])
 
 
     useEffect(() => {
@@ -59,29 +87,26 @@ export const UsApplic = () => {
         fetchChatMessages();
     }, [id]);
 
-    const sendPhotoChat = useCallback((id) => {
-        // tg.sendData(`/handleShowPhoto ${id}`);
-        // tg.close();
-    }, [])
+    
     const renderButtons = () => {
         if (dataArray.length > 0 && dataArray[0].status === 'ожидает ответа оператора') {
             return (
                 <div className='button-list'>
-                    <button type="button" className='buttonEl' >Закрыть заявку</button>
-                    <button type="button" className='buttonEl' >Отправить ответ</button>
-                    <button type="button" className='buttonEl' >Отправить фото</button>
+                   <button type="button" className='buttonEl' onClick={closeReq}>Закрыть заявку</button>
+                    <button type="button" className='buttonEl' onClick={sendData}>Отправить ответ</button>
+                    <button type="button" className='buttonEl' onClick={sendPhoto}>Отправить фото</button>
                 </div>
             );
         } else if (dataArray.length > 0 && dataArray[0].status === 'Заявка в обработке!') {
             return (
                 <div className='button-list'>
-                    <button type="button" className='buttonEl' >Закрыть заявку</button>
-                    <button type="button" className='buttonEl' >Отправить ответ</button>
-                    <button type="button" className='buttonEl' >Отправить фото</button>
+                 <button type="button" className='buttonEl' onClick={closeReq}>Закрыть заявку</button>
+                    <button type="button" className='buttonEl' onClick={sendData}>Ответить</button>
+                    <button type="button" className='buttonEl' onClick={sendPhoto}>Отправить фото</button>
                 </div>
             );
         } else {
-            return null; // Возвращаем null, если массив dataArray пуст или статус неизвестен
+            return null; 
         }
     }
 
@@ -93,57 +118,29 @@ export const UsApplic = () => {
             </div>
             <div className="UserApplicFormFilling">
                 <div className='adres'>
-                    
+
                     <label className='lable-filling'>Имя пользователя</label>
-                    <textarea
-                        id="address"
-                        className='textIn'
-                        // placeholder="Введите адрес ПЗУ"
-                        value={dataArray.length > 0 ? dataArray[0]?.username : ''}
-                        // onChange={(e) => setAddress(e.target.value)}
-                        onInput={autoResizeTextarea}
-                        autoComplete="off"
-                    >{ }</textarea>
+                 
+                    <div className='TextApplic'>{dataArray.length > 0 ? dataArray[0]?.username : ''}</div>
                 </div>
                 <div className='adres'>
-                    
+
                     <label className='lable-filling'>Aдрес ПЗУ</label>
-                    <textarea
-                        id="address"
-                        className='textIn'
-                        // placeholder="Введите адрес ПЗУ"
-                        value={dataArray.length > 0 ? dataArray[0]?.address : ''}
-                        // onChange={(e) => setAddress(e.target.value)}
-                        onInput={autoResizeTextarea}
-                        autoComplete="off"
-                    >{ }</textarea>
+                  
+                    <div className='TextApplic'>{dataArray.length > 0 ? dataArray[0]?.address : ''}</div>
                 </div>
                 <div className='theme'>
-                    
+
                     <label className='lable-filling'>Тема заявки</label>
-                    <textarea
-                        id="theme"
-                        className='textIn'
-                        // placeholder="Введите тему заявки"
-                        value={dataArray.length > 0 ? dataArray[0]?.subject : ''}
-                        // onChange={(e) => setTheme(e.target.value)}
-                        onInput={autoResizeTextarea}
-                        autoComplete="off"
-                    />
+                   
+                    <div className='TextApplic'>{dataArray.length > 0 ? dataArray[0]?.subject : ''}</div>
                 </div>
 
                 <div className='description'>
-                
+
                     <label className='lable-filling'>Описание</label>
-                    <textarea
-                        id="description"
-                        className='textIn'
-                        // placeholder="Введите описание заявки"
-                        value={dataArray.length > 0 ? dataArray[0]?.description : ''}
-                        // onChange={(e) => setDescription(e.target.value)}
-                        onInput={autoResizeTextarea}
-                        autoComplete="off"
-                    />
+                   
+                    <div className='TextApplic'>{dataArray.length > 0 ? dataArray[0]?.description : ''}</div>
                 </div>
                 <div className='chat-container'>
                     {chatMessages.map((message, index) => (
