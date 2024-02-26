@@ -76,7 +76,7 @@ export const UsApplicInline = () => {
             username: dataArray[0].username,
             queryId,
         }
-        fetch('https://www.tgbottp.ru/replyToOperatorPhoto', {
+        fetch('https://www.tgbottp.ru/resToOperatorPhoto', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

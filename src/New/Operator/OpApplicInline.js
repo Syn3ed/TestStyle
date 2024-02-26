@@ -82,7 +82,7 @@ export const OpApplicInline = () => {
             username: dataArray[0].username,
             queryId,
         }
-        fetch('https://www.tgbottp.ru/replyToUserPhoto', {
+        fetch('https://www.tgbottp.ru/resToUserPhoto', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
