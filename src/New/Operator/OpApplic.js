@@ -2,8 +2,8 @@ import React, { useEffect, useState, useCallback } from 'react';
 // import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import './OpApplic.css';
-import OpSvg from '../component/OpSvg';
-import UsSvg from '../component/UsSvg';
+// import OpSvg from '../component/OpSvg';
+// import UsSvg from '../component/UsSvg';
 import { useParams } from 'react-router-dom';
 
 export const OpApplic = () => {
