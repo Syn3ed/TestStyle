@@ -155,7 +155,7 @@ export const OpApplic = () => {
                                     Показать файл
                                 </button>
                             )}
-                            <div className={message.roleUser === 'User' ? 'OpMessageTime' : 'UsMessageTime'}>{message.Time}</div>UsMessageTime
+                            <div className={message.roleUser === 'User' ? 'OpMessageTime' : 'UsMessageTime'}>{message.Time}</div>
                             {/* <div className={message.roleUser === 'User' ? 'lolSvg' : 'OpSvg'}><OpSvg /></div> */}
                             {/* <div className={message.roleUser === 'User' ? 'UsSvg' : 'lolSvg'}><UsSvg /></div> */}
                         </div>
