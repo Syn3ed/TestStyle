@@ -112,7 +112,7 @@ export const Form = () => {
 
                 <div className='adres'>
                     <br />
-                    {address && <label className='lable-filling'>Aдрес ПЗУ</label>}
+                    {address && <label className='lable-filling2'>Aдрес ПЗУ</label>}
                     <textarea
                         id="address"
                         className='textIn'
@@ -146,7 +146,7 @@ export const Form = () => {
                 </div>
                 <div className='theme'>
                     <br />
-                    {category && <label className='lable-filling'>Тема таявки</label>}
+                    {category && <label className='lable-filling2'>Тема таявки</label>}
                     <textarea
                         id="theme"
                         className='textIn'
@@ -172,7 +172,7 @@ export const Form = () => {
                 </div> */}
                 <div className='description'>
                     <br />
-                    {description && <label className='lable-filling'>Описание заявки</label>}
+                    {description && <label className='lable-filling2'>Описание заявки</label>}
                     <textarea
                         id="description"
                         className='textIn'
