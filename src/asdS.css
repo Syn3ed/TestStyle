@@ -1,6 +1,4 @@
 body {
-  background-color: var(--tg-theme-bg-color); /* Цвет фона страницы */
-  color: var(--tg-theme-text-color); /* Цвет текста на странице */
   margin: 0; /* Убираем внешние отступы у body */
   font-family: 'Arial', sans-serif; /* Указываем шрифт текста */
 }
