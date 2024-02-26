@@ -183,10 +183,22 @@ export const Form = () => {
                         autocomplete="off"
                     />
                 </div>
+                <div className="form-group">
+                    <label htmlFor="switch">Прикрепить к заявке файлы</label>
+                    <label className="switch">
+                        <input
+                            type="checkbox"
+                            id="switch"
+                            checked={isSwitchOn}
+                            onChange={() => setIsSwitchOn(!isSwitchOn)}
+                        />
+                        <span className="slider round"></span>
+                    </label>
+                </div>
                 {isFormValid && (
                 <div className='button-send' onClick={onSendData}>
                     {/* <div className='Skrepka'><Skrepka/></div> */}
-                    <div>Прикрепите файл</div>
+                    <div>Отправить заявку</div>
                 </div>)}
             </div>
         </div>
