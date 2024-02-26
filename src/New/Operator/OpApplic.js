@@ -137,7 +137,7 @@ export const OpApplic = () => {
                     <label className='lable-filling'>Описание</label>
                     <textarea
                            id="description"
-                           className='textIn'
+                           className='textIndescription'
                            value={dataArray.length > 0 ? dataArray[0]?.description : ''}
                            onInput={autoResizeTextarea}
                            autoComplete="off"
