@@ -86,55 +86,59 @@ export const OpApplic = () => {
             </div>
             <div className="UserApplicFormFilling">
                 <div className='adres'>
-                    
+
                     <label className='lable-filling'>Имя пользователя</label>
-                    <textarea
+                    {/* <textarea
                         id="address"
                         className='textIn'
                         // placeholder="Введите адрес ПЗУ"
                         value={dataArray.length > 0 ? dataArray[0]?.username : ''}
                         // onChange={(e) => setAddress(e.target.value)}
-                        
+
                         autoComplete="off"
-                    >{ }</textarea>
+                    >{ }</textarea> */}
+                    <div className='TextApplic'>{dataArray.length > 0 ? dataArray[0]?.username : ''}</div>
                 </div>
                 <div className='adres'>
-                    
+
                     <label className='lable-filling'>Aдрес ПЗУ</label>
-                    <textarea
+                    {/* <textarea
                         id="address"
                         className='textIn'
                         // placeholder="Введите адрес ПЗУ"
                         value={dataArray.length > 0 ? dataArray[0]?.address : ''}
                         // onChange={(e) => setAddress(e.target.value)}
-                    
+
                         autoComplete="off"
-                    >{ }</textarea>
+                    >{ }</textarea> */}
+                    <div className='TextApplic'>{dataArray.length > 0 ? dataArray[0]?.address : ''}</div>
                 </div>
                 <div className='theme'>
-                    
+
                     <label className='lable-filling'>Тема заявки</label>
-                    <textarea
+                    {/* <textarea
                         id="theme"
                         className='textIn'
                         // placeholder="Введите тему заявки"
                         value={dataArray.length > 0 ? dataArray[0]?.subject : ''}
                         // onChange={(e) => setTheme(e.target.value)}
-                       
+
                         autoComplete="off"
-                    />
+                    /> */}
+                    <div className='TextApplic'>{dataArray.length > 0 ? dataArray[0]?.subject : ''}</div>
                 </div>
 
                 <div className='description'>
-                
+
                     <label className='lable-filling'>Описание</label>
-                    <textarea
-                           id="description"
-                           className='textIn'
-                           value={dataArray.length > 0 ? dataArray[0]?.description : ''}
-                        
-                           autoComplete="off"
-                    />
+                    {/* <textarea
+                        id="description"
+                        className='textIn'
+                        value={dataArray.length > 0 ? dataArray[0]?.description : ''}
+
+                        autoComplete="off"
+                    /> */}
+                    <div className='TextApplic'>{dataArray.length > 0 ? dataArray[0]?.description : ''}</div>
                 </div>
                 <div className='chat-container'>
                     {chatMessages.map((message, index) => (
