@@ -49,8 +49,8 @@ export const UsApplicInline = () => {
             },
             body: JSON.stringify(data)
         });
-        tg.close();
-    }, [dataArray, queryId, operatorId, tg])
+        // tg.close();
+    }, [dataArray, queryId, operatorId])
 
     const handleShowPhoto = (idMedia) => {
         console.log(idMedia);

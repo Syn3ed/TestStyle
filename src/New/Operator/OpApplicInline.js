@@ -89,8 +89,8 @@ export const OpApplicInline = () => {
             },
             body: JSON.stringify(data)
         })
-        tg.close();
-    }, [dataArray,queryId,tg]);
+        // tg.close();
+    }, [dataArray,queryId]);
 
 
     const handleShowPhoto = (idMedia) => {
