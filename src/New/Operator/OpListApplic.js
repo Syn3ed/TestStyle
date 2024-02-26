@@ -104,7 +104,7 @@ export const OpListApplic = () => {
                                 Тема заявки
                             </div>
                             <div className='nick'>
-                                {row.messageReq}
+                                {row.category}
                             </div>
                         </div>
                     </div>
