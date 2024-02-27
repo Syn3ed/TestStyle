@@ -104,6 +104,24 @@ export const UsApplicInline = () => {
         tg.close();
     }, [dataArray, queryId, tg, operatorId]);
 
+    const resumeReq = useCallback(() => {
+
+        const data = {
+            userRequestId: dataArray[0].userRequestId,
+            username: dataArray[0].username,
+            queryId,
+            operatorId,
+        }
+        fetch('https://www.tgbottp.ru/resumeReq', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        })
+        tg.close();
+    }, [dataArray, queryId, tg, operatorId]);
+
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -160,7 +178,9 @@ export const UsApplicInline = () => {
                 </div>
             );
         } else {
-            return null;
+            <div className='button-list'>
+                <button type="button" className='buttonEl' onClick={resumeReq}>Возобновить заявку</button>
+            </div>
         }
     }
 

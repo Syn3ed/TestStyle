@@ -69,6 +69,10 @@ export const OpApplic = () => {
     }, [tg, id]);
 
 
+    const resumeReq = useCallback(() => {
+        tg.sendData(`/resumeReq ${id}`);
+        tg.close();
+    }, [tg, id]);
 
     const sendPhotoChat = useCallback((ids) => {
         tg.sendData(`/handleShowPhoto ${ids}`);
@@ -113,7 +117,9 @@ export const OpApplic = () => {
                 </div>
             );
         } else {
-            return null; // Возвращаем null, если массив dataArray пуст или статус неизвестен
+            <div className='button-list'>
+                <button type="button" className='buttonEl' onClick={resumeReq}>Возобновить заявку</button>
+            </div>
         }
     }
 

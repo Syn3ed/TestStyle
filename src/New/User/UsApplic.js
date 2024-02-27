@@ -31,13 +31,18 @@ export const UsApplic = () => {
 
     const closeReq = useCallback(() => {
         tg.sendData(`/closeReq ${id}`);
-        // tg.close();
-    }, [tg,id]);
+        tg.close();
+    }, [tg, id]);
 
 
     const sendPhoto = useCallback(() => {
         tg.sendData(`/resToOperatorPhoto ${id}`);
-        // tg.close();
+        tg.close();
+    }, [tg, id]);
+
+    const resumReq = useCallback(() => {
+        tg.sendData(`/resumeReq ${id}`);
+        tg.close();
     }, [tg, id]);
 
     const sendData = useCallback(() => {
@@ -74,6 +79,8 @@ export const UsApplic = () => {
 
         fetchData();
     }, [id]);
+
+
     useEffect(() => {
         const fetchChatMessages = async () => {
             try {
@@ -87,12 +94,12 @@ export const UsApplic = () => {
         fetchChatMessages();
     }, [id]);
 
-    
+
     const renderButtons = () => {
         if (dataArray.length > 0 && dataArray[0].status === 'ожидает ответа оператора') {
             return (
                 <div className='button-list'>
-                   <button type="button" className='buttonEl' onClick={closeReq}>Закрыть заявку</button>
+                    <button type="button" className='buttonEl' onClick={closeReq}>Закрыть заявку</button>
                     <button type="button" className='buttonEl' onClick={sendData}>Отправить ответ</button>
                     <button type="button" className='buttonEl' onClick={sendPhoto}>Отправить фото</button>
                 </div>
@@ -100,13 +107,15 @@ export const UsApplic = () => {
         } else if (dataArray.length > 0 && dataArray[0].status === 'Заявка в обработке!') {
             return (
                 <div className='button-list'>
-                 <button type="button" className='buttonEl' onClick={closeReq}>Закрыть заявку</button>
+                    <button type="button" className='buttonEl' onClick={closeReq}>Закрыть заявку</button>
                     <button type="button" className='buttonEl' onClick={sendData}>Ответить</button>
                     <button type="button" className='buttonEl' onClick={sendPhoto}>Отправить фото</button>
                 </div>
             );
         } else {
-            return null; 
+            <div className='button-list'>
+                <button type="button" className='buttonEl' onClick={resumReq}>Возобновить заявку</button>
+            </div>
         }
     }
 
@@ -120,26 +129,26 @@ export const UsApplic = () => {
                 <div className='adres'>
 
                     <label className='lable-filling'>Имя пользователя</label>
-                 
+
                     <div className='TextApplic'>{dataArray.length > 0 ? dataArray[0]?.username : ''}</div>
                 </div>
                 <div className='adres'>
 
                     <label className='lable-filling'>Aдрес ПЗУ</label>
-                  
+
                     <div className='TextApplic'>{dataArray.length > 0 ? dataArray[0]?.address : ''}</div>
                 </div>
                 <div className='theme'>
 
                     <label className='lable-filling'>Тема заявки</label>
-                   
+
                     <div className='TextApplic'>{dataArray.length > 0 ? dataArray[0]?.subject : ''}</div>
                 </div>
 
                 <div className='description'>
 
                     <label className='lable-filling'>Описание</label>
-                   
+
                     <div className='TextApplic'>{dataArray.length > 0 ? dataArray[0]?.description : ''}</div>
                 </div>
                 <div className='chat-container'>

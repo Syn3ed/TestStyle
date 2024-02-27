@@ -56,7 +56,7 @@ export const OpApplicInline = () => {
         };
     }, [navigate, tg.BackButton]);
 
-   
+
     const onSendData = useCallback(() => {
         const data = {
             userRequestId: dataArray[0].userRequestId,
@@ -74,7 +74,7 @@ export const OpApplicInline = () => {
         });
         console.log(data)
         // tg.close();
-    }, [dataArray,queryId,operatorId])
+    }, [dataArray, queryId, operatorId])
 
     const onSendPhoto = useCallback(() => {
         const data = {
@@ -90,7 +90,24 @@ export const OpApplicInline = () => {
             body: JSON.stringify(data)
         })
         // tg.close();
-    }, [dataArray,queryId]);
+    }, [dataArray, queryId]);
+
+
+    const resumeReq = useCallback(() => {
+        const data = {
+            userRequestId: dataArray[0].userRequestId,
+            username: dataArray[0].username,
+            queryId
+        }
+        fetch('https://www.tgbottp.ru/resumeReq', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        })
+        // tg.close();
+    }, [dataArray, queryId]);
 
 
     const handleShowPhoto = (idMedia) => {
@@ -101,7 +118,7 @@ export const OpApplicInline = () => {
             queryId,
             idMedia,
             operatorId,
-            
+
         }
         fetch('https://www.tgbottp.ru/handleShowPhoto', {
             method: 'POST',
@@ -110,11 +127,11 @@ export const OpApplicInline = () => {
             },
             body: JSON.stringify(data)
         });
-        
+
     };
 
     const closeReq = useCallback(() => {
-        tg.close();
+        // tg.close();
         const data = {
             userRequestId: dataArray[0].userRequestId,
             username: dataArray[0].username,
@@ -128,7 +145,7 @@ export const OpApplicInline = () => {
             },
             body: JSON.stringify(data)
         })
-    }, [dataArray, queryId, tg,operatorId]);
+    }, [dataArray, queryId, operatorId]);
 
     useEffect(() => {
         const fetchChatMessages = async () => {
@@ -162,7 +179,9 @@ export const OpApplicInline = () => {
                 </div>
             );
         } else {
-            return null; // Возвращаем null, если массив dataArray пуст или статус неизвестен
+            <div className='button-list'>
+                <button type="button" className='buttonEl' onClick={resumeReq}>Отправить фото</button>
+            </div>
         }
     }
 
