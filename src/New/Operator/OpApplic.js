@@ -117,9 +117,11 @@ export const OpApplic = () => {
                 </div>
             );
         } else {
-            <div className='button-list'>
-                <button type="button" className='buttonEl' onClick={resumeReq}>Возобновить заявку</button>
-            </div>
+            return (
+                <div className='button-list'>
+                    <button type="button" className='buttonEl' onClick={resumeReq}>Возобновить заявку</button>
+                </div>
+            )
         }
     }
 

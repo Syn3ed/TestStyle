@@ -113,9 +113,11 @@ export const UsApplic = () => {
                 </div>
             );
         } else {
-            <div className='button-list'>
-                <button type="button" className='buttonEl' onClick={resumReq}>Возобновить заявку</button>
-            </div>
+            return (
+                <div className='button-list'>
+                    <button type="button" className='buttonEl' onClick={resumReq}>Возобновить заявку</button>
+                </div>
+            )
         }
     }
 

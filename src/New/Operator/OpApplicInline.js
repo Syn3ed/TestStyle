@@ -179,9 +179,11 @@ export const OpApplicInline = () => {
                 </div>
             );
         } else {
-            <div className='button-list'>
-                <button type="button" className='buttonEl' onClick={resumeReq}>Отправить фото</button>
-            </div>
+            return (
+                <div className='button-list'>
+                    <button type="button" className='buttonEl' onClick={resumeReq}>Отправить фото</button>
+                </div>
+            )
         }
     }
 
