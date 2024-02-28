@@ -126,9 +126,7 @@ body {
   width: 60px;
   height: 34px;
   border-radius: 17px;
-  /* Скругляем края */
   overflow: hidden;
-  /* Скрываем выход за границы */
 }
 
 .switch input {
@@ -148,7 +146,6 @@ body {
   -webkit-transition: .4s;
   transition: .4s;
   border-radius: 16px;
-  /* Скругляем края */
 }
 
 .slider:before {
@@ -162,7 +159,6 @@ body {
   -webkit-transition: .4s;
   transition: .4s;
   border-radius: 50%;
-  /* Скругляем края */
 }
 
 input:checked+.slider {
