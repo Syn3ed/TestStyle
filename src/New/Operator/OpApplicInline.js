@@ -81,6 +81,7 @@ export const OpApplicInline = () => {
             userRequestId: dataArray[0].userRequestId,
             username: dataArray[0].username,
             queryId,
+            operatorId
         }
         fetch('https://www.tgbottp.ru/resToUserPhoto', {
             method: 'POST',
@@ -90,7 +91,7 @@ export const OpApplicInline = () => {
             body: JSON.stringify(data)
         })
         // tg.close();
-    }, [dataArray, queryId]);
+    }, [dataArray, queryId,operatorId]);
 
 
     const resumeReq = useCallback(() => {

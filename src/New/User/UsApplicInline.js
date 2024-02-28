@@ -75,6 +75,7 @@ export const UsApplicInline = () => {
             userRequestId: dataArray[0].userRequestId,
             username: dataArray[0].username,
             queryId,
+            operatorId
         }
         fetch('https://www.tgbottp.ru/resToOperatorPhoto', {
             method: 'POST',
@@ -84,7 +85,7 @@ export const UsApplicInline = () => {
             body: JSON.stringify(data)
         })
         tg.close();
-    }, [dataArray, queryId, tg]);
+    }, [dataArray, queryId, tg,operatorId]);
 
     const closeReq = useCallback(() => {
 
@@ -101,8 +102,8 @@ export const UsApplicInline = () => {
             },
             body: JSON.stringify(data)
         })
-        tg.close();
-    }, [dataArray, queryId, tg, operatorId]);
+        // tg.close();
+    }, [dataArray, queryId, operatorId]);
 
     const resumeReq = useCallback(() => {
 
