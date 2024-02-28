@@ -149,6 +149,7 @@ export const OpApplicInline = () => {
             try {
                 const response = await axios.get(`https://www.tgbottp.ru/chat/${id}`);
                 setChatMessages(response.data);
+                console.log(response.data)
             } catch (error) {
                 console.error('Ошибка при получении сообщений чата', error);
             }
