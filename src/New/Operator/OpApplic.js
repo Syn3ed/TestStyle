@@ -195,7 +195,7 @@ export const OpApplic = () => {
                             <div className={message.roleUser === 'User' ? 'OperatorMessage' : 'UserMessage'}>{message.username}</div>
                             <div className={message.roleUser === 'User' ? 'OperatorTextMessage' : 'UserTextMessage'}> {message.textMessage}</div>
                             {message.IdMedia && (
-                                <button onClick={() => sendPhotoChat(message.IdMedia)}>
+                                <button className='buttonPhoto' onClick={() => sendPhotoChat(message.IdMedia)}>
                                     Показать файл
                                 </button>
                             )}
