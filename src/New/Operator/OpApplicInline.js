@@ -73,8 +73,8 @@ export const OpApplicInline = () => {
             body: JSON.stringify(data)
         });
         console.log(data)
-        // tg.close();
-    }, [dataArray, queryId, operatorId])
+        setTimeout(() => {tg.close();},500)
+    }, [dataArray, queryId, operatorId,tg])
 
     const onSendPhoto = useCallback(() => {
         const data = {
@@ -91,7 +91,8 @@ export const OpApplicInline = () => {
             body: JSON.stringify(data)
         })
         // tg.close();
-    }, [dataArray, queryId,operatorId]);
+        setTimeout(() => {tg.close();},500)
+    }, [dataArray, queryId,operatorId,tg]);
 
 
     const resumeReq = useCallback(() => {
@@ -108,7 +109,8 @@ export const OpApplicInline = () => {
             body: JSON.stringify(data)
         })
         // tg.close();
-    }, [dataArray, queryId]);
+        setTimeout(() => {tg.close();},500)
+    }, [dataArray, queryId,tg]);
 
 
     const handleShowPhoto = (idMedia) => {

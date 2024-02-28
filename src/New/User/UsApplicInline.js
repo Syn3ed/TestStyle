@@ -50,7 +50,8 @@ export const UsApplicInline = () => {
             body: JSON.stringify(data)
         });
         // tg.close();
-    }, [dataArray, queryId, operatorId])
+        setTimeout(() => {tg.close();},500)
+    }, [dataArray, queryId, operatorId,tg])
 
     const handleShowPhoto = (idMedia) => {
         console.log(idMedia);
@@ -68,6 +69,7 @@ export const UsApplicInline = () => {
             },
             body: JSON.stringify(data)
         })
+        setTimeout(() => {tg.close();},500)
     };
 
     const onSendPhoto = useCallback(() => {
@@ -84,7 +86,7 @@ export const UsApplicInline = () => {
             },
             body: JSON.stringify(data)
         })
-        tg.close();
+        setTimeout(() => {tg.close();},500)
     }, [dataArray, queryId, tg,operatorId]);
 
     const closeReq = useCallback(() => {
@@ -102,8 +104,8 @@ export const UsApplicInline = () => {
             },
             body: JSON.stringify(data)
         })
-        // tg.close();
-    }, [dataArray, queryId, operatorId]);
+        setTimeout(() => {tg.close();},500)
+    }, [dataArray, queryId, operatorId,tg]);
 
     const resumeReq = useCallback(() => {
 
@@ -120,7 +122,7 @@ export const UsApplicInline = () => {
             },
             body: JSON.stringify(data)
         })
-        tg.close();
+        setTimeout(() => {tg.close();},500)
     }, [dataArray, queryId, tg, operatorId]);
 
     useEffect(() => {
