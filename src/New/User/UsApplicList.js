@@ -18,7 +18,7 @@ export const UsListApplic = () => {
     const navigate = useNavigate();
 
     const handleRowClick = (id) => {
-        navigate(`/requestsOperator/${id}`);
+        navigate(`/requests/${id}`);
     };
 
     useEffect(() => {
