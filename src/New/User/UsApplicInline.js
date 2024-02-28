@@ -224,7 +224,7 @@ export const UsApplicInline = () => {
                             <div className={message.roleUser === 'User' ? 'UserMessage' : 'OperatorMessage'}>{message.username}</div>
                             <div className={message.roleUser === 'User' ? 'UserTextMessage' : 'OperatorTextMessage'}> {message.textMessage}</div>
                             {message.IdMedia && (
-                                <button onClick={() => handleShowPhoto(message.IdMedia)}>
+                                <button className='buttonPhoto' onClick={() => handleShowPhoto(message.IdMedia)}>
                                     Показать файл
                                 </button>
                             )}

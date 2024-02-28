@@ -161,7 +161,7 @@ export const UsApplic = () => {
                             <div className={message.roleUser === 'User' ? 'UserMessage' : 'OperatorMessage'}>{message.username}</div>
                             <div className={message.roleUser === 'User' ? 'UserTextMessage' : 'OperatorTextMessage'}> {message.textMessage}</div>
                             {message.IdMedia && (
-                                <button onClick={() => sendPhotoChat(message.IdMedia)}>
+                                <button  className='buttonPhoto' onClick={() => sendPhotoChat(message.IdMedia)}>
                                     Показать файл
                                 </button>
                             )}

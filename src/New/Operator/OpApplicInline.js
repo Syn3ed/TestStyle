@@ -253,7 +253,7 @@ export const OpApplicInline = () => {
                             <div className={message.roleUser === 'User' ? 'OperatorMessage' : 'UserMessage'}>{message.username}</div>
                             <div className={message.roleUser === 'User' ? 'OperatorTextMessage' : 'UserTextMessage'}> {message.textMessage}</div>
                             {message.IdMedia && (
-                                <button onClick={() => handleShowPhoto(message.IdMedia)}>
+                                <button className='buttonPhoto' onClick={() => handleShowPhoto(message.IdMedia)}>
                                     Показать файл
                                 </button>
                             )}
