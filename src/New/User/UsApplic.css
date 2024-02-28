@@ -61,9 +61,6 @@
 }
 
 .lable-filling {
-    /* font-family: cursive;
-    
-    */
     font-size: 16px;
     font-weight: 500;
     line-height: 9px;
@@ -73,7 +70,7 @@
     color: rgba(99, 113, 117, 1);
     margin-left: 9px;
     margin-top: 9px;
-    padding-top: 1px;
+    padding-top: 0px;
 }
 
 .UserApplicFormFilling {
@@ -122,7 +119,7 @@
     background-color: rgb(128, 131, 131);
 }
 
-/* Обновленные стили в Chat.css */
+
 .User,
 .Operator {
     max-width: 80%;
@@ -131,7 +128,6 @@
     padding: 10px;
     border-radius: 10px;
     position: relative;
-    /* Добавлено для позиционирования .message-header */
 }
 
 .chat-container {
