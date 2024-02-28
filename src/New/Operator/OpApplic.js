@@ -35,6 +35,7 @@ export const OpApplic = () => {
                 console.log('Full Data Array:', dataArray[0]);
                 setDataArray(dataArray);
                 // console.log(dataArray.address)
+                console.log(dataArray[0])
             } catch (error) {
                 console.error('Ошибка при получении данных о заявке:', error);
             }
