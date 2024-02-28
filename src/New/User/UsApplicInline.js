@@ -49,9 +49,8 @@ export const UsApplicInline = () => {
             },
             body: JSON.stringify(data)
         });
-        // tg.close();
-        setTimeout(() => {tg.close();},500)
-    }, [dataArray, queryId, operatorId,tg])
+
+    }, [dataArray, queryId, operatorId])
 
     const handleShowPhoto = (idMedia) => {
         console.log(idMedia);
@@ -86,8 +85,7 @@ export const UsApplicInline = () => {
             },
             body: JSON.stringify(data)
         })
-        setTimeout(() => {tg.close();},500)
-    }, [dataArray, queryId, tg,operatorId]);
+    }, [dataArray, queryId, operatorId]);
 
     const closeReq = useCallback(() => {
 
@@ -104,8 +102,7 @@ export const UsApplicInline = () => {
             },
             body: JSON.stringify(data)
         })
-        setTimeout(() => {tg.close();},500)
-    }, [dataArray, queryId, operatorId,tg]);
+    }, [dataArray, queryId, operatorId]);
 
     const resumeReq = useCallback(() => {
 
@@ -122,8 +119,7 @@ export const UsApplicInline = () => {
             },
             body: JSON.stringify(data)
         })
-        setTimeout(() => {tg.close();},500)
-    }, [dataArray, queryId, tg, operatorId]);
+    }, [dataArray, queryId, operatorId]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -140,7 +136,6 @@ export const UsApplicInline = () => {
                 }));
                 console.log('Full Data Array:', dataArray[0]);
                 setDataArray(dataArray);
-                // console.log(dataArray.address)
                 console.log(dataArray[0])
             } catch (error) {
                 console.error('Ошибка при получении данных о заявке:', error);
