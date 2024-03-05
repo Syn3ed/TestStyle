@@ -106,7 +106,7 @@ export const Form = () => {
     const isFormValid = address.trim() !== '' && category.trim() !== '' && description.trim() !== '';
     return (
         <div className="form">
-            <div className='greeting'>Здраствуйте!👋<br /> Чем мы можем вам помочь?<br />
+            <div className='greeting'>Здравствуйте!👋<br /> Чем мы можем вам помочь?<br />
             <br /></div>
             <div className='form-filling' onSubmit={handleSubmit}>
 
