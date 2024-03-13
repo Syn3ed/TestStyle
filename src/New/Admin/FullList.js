@@ -35,7 +35,7 @@ const FullList = () => {
                 <div className='applic-list'>
                 </div>
             </div>
-            <div className={`form-filling1`}>
+            <div className={`form-filling1 disappear`}>
                 {dataArray.map((row) => (
                     <div className='applic' key={row.id} >
                         {/*  onClick={() => handleRowClick(row.id) */}
