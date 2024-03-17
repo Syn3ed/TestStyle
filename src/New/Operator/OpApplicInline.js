@@ -41,8 +41,9 @@ export const OpApplicInline = () => {
         fetchData();
     }, [id]);
 
+
     useEffect(() => {
-        tg.BackButton.show();
+        tg.BackButton.hide();
     }, [navigate, tg]);
 
 
