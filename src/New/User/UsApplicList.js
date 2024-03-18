@@ -23,31 +23,31 @@ export const UsListApplic = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-          try {
-            const response = await axios.get(`https://www.tgbottp.ru/reqUser/${id}`);
-            setDataArray(response.data.map(item => ({
-              id: item.id,
-              status: item.status,
-              messageReq: item.messageReq,
-              username: item.username,
-              category: item.category
-            })));
-          } catch (e) {
-            console.log(e);
-          }
+            try {
+                const response = await axios.get(`https://www.tgbottp.ru/reqUser/${id}`);
+                setDataArray(response.data.map(item => ({
+                    id: item.id,
+                    status: item.status,
+                    messageReq: item.messageReq,
+                    username: item.username,
+                    category: item.category
+                })));
+            } catch (e) {
+                console.log(e);
+            }
         }
-    
-        fetchData(); 
-    
-      }, [id]); 
+
+        fetchData();
+
+    }, [id]);
 
     const filterDataByStatus = (status) => {
         setSelectedStatus(status);
     };
     useEffect(() => {
-        const inProgress = dataArray.filter(item => item.status === 'Заявка в обработке!').length;
+        const inProgress = dataArray.filter(item => ((item.status === 'Заявка в обработке!') || (item.status === 'Заявка в обработке'))).length;
         const awaitingOperator = dataArray.filter(item => item.status === 'ожидает ответа оператора').length;
-        const closed = dataArray.filter(item => item.status === 'Заявка закрыта!').length;
+        const closed = dataArray.filter(item => ((item.status === 'Заявка закрыта!') || (item.status === 'Заявка закрыта'))).length;
 
         setInProgressCount(inProgress);
         setAwaitingOperatorCount(awaitingOperator);
@@ -69,7 +69,7 @@ export const UsListApplic = () => {
         applicElements.forEach(element => {
             element.classList.add('appear');
         });
-        setApplyAnimation(true); 
+        setApplyAnimation(true);
     }, [filteredData]);
     const handleTransitionEnd = () => {
         setApplyAnimation(false);
@@ -94,7 +94,7 @@ export const UsListApplic = () => {
                     <div className='applic' key={row.id} onClick={() => handleRowClick(row.id)}>
                         <div className='applic-label'>
                             <div className='applic-numb'>#{row.id}</div>
-                            <div className={`applic-status${row.status === 'Заявка в обработке!' ? 'status-in-progress' : (row.status === 'Заявка закрыта!' ? 'status-closed' : 'status-awaiting-operator')}`}><div className="textForList">{row.status}</div></div>
+                            <div className={`applic-status${((row.status === 'Заявка в обработке!') || (row.status === 'Заявка в обработке')) ? 'status-in-progress' : (((row.status === 'Заявка закрыта!') || (row.status === 'Заявка закрыта')) ? 'status-closed' : 'status-awaiting-operator')}`}><div className="textForList">{row.status}</div></div>
                         </div>
                         <div className='applic-nickname'>
                             <div className='nick-label'>

@@ -106,7 +106,7 @@ export const UsApplic = () => {
                     <button type="button" className='buttonEl' onClick={sendPhoto}>Отправить фото</button>
                 </div>
             );
-        } else if (dataArray.length > 0 && dataArray[0].status === 'Заявка в обработке!') {
+        } else if (dataArray.length > 0 && ((dataArray[0].status === 'Заявка в обработке!')|| dataArray[0].status === 'Заявка в обработке')) {
             return (
                 <div className='button-list'>
                     <button type="button" className='buttonEl' onClick={closeReq}>Закрыть заявку</button>

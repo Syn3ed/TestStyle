@@ -68,7 +68,7 @@ export const UsApplicInline = () => {
             },
             body: JSON.stringify(data)
         })
-        setTimeout(() => {tg.close();},500)
+        setTimeout(() => { tg.close(); }, 500)
     };
 
     const onSendPhoto = useCallback(() => {
@@ -169,7 +169,7 @@ export const UsApplicInline = () => {
                     <button type="button" className='buttonEl' onClick={onSendPhoto}>Отправить фото</button>
                 </div>
             );
-        } else if (dataArray.length > 0 && dataArray[0].status === 'Заявка в обработке!') {
+        } else if (dataArray.length > 0 && ((dataArray[0].status === 'Заявка в обработке!') || dataArray[0].status === 'Заявка в обработке')) {
             return (
                 <div className='button-list'>
                     <button type="button" className='buttonEl' onClick={closeReq}>Закрыть заявку</button>
