@@ -58,23 +58,23 @@ export const OpApplicInline = () => {
     }, [navigate, tg.BackButton]);
 
 
-    const onSendData = useCallback(() => {
-        const data = {
-            userRequestId: dataArray[0].userRequestId,
-            username: dataArray[0].username,
-            queryId,
-            userId: dataArray[0].userId,
-            operatorId: operatorId
-        }
-        fetch('https://www.tgbottp.ru/replyToUser', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data)
-        });
-        console.log(data)
-    }, [dataArray, queryId, operatorId])
+    // const onSendData = useCallback(() => {
+    //     const data = {
+    //         userRequestId: dataArray[0].userRequestId,
+    //         username: dataArray[0].username,
+    //         queryId,
+    //         userId: dataArray[0].userId,
+    //         operatorId: operatorId
+    //     }
+    //     fetch('https://www.tgbottp.ru/replyToUser', {
+    //         method: 'POST',
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //         },
+    //         body: JSON.stringify(data)
+    //     });
+    //     console.log(data)
+    // }, [dataArray, queryId, operatorId])
 
     const onSendPhoto = useCallback(() => {
         const data = {
@@ -82,15 +82,21 @@ export const OpApplicInline = () => {
             username: dataArray[0].username,
             queryId,
             operatorId
-        }
+        };
+
         fetch('https://www.tgbottp.ru/resToUserPhoto', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(data)
-        })
-    }, [dataArray, queryId,operatorId]);
+        }).then(response => {
+            tg.close();
+        }).catch(error => {
+            console.error('Ошибка при отправке запроса:', error);
+        });
+    }, [dataArray, queryId, operatorId, tg]);
+
 
 
     const resumeReq = useCallback(() => {
@@ -106,7 +112,13 @@ export const OpApplicInline = () => {
             },
             body: JSON.stringify(data)
         })
-    }, [dataArray, queryId]);
+            .then(response => {
+                tg.close();
+            })
+            .catch(error => {
+                console.error('Ошибка при отправке запроса:', error);
+            });
+    }, [dataArray, queryId, tg]);
 
 
     const handleShowPhoto = (idMedia) => {
@@ -125,6 +137,10 @@ export const OpApplicInline = () => {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(data)
+        }).then(response => {
+            tg.close();
+        }).catch(error => {
+            console.error('Ошибка при отправке запроса:', error);
         });
 
     };
@@ -142,8 +158,13 @@ export const OpApplicInline = () => {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(data)
+        }).then(response => {
+            tg.close();
         })
-    }, [dataArray, queryId, operatorId]);
+            .catch(error => {
+                console.error('Ошибка при отправке запроса:', error);
+            });
+    }, [dataArray, queryId, operatorId, tg]);
 
     useEffect(() => {
         const fetchChatMessages = async () => {
@@ -165,16 +186,14 @@ export const OpApplicInline = () => {
             return (
                 <div className='button-list'>
                     <button type="button" className='buttonEl' onClick={closeReq}>Закрыть заявку</button>
-                    <button type="button" className='buttonEl' onClick={onSendData}>Обработать заявку и отправить ответ</button>
-                    <button type="button" className='buttonEl' onClick={onSendPhoto}>Отправить фото</button>
+                    <button type="button" className='buttonEl' onClick={onSendPhoto}>Обработать заявку и отправить сообщение</button>
                 </div>
             );
-        } else if (dataArray.length > 0 && ((dataArray[0].status === 'Заявка в обработке!')|| dataArray[0].status === 'Заявка в обработке')) {
+        } else if (dataArray.length > 0 && ((dataArray[0].status === 'Заявка в обработке!') || dataArray[0].status === 'Заявка в обработке')) {
             return (
                 <div className='button-list'>
                     <button type="button" className='buttonEl' onClick={closeReq}>Закрыть заявку</button>
-                    <button type="button" className='buttonEl' onClick={onSendData}>Ответить</button>
-                    <button type="button" className='buttonEl' onClick={onSendPhoto}>Отправить фото</button>
+                    <button type="button" className='buttonEl' onClick={onSendPhoto}>Отправить сообщение</button>
                 </div>
             );
         } else {
