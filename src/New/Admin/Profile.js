@@ -38,6 +38,7 @@ export const Profile = () => {
 
     useEffect(() => {
         const filteredData = dataArray.filter(item => item.id === id);
+        console.log(filteredData)
         setFilteredArray(filteredData);
     }, [dataArray, id]);    
 
