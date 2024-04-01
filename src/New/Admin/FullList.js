@@ -44,13 +44,12 @@ const FullList = () => {
 
     }, []);
 
-
     const roleMap = {
-        3: 'Админ',
+        1: 'Администратор',
         2: 'Пользователь',
-        1: 'Оператор'
+        3: 'Оператор'
     };
-
+    
     return (
         <div className="form">
             <div className='greeting'>

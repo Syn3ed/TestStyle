@@ -24,9 +24,9 @@ const OperatorList = () => {
     }, [navigate, tg.BackButton]);
 
     const roleMap = {
-        3: 'Администратор',
+        1: 'Администратор',
         2: 'Пользователь',
-        1: 'Оператор'
+        3: 'Оператор'
     };
 
     const handleRowClick = (id) => {
