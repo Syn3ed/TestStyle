@@ -29,7 +29,7 @@ export const Profile = () => {
 
         fetchData();
 
-    }, [dataArray]);
+    },);
 
     const roleMap = {
         1: 'Админ',
@@ -38,6 +38,7 @@ export const Profile = () => {
       };
 
     useEffect(() => {
+        console.log(dataArray)
         const filteredData = dataArray.filter(item => item.id === id);
         console.log(filteredData)
         console.log(id)

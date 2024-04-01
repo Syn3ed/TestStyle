@@ -22,9 +22,9 @@ const UserList = () => {
         };
     }, [navigate, tg.BackButton]);
     const roleMap = {
-        1: 'Админ',
+        3: 'Админ',
         2: 'Пользователь',
-        3: 'Оператор'
+        1: 'Оператор'
     };
     const handleRowClick = (id) => {
         navigate(`/Profile/${id}`);

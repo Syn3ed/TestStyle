@@ -12,7 +12,7 @@ const OperatorList = () => {
         window.Telegram.WebApp.MainButton.hide()
         window.Telegram.WebApp.BackButton.show()
     }, [])
-    
+
     useEffect(() => {
         const handleBackButton = () => {
             navigate(-1);
@@ -24,9 +24,9 @@ const OperatorList = () => {
     }, [navigate, tg.BackButton]);
 
     const roleMap = {
-        1: 'Админ',
+        3: 'Админ',
         2: 'Пользователь',
-        3: 'Оператор'
+        1: 'Оператор'
     };
 
     const handleRowClick = (id) => {
