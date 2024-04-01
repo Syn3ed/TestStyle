@@ -1,26 +1,30 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-
-const FullList = () => {
+const UserList = () => {
     const [dataArray, setDataArray] = useState([]);
+    const tg = window.Telegram.WebApp;
     const navigate = useNavigate();
+
 
     useEffect(() => {
         window.Telegram.WebApp.MainButton.hide()
         window.Telegram.WebApp.BackButton.show()
     }, [])
-
     useEffect(() => {
         const handleBackButton = () => {
             navigate(-1);
         };
-        window.addEventListener('popstate', handleBackButton);
+        tg.BackButton.onClick(handleBackButton);
         return () => {
-            window.removeEventListener('popstate', handleBackButton);
+            tg.BackButton.offClick(handleBackButton);
         };
-    }, [navigate]);
-
+    }, [navigate, tg.BackButton]);
+    const roleMap = {
+        1: 'Админ',
+        2: 'Пользователь',
+        3: 'Оператор'
+    };
     const handleRowClick = (id) => {
         navigate(`/Profile/${id}`);
     };
@@ -28,7 +32,7 @@ const FullList = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('https://www.tgbottp.ru/adminFullList');
+                const response = await axios.get('https://www.tgbottp.ru/adminUserList');
                 setDataArray(response.data.map(item => ({
                     id: item.id,
                     telegramId: item.telegramId,
@@ -44,13 +48,6 @@ const FullList = () => {
 
     }, []);
 
-
-    const roleMap = {
-        1: 'Админ',
-        2: 'Пользователь',
-        3: 'Оператор'
-    };
-
     return (
         <div className="form">
             <div className='greeting'>
@@ -59,7 +56,7 @@ const FullList = () => {
             </div>
             <div className={`form-filling1 disappear`}>
                 {dataArray.map((row) => (
-                    <div className='applic appear' key={row.id} onClick={() => handleRowClick(row.id)}>
+                   <div className='applic appear' key={row.id} onClick={() => handleRowClick(row.id)}>
                         <div className='applic-label'>
                         </div>
                         <div className='applic-nickname'>
@@ -75,7 +72,7 @@ const FullList = () => {
                                 Роль
                             </div>
                             <div className='nick'>
-                                {roleMap[row.RoleId]}
+                                {row.RoleId}
                             </div>
                         </div>
                         <div className='applic-theme'>
@@ -83,9 +80,10 @@ const FullList = () => {
                                 ID телеграмма
                             </div>
                             <div className='nick'>
-                                {row.telegramId}
+                                {roleMap[row.RoleId]}
                             </div>
                         </div>
+
                     </div>
                 ))}
             </div>
@@ -93,4 +91,4 @@ const FullList = () => {
     );
 };
 
-export default FullList;
+export default UserList;

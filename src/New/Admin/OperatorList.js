@@ -2,24 +2,32 @@ import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-const FullList = () => {
+const OperatorList = () => {
     const [dataArray, setDataArray] = useState([]);
+    const tg = window.Telegram.WebApp;
     const navigate = useNavigate();
+
 
     useEffect(() => {
         window.Telegram.WebApp.MainButton.hide()
         window.Telegram.WebApp.BackButton.show()
     }, [])
-
+    
     useEffect(() => {
         const handleBackButton = () => {
             navigate(-1);
         };
-        window.addEventListener('popstate', handleBackButton);
+        tg.BackButton.onClick(handleBackButton);
         return () => {
-            window.removeEventListener('popstate', handleBackButton);
+            tg.BackButton.offClick(handleBackButton);
         };
-    }, [navigate]);
+    }, [navigate, tg.BackButton]);
+
+    const roleMap = {
+        1: 'Админ',
+        2: 'Пользователь',
+        3: 'Оператор'
+    };
 
     const handleRowClick = (id) => {
         navigate(`/Profile/${id}`);
@@ -28,7 +36,7 @@ const FullList = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('https://www.tgbottp.ru/adminFullList');
+                const response = await axios.get('https://www.tgbottp.ru/adminListOperator');
                 setDataArray(response.data.map(item => ({
                     id: item.id,
                     telegramId: item.telegramId,
@@ -43,13 +51,6 @@ const FullList = () => {
         fetchData();
 
     }, []);
-
-
-    const roleMap = {
-        1: 'Админ',
-        2: 'Пользователь',
-        3: 'Оператор'
-    };
 
     return (
         <div className="form">
@@ -86,6 +87,7 @@ const FullList = () => {
                                 {row.telegramId}
                             </div>
                         </div>
+
                     </div>
                 ))}
             </div>
@@ -93,4 +95,4 @@ const FullList = () => {
     );
 };
 
-export default FullList;
+export default OperatorList;

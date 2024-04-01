@@ -11,8 +11,8 @@ import OpApplic from './New/Operator/OpApplic';
 import Chat from './Chat/Chat';
 import AdminIndex from './Admin/AdminIndex';
 // import FullList from './Admin/FullList';
-import OperatorList from './Admin/OperatorList';
-import UserList from './Admin/UserList';
+// import OperatorList from './Admin/OperatorList';
+// import UserList from './Admin/UserList';
 import InlineFormReq from './InlineMode/FormReq/RequestForm'
 import OpListApplic from './New/Operator/OpListApplic';
 import UsApplic from './New/User/UsApplic';
@@ -21,6 +21,9 @@ import Form from './New/Form/Form';
 import OpApplicInline from './New/Operator/OpApplicInline';
 import UsApplicInline from './New/User/UsApplicInline';
 import FullList1 from './New/Admin/FullList';
+import Profile from './New/Admin/Profile';
+import OperatorList from './New/Admin/OperatorList';
+import UserList from './New/Admin/UserList';
 const App = () => {
   return (
     <BrowserRouter>
@@ -37,6 +40,7 @@ const App = () => {
         <Route path="/AdminIndex/FullList" element={< FullList1/>} />
         <Route path="/AdminIndex/OperatorList" element={< OperatorList/>} />
         <Route path="/AdminIndex/UserList" element={< UserList/>} />
+        <Route path="/Profile" element={< Profile/>} />
         <Route path="/InlineFormReq" element={<InlineFormReq/>} />
       </Routes>
     </BrowserRouter>
