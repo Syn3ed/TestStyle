@@ -32,7 +32,7 @@ export const Profile = () => {
     },);
 
     const roleMap = {
-        1: 'Админ',
+        1: 'Администратор',
         2: 'Пользователь',
         3: 'Оператор'
     };
@@ -90,14 +90,14 @@ export const Profile = () => {
             return (
                 <div className='button-list'>
                     <button type="button" className='buttonEl' onClick={changeRoleOperator}>Изменить роль оператора</button>
-                    <button type="button" className='buttonEl' onClick={changeRoleAdmin}>Изменить роль админа</button>
+                    <button type="button" className='buttonEl' onClick={changeRoleAdmin}>Изменить роль администратора</button>
                 </div>
             );
         } else {
             return (
                 <div className='button-list'>
                     <button type="button" className='buttonEl' onClick={changeRoleUser}>Изменить роль на пользователя </button>
-                    <button type="button" className='buttonEl' onClick={changeRoleAdmin}>Изменить роль админа</button>
+                    <button type="button" className='buttonEl' onClick={changeRoleAdmin}>Изменить роль администратора</button>
                 </div>
             )
         }

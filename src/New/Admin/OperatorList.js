@@ -24,7 +24,7 @@ const OperatorList = () => {
     }, [navigate, tg.BackButton]);
 
     const roleMap = {
-        3: 'Админ',
+        3: 'Администратор',
         2: 'Пользователь',
         1: 'Оператор'
     };
