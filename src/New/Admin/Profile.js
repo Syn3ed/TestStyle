@@ -38,7 +38,7 @@ export const Profile = () => {
       };
 
     useEffect(() => {
-        const filteredData = dataArray[0].filter(item => item.id === id);
+        const filteredData = dataArray.filter(item => item.id === parseInt(id));
         console.log(filteredData)
         console.log(id)
         setFilteredArray(filteredData);
