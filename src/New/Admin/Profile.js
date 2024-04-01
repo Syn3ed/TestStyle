@@ -7,7 +7,6 @@ export const Profile = () => {
     const { id } = useParams();
     const tg = window.Telegram.WebApp;
     const navigate = useNavigate();
-    const [dataArray, setDataArray] = useState([]);
     const [filteredArray, setFilteredArray] = useState([]);
 
 
@@ -15,36 +14,27 @@ export const Profile = () => {
         const fetchData = async () => {
             try {
                 const response = await axios.get('https://www.tgbottp.ru/adminFullList');
-                setDataArray(response.data.map(item => ({
+                const data = response.data.map(item => ({
                     id: item.id,
                     telegramId: item.telegramId,
                     username: item.username,
                     RoleId: item.RoleId,
-                })));
-                const filteredData = dataArray.filter(item => item.id === parseInt(id));
+                }));
+    
+                const filteredData = data.filter(item => item.id === parseInt(id));
                 setFilteredArray(filteredData);
             } catch (e) {
                 console.log(e);
             }
-        }
-
+        };
+    
         fetchData();
-
-    },);
-
+    }, [id]); 
     const roleMap = {
         1: 'Администратор',
         2: 'Пользователь',
         3: 'Оператор'
     };
-
-    // useEffect(() => {
-    //     const filteredData = dataArray.filter(item => item.id === parseInt(id));
-    //     console.log(filteredData)
-    //     console.log(id)
-    //     setFilteredArray(filteredData);
-    // }, [dataArray, id]);
-
     useEffect(() => {
         tg.BackButton.show();
     }, [navigate, tg]);
