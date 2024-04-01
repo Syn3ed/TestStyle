@@ -21,7 +21,8 @@ export const Profile = () => {
                     username: item.username,
                     RoleId: item.RoleId,
                 })));
-                console.log(dataArray)
+                const filteredData = dataArray.filter(item => item.id === parseInt(id));
+                setFilteredArray(filteredData);
             } catch (e) {
                 console.log(e);
             }
@@ -37,12 +38,12 @@ export const Profile = () => {
         3: 'Оператор'
     };
 
-    useEffect(() => {
-        const filteredData = dataArray.filter(item => item.id === parseInt(id));
-        console.log(filteredData)
-        console.log(id)
-        setFilteredArray(filteredData);
-    }, [dataArray, id]);
+    // useEffect(() => {
+    //     const filteredData = dataArray.filter(item => item.id === parseInt(id));
+    //     console.log(filteredData)
+    //     console.log(id)
+    //     setFilteredArray(filteredData);
+    // }, [dataArray, id]);
 
     useEffect(() => {
         tg.BackButton.show();
