@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import './OpApplic.css';
 import { useParams } from 'react-router-dom';
 
 export const Profile = () => {
