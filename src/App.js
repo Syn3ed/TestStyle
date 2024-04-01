@@ -40,7 +40,7 @@ const App = () => {
         <Route path="/AdminIndex/FullList" element={< FullList1/>} />
         <Route path="/AdminIndex/OperatorList" element={< OperatorList/>} />
         <Route path="/AdminIndex/UserList" element={< UserList/>} />
-        <Route path="/Profile" element={< Profile/>} />
+        <Route path="/Profile/:id" element={< Profile/>} />
         <Route path="/InlineFormReq" element={<InlineFormReq/>} />
       </Routes>
     </BrowserRouter>
