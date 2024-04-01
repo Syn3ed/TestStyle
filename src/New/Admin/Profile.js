@@ -21,6 +21,7 @@ export const Profile = () => {
                     username: item.username,
                     RoleId: item.RoleId,
                 })));
+                console.log(dataArray)
             } catch (e) {
                 console.log(e);
             }
@@ -39,6 +40,7 @@ export const Profile = () => {
     useEffect(() => {
         const filteredData = dataArray.filter(item => item.id === id);
         console.log(filteredData)
+        console.log(id)
         setFilteredArray(filteredData);
     }, [dataArray, id]);    
 
