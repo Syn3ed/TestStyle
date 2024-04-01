@@ -35,14 +35,14 @@ export const Profile = () => {
         1: 'Админ',
         2: 'Пользователь',
         3: 'Оператор'
-      };
+    };
 
     useEffect(() => {
         const filteredData = dataArray.filter(item => item.id === parseInt(id));
         console.log(filteredData)
         console.log(id)
         setFilteredArray(filteredData);
-    }, [dataArray, id]);    
+    }, [dataArray, id]);
 
     useEffect(() => {
         tg.BackButton.show();
@@ -61,23 +61,46 @@ export const Profile = () => {
 
 
 
-    const sendData = useCallback(() => {
-        tg.sendData(`/changeRole ${filteredArray[0]?.telegramId }`);
+    const changeRoleUser = useCallback(() => {
+        tg.sendData(`/changeRoleUser ${filteredArray[0]?.telegramId}`);
+        tg.close();
+    }, [tg, filteredArray]);
+
+    const changeRoleOperator = useCallback(() => {
+        tg.sendData(`/changeRoleOperator ${filteredArray[0]?.telegramId}`);
+        tg.close();
+    }, [tg, filteredArray]);
+
+    const changeRoleAdmin = useCallback(() => {
+        tg.sendData(`/changeRoleAdmin ${filteredArray[0]?.telegramId}`);
         tg.close();
     }, [tg, filteredArray]);
 
 
-
-
-
     const renderButtons = () => {
-        return (
-            <div className='button-list'>
 
-                <button type="button" className='buttonEl' onClick={sendData}>Изменить роль</button>
-
-            </div>
-        );
+        if (filteredArray.length > 0 && filteredArray[0].id === 3) {
+            return (
+                <div className='button-list'>
+                    <button type="button" className='buttonEl' onClick={changeRoleUser}>Изменить роль на пользователя </button>
+                    <button type="button" className='buttonEl' onClick={changeRoleOperator}>Изменить роль оператора</button>
+                </div>
+            );
+        } else  if (filteredArray.length > 0 && filteredArray[0].id === 2) {
+            return (
+                <div className='button-list'>
+                    <button type="button" className='buttonEl' onClick={changeRoleOperator}>Изменить роль оператора</button>
+                    <button type="button" className='buttonEl' onClick={changeRoleAdmin}>Изменить роль админа</button>
+                </div>
+            );
+        } else {
+            return (
+                <div className='button-list'>
+                    <button type="button" className='buttonEl' onClick={changeRoleUser}>Изменить роль на пользователя </button>
+                    <button type="button" className='buttonEl' onClick={changeRoleAdmin}>Изменить роль админа</button>
+                </div>
+            )
+        }
     }
 
     return (
