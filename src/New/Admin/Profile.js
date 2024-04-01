@@ -63,23 +63,23 @@ export const Profile = () => {
 
     const changeRoleUser = useCallback(() => {
         tg.sendData(`/changeRoleUser ${filteredArray[0]?.telegramId}`);
-        tg.close();
+        // tg.close();
     }, [tg, filteredArray]);
 
     const changeRoleOperator = useCallback(() => {
         tg.sendData(`/changeRoleOperator ${filteredArray[0]?.telegramId}`);
-        tg.close();
+        // tg.close();
     }, [tg, filteredArray]);
 
     const changeRoleAdmin = useCallback(() => {
         tg.sendData(`/changeRoleAdmin ${filteredArray[0]?.telegramId}`);
-        tg.close();
+        // tg.close();
     }, [tg, filteredArray]);
 
 
     const renderButtons = () => {
 
-        if (filteredArray.length > 0 && filteredArray[0].id === 3) {
+        if (filteredArray.length > 0 && filteredArray[0].id === 1) {
             return (
                 <div className='button-list'>
                     <button type="button" className='buttonEl' onClick={changeRoleUser}>Изменить роль на пользователя </button>
