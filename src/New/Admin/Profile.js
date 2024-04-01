@@ -29,7 +29,7 @@ export const Profile = () => {
 
         fetchData();
 
-    }, []);
+    }, [dataArray]);
 
     const roleMap = {
         1: 'Админ',
