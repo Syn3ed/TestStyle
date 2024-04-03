@@ -67,7 +67,11 @@ export const UsApplicInline = () => {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(data)
-        })
+        }).then(response => {
+            tg.close();
+        }).catch(error => {
+            console.error('Ошибка при отправке запроса:', error);
+        });
     };
 
     const onSendPhoto = useCallback(() => {
@@ -109,7 +113,7 @@ export const UsApplicInline = () => {
         }).catch(error => {
             console.error('Ошибка при отправке запроса:', error);
         });
-    }, [dataArray, queryId, operatorId,tg]);
+    }, [dataArray, queryId, operatorId, tg]);
 
     const resumeReq = useCallback(() => {
 
