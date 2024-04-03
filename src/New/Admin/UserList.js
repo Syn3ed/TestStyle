@@ -57,7 +57,7 @@ const UserList = () => {
             </div>
             <div className={`form-filling1 disappear`}>
                 {dataArray.map((row) => (
-                   <div className='applic appear' key={row.id} onClick={() => handleRowClick(row.id)}>
+                    <div className='applic appear' key={row.id} onClick={() => handleRowClick(row.id)}>
                         <div className='applic-label'>
                         </div>
                         <div className='applic-nickname'>
