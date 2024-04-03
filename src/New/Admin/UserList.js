@@ -33,7 +33,7 @@ const UserList = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('https://www.tgbottp.ru/adminUserList');
+                const response = await axios.get('https://www.tgbottp.ru/adminList');
                 setDataArray(response.data.map(item => ({
                     id: item.id,
                     telegramId: item.telegramId,
