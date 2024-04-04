@@ -63,11 +63,9 @@ const SearchUser = () => {
 
     return (
         <div className="form">
-            <div className='greeting'>
-                <div className='applic-list'></div>
-            </div>
             <div className={`form-filling1 disappear`}>
                 <input
+                    className="SearchUser"
                     type="text"
                     placeholder="Введите ID телеграмма"
                     value={searchId}

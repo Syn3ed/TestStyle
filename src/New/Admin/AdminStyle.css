@@ -1,5 +1,16 @@
-/* margin-bottom: 10px;
+.SearchUser {
+    margin-bottom: 10px;
     width: 90%;
     border: none;
-    background: linear-gradient(90.36deg,#47d69d,#47d69d .01%,#096);
-    color: black; */
+    background: linear-gradient(90.36deg, #47d69d, #47d69d .01%, #096);
+    color: black;
+    border-bottom: 1px solid black; 
+}
+
+.SearchUser::placeholder {
+    color: black;
+}
+
+.SearchUser:focus {
+    outline: none;
+}
