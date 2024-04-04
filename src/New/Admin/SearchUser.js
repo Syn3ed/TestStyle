@@ -54,7 +54,7 @@ const SearchUser = () => {
 
     const handleSearch = (value) => {
         setSearchId(value);
-        const found = dataArray.find(item => item.telegramId === value);
+        const found = dataArray.find(item => new RegExp(`^${value}`, 'i').test(item.telegramId));
         setFoundItem(found);
     };
 
@@ -107,3 +107,4 @@ const SearchUser = () => {
 };
 
 export default SearchUser;
+
