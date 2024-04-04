@@ -7,22 +7,24 @@ const SearchUser = () => {
     const [dataArray, setDataArray] = useState([]);
     const [searchId, setSearchId] = useState('');
     const [filteredDataArray, setFilteredDataArray] = useState([]);
+    const tg = window.Telegram.WebApp;
     const navigate = useNavigate();
 
+
     useEffect(() => {
-        window.Telegram.WebApp.MainButton.hide();
-        window.Telegram.WebApp.BackButton.show();
-    }, []);
+        tg.MainButton.hide()
+        tg.BackButton.show()
+    }, [tg])
 
     useEffect(() => {
         const handleBackButton = () => {
             navigate(-1);
         };
-        window.addEventListener('popstate', handleBackButton);
+        tg.BackButton.onClick(handleBackButton);
         return () => {
-            window.removeEventListener('popstate', handleBackButton);
+            tg.BackButton.offClick(handleBackButton);
         };
-    }, [navigate]);
+    }, [navigate, tg]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -68,7 +70,7 @@ const SearchUser = () => {
                 <input
                     className="SearchUser"
                     type="text"
-                    placeholder="Введите ID телеграмма"
+                    placeholder="Введите ID телеграмма для поиска"
                     value={searchId}
                     onChange={(e) => handleSearch(e.target.value)}
                 />

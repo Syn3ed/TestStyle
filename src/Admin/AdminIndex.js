@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import './OperReq.css';
 
@@ -13,6 +13,16 @@ const AdminIndex = () => {
     const handleRowClickUserList = () => {
         navigate(`/AdminIndex/UserList`);
     };
+
+    const tg = window.Telegram.WebApp;
+
+
+    useEffect(() => {
+        tg.MainButton.hide()
+        tg.BackButton.hide()
+    }, [tg])
+
+
 
     return (
         <table className="custom-table">

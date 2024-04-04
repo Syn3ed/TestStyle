@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
+import './AdminStyle.css';
 import { useNavigate } from 'react-router-dom';
 
 const OperatorList = () => {
     const [dataArray, setDataArray] = useState([]);
+    const [searchId, setSearchId] = useState('');
+    const [filteredDataArray, setFilteredDataArray] = useState([]);
     const tg = window.Telegram.WebApp;
     const navigate = useNavigate();
 
 
     useEffect(() => {
-        window.Telegram.WebApp.MainButton.hide()
-        window.Telegram.WebApp.BackButton.show()
-    }, [])
+        tg.MainButton.hide()
+        tg.BackButton.show()
+    }, [tg])
 
     useEffect(() => {
         const handleBackButton = () => {
@@ -21,7 +24,28 @@ const OperatorList = () => {
         return () => {
             tg.BackButton.offClick(handleBackButton);
         };
-    }, [navigate, tg.BackButton]);
+    }, [navigate, tg]);
+
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get('https://www.tgbottp.ru/adminOperatorList');
+                const users = response.data.map(item => ({
+                    id: item.id,
+                    telegramId: item.telegramId,
+                    username: item.username,
+                    RoleId: item.RoleId,
+                }));
+                setDataArray(users);
+                setFilteredDataArray(users);
+            } catch (e) {
+                console.log(e);
+            }
+        };
+
+        fetchData();
+    }, []);
 
     const roleMap = {
         1: 'Администратор',
@@ -33,63 +57,44 @@ const OperatorList = () => {
         navigate(`/Profile/${id}`);
     };
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await axios.get('https://www.tgbottp.ru/adminListOperator');
-                setDataArray(response.data.map(item => ({
-                    id: item.id,
-                    telegramId: item.telegramId,
-                    username: item.username,
-                    RoleId: item.RoleId,
-                })));
-            } catch (e) {
-                console.log(e);
-            }
-        }
-
-        fetchData();
-
-    }, []);
+    const handleSearch = (value) => {
+        setSearchId(value);
+        const filteredUsers = dataArray.filter(user =>
+            user.telegramId.toLowerCase().includes(value.toLowerCase())
+        );
+        setFilteredDataArray(filteredUsers);
+    };
 
     return (
         <div className="form">
-            <div className='greeting'>
-                <div className='applic-list'>
-                </div>
-            </div>
             <div className={`form-filling1 disappear`}>
-                {dataArray.map((row) => (
-                    <div className='applic appear' key={row.id} onClick={() => handleRowClick(row.id)}>
-                        <div className='applic-label'>
-                        </div>
+                <input
+                    className="SearchUser"
+                    type="text"
+                    placeholder="Введите ID телеграмма для поиска"
+                    value={searchId}
+                    onChange={(e) => handleSearch(e.target.value)}
+                />
+                {filteredDataArray.map(user => (
+                    <div className='applic appear' key={user.id} onClick={() => handleRowClick(user.id)}>
+                        <div className='applic-label'></div>
                         <div className='applic-nickname'>
-                            <div className='nick-label'>
-                                Имя пользователя
-                            </div>
-                            <div className='nick'>
-                                {row.username}
-                            </div>
+                            <div className='nick-label'>Имя пользователя</div>
+                            <div className='nick'>{user.username}</div>
                         </div>
                         <div className='applic-theme'>
-                            <div className='nick-label'>
-                                Роль
-                            </div>
-                            <div className='nick'>
-                                {roleMap[row.RoleId]}
-                            </div>
+                            <div className='nick-label'>Роль</div>
+                            <div className='nick'>{roleMap[user.RoleId]}</div>
                         </div>
                         <div className='applic-theme'>
-                            <div className='nick-label'>
-                                ID телеграмма
-                            </div>
-                            <div className='nick'>
-                                {row.telegramId}
-                            </div>
+                            <div className='nick-label'>ID телеграмма</div>
+                            <div className='nick'>{user.telegramId}</div>
                         </div>
-
                     </div>
                 ))}
+                {filteredDataArray.length === 0 && (
+                    <div>Нет результатов</div>
+                )}
             </div>
         </div>
     );

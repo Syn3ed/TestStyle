@@ -11,6 +11,21 @@ export const Profile = () => {
 
 
     useEffect(() => {
+        tg.MainButton.hide()
+        tg.BackButton.show()
+    }, [tg])
+
+    useEffect(() => {
+        const handleBackButton = () => {
+            navigate(-1);
+        };
+        tg.BackButton.onClick(handleBackButton);
+        return () => {
+            tg.BackButton.offClick(handleBackButton);
+        };
+    }, [navigate, tg]);
+
+    useEffect(() => {
         const fetchData = async () => {
             try {
                 const response = await axios.get('https://www.tgbottp.ru/adminFullList');
