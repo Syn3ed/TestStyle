@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import axios from 'axios';
 import './AdminStyle.css';
 import { useNavigate } from 'react-router-dom';
@@ -26,6 +26,11 @@ const FullList = () => {
         };
     }, [navigate, tg]);
 
+    const roleMap = useMemo(() => ({
+        1: 'Администратор',
+        2: 'Пользователь',
+        3: 'Оператор'
+    }), []);
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -44,13 +49,9 @@ const FullList = () => {
         };
 
         fetchData();
-    }, []);
+    }, [roleMap]);
 
-    const roleMap = {
-        1: 'Администратор',
-        2: 'Пользователь',
-        3: 'Оператор'
-    };
+   
 
     const handleRowClick = (id) => {
         navigate(`/Profile/${id}`);

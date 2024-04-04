@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import axios from 'axios';
 import './AdminStyle.css';
 import { useNavigate } from 'react-router-dom';
@@ -27,10 +27,15 @@ const OperatorList = () => {
     }, [navigate, tg]);
 
 
+    const roleMap = useMemo(() => ({
+        1: 'Администратор',
+        2: 'Пользователь',
+        3: 'Оператор'
+    }), []);
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('https://www.tgbottp.ru/adminListOperator');
+                const response = await axios.get('https://www.tgbottp.ru/adminFullList');
                 const users = response.data.map(item => ({
                     id: item.id,
                     telegramId: item.telegramId,
@@ -45,13 +50,7 @@ const OperatorList = () => {
         };
 
         fetchData();
-    }, []);
-
-    const roleMap = {
-        1: 'Администратор',
-        2: 'Пользователь',
-        3: 'Оператор'
-    };
+    }, [roleMap]);
 
     const handleRowClick = (id) => {
         navigate(`/Profile/${id}`);
