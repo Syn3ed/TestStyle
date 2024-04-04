@@ -24,6 +24,7 @@ import FullList1 from './New/Admin/FullList';
 import Profile from './New/Admin/Profile';
 import OperatorList from './New/Admin/OperatorList';
 import UserList from './New/Admin/UserList';
+import SearchUser from './New/Admin/SearchUser';
 const App = () => {
   return (
     <BrowserRouter>
@@ -42,6 +43,7 @@ const App = () => {
         <Route path="/AdminIndex/UserList" element={< UserList/>} />
         <Route path="/Profile/:id" element={< Profile/>} />
         <Route path="/InlineFormReq" element={<InlineFormReq/>} />
+        <Route path="/SearchUser" element={<SearchUser/>} />
       </Routes>
     </BrowserRouter>
   );
