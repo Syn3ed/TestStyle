@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 const SearchUser = () => {
     const [dataArray, setDataArray] = useState([]);
     const [searchId, setSearchId] = useState('');
-    const [foundItems, setFoundItems] = useState([]);
+    const [filteredDataArray, setFilteredDataArray] = useState([]);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -23,20 +23,18 @@ const SearchUser = () => {
         };
     }, [navigate]);
 
-    const handleRowClick = (id) => {
-        navigate(`/Profile/${id}`);
-    };
-
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const response = await axios.get('https://www.tgbottp.ru/adminFullList');
-                setDataArray(response.data.map(item => ({
+                const users = response.data.map(item => ({
                     id: item.id,
                     telegramId: item.telegramId,
                     username: item.username,
                     RoleId: item.RoleId,
-                })));
+                }));
+                setDataArray(users);
+                setFilteredDataArray(users);
             } catch (e) {
                 console.log(e);
             }
@@ -51,10 +49,16 @@ const SearchUser = () => {
         3: 'Оператор'
     };
 
+    const handleRowClick = (id) => {
+        navigate(`/Profile/${id}`);
+    };
+
     const handleSearch = (value) => {
         setSearchId(value);
-        const found = dataArray.filter(item => new RegExp(`^${value}`, 'i').test(item.telegramId));
-        setFoundItems(found);
+        const filteredUsers = dataArray.filter(user =>
+            user.telegramId.toLowerCase().includes(value.toLowerCase())
+        );
+        setFilteredDataArray(filteredUsers);
     };
 
     return (
@@ -69,24 +73,24 @@ const SearchUser = () => {
                     value={searchId}
                     onChange={(e) => handleSearch(e.target.value)}
                 />
-                {foundItems.length > 0 && foundItems.map(foundItem => (
-                    <div className='applic appear' key={foundItem.id} onClick={() => handleRowClick(foundItem.id)}>
+                {filteredDataArray.map(user => (
+                    <div className='applic appear' key={user.id} onClick={() => handleRowClick(user.id)}>
                         <div className='applic-label'></div>
                         <div className='applic-nickname'>
                             <div className='nick-label'>Имя пользователя</div>
-                            <div className='nick'>{foundItem.username}</div>
+                            <div className='nick'>{user.username}</div>
                         </div>
                         <div className='applic-theme'>
                             <div className='nick-label'>Роль</div>
-                            <div className='nick'>{roleMap[foundItem.RoleId]}</div>
+                            <div className='nick'>{roleMap[user.RoleId]}</div>
                         </div>
                         <div className='applic-theme'>
                             <div className='nick-label'>ID телеграмма</div>
-                            <div className='nick'>{foundItem.telegramId}</div>
+                            <div className='nick'>{user.telegramId}</div>
                         </div>
                     </div>
                 ))}
-                {foundItems.length === 0 && (
+                {filteredDataArray.length === 0 && (
                     <div>Нет результатов</div>
                 )}
             </div>
