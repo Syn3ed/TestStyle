@@ -34,7 +34,7 @@ const UserList = () => {
                     id: item.id,
                     telegramId: item.telegramId,
                     username: item.username,
-                    RoleId: item.RoleId,
+                    RoleId: roleMap[item.RoleId],
                 }));
                 setDataArray(users);
                 setFilteredDataArray(users);
@@ -83,7 +83,7 @@ const UserList = () => {
                         </div>
                         <div className='applic-theme'>
                             <div className='nick-label'>Роль</div>
-                            <div className='nick'>{roleMap[user.RoleId]}</div>
+                            <div className='nick'>{user.RoleId}</div>
                         </div>
                         <div className='applic-theme'>
                             <div className='nick-label'>ID телеграмма</div>
