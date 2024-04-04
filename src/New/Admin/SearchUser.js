@@ -27,11 +27,6 @@ const SearchUser = () => {
         navigate(`/Profile/${id}`);
     };
 
-    const handleSearch = () => {
-        const found = dataArray.find(item => item.telegramId === searchId);
-        setFoundItem(found);
-    };
-
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -57,6 +52,12 @@ const SearchUser = () => {
         3: 'Оператор'
     };
 
+    const handleSearch = (value) => {
+        setSearchId(value);
+        const found = dataArray.find(item => item.telegramId === value);
+        setFoundItem(found);
+    };
+
     return (
         <div className="form">
             <div className='greeting'>
@@ -64,7 +65,13 @@ const SearchUser = () => {
                 </div>
             </div>
             <div className={`form-filling1 disappear`}>
-                {foundItem ? (
+                <input
+                    type="text"
+                    placeholder="Введите ID телеграмма"
+                    value={searchId}
+                    onChange={(e) => handleSearch(e.target.value)}
+                />
+                {foundItem && (
                     <div className='applic appear' onClick={() => handleRowClick(foundItem.id)}>
                         <div className='applic-label'>
                         </div>
@@ -93,16 +100,6 @@ const SearchUser = () => {
                             </div>
                         </div>
                     </div>
-                ) : (
-                    <>
-                        <input
-                            type="text"
-                            placeholder="Введите ID телеграмма"
-                            value={searchId}
-                            onChange={(e) => setSearchId(e.target.value)}
-                        />
-                        <button onClick={handleSearch}>Поиск</button>
-                    </>
                 )}
             </div>
         </div>
