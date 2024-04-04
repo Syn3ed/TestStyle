@@ -5,13 +5,13 @@ import { useNavigate } from 'react-router-dom';
 const SearchUser = () => {
     const [dataArray, setDataArray] = useState([]);
     const [searchId, setSearchId] = useState('');
-    const [foundItem, setFoundItem] = useState(null);
+    const [foundItems, setFoundItems] = useState([]);
     const navigate = useNavigate();
 
     useEffect(() => {
-        window.Telegram.WebApp.MainButton.hide()
-        window.Telegram.WebApp.BackButton.show()
-    }, [])
+        window.Telegram.WebApp.MainButton.hide();
+        window.Telegram.WebApp.BackButton.show();
+    }, []);
 
     useEffect(() => {
         const handleBackButton = () => {
@@ -40,10 +40,9 @@ const SearchUser = () => {
             } catch (e) {
                 console.log(e);
             }
-        }
+        };
 
         fetchData();
-
     }, []);
 
     const roleMap = {
@@ -54,15 +53,14 @@ const SearchUser = () => {
 
     const handleSearch = (value) => {
         setSearchId(value);
-        const found = dataArray.find(item => new RegExp(`^${value}`, 'i').test(item.telegramId));
-        setFoundItem(found);
+        const found = dataArray.filter(item => new RegExp(`^${value}`, 'i').test(item.telegramId));
+        setFoundItems(found);
     };
 
     return (
         <div className="form">
             <div className='greeting'>
-                <div className='applic-list'>
-                </div>
+                <div className='applic-list'></div>
             </div>
             <div className={`form-filling1 disappear`}>
                 <input
@@ -71,35 +69,25 @@ const SearchUser = () => {
                     value={searchId}
                     onChange={(e) => handleSearch(e.target.value)}
                 />
-                {foundItem && (
-                    <div className='applic appear' onClick={() => handleRowClick(foundItem.id)}>
-                        <div className='applic-label'>
-                        </div>
+                {foundItems.length > 0 && foundItems.map(foundItem => (
+                    <div className='applic appear' key={foundItem.id} onClick={() => handleRowClick(foundItem.id)}>
+                        <div className='applic-label'></div>
                         <div className='applic-nickname'>
-                            <div className='nick-label'>
-                                Имя пользователя
-                            </div>
-                            <div className='nick'>
-                                {foundItem.username}
-                            </div>
+                            <div className='nick-label'>Имя пользователя</div>
+                            <div className='nick'>{foundItem.username}</div>
                         </div>
                         <div className='applic-theme'>
-                            <div className='nick-label'>
-                                Роль
-                            </div>
-                            <div className='nick'>
-                                {roleMap[foundItem.RoleId]}
-                            </div>
+                            <div className='nick-label'>Роль</div>
+                            <div className='nick'>{roleMap[foundItem.RoleId]}</div>
                         </div>
                         <div className='applic-theme'>
-                            <div className='nick-label'>
-                                ID телеграмма
-                            </div>
-                            <div className='nick'>
-                                {foundItem.telegramId}
-                            </div>
+                            <div className='nick-label'>ID телеграмма</div>
+                            <div className='nick'>{foundItem.telegramId}</div>
                         </div>
                     </div>
+                ))}
+                {foundItems.length === 0 && (
+                    <div>Нет результатов</div>
                 )}
             </div>
         </div>
@@ -107,4 +95,3 @@ const SearchUser = () => {
 };
 
 export default SearchUser;
-
