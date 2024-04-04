@@ -69,7 +69,7 @@ const SearchUser = () => {
                 <input
                     className="SearchUser"
                     type="text"
-                    placeholder="Введите ID телеграмма для поиска"
+                    placeholder="Введите ID телеграмма, имя или роль пользователя для поиска"
                     value={searchId}
                     onChange={(e) => handleSearch(e.target.value)}
                 />
