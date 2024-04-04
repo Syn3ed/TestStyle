@@ -59,7 +59,9 @@ const FullList = () => {
     const handleSearch = (value) => {
         setSearchId(value);
         const filteredUsers = dataArray.filter(user =>
-            user.telegramId.toLowerCase().includes(value.toLowerCase())
+            user.telegramId.toLowerCase().includes(value.toLowerCase()) ||
+            user.username.toLowerCase().includes(value.toLowerCase()) ||
+            user.RoleId.toLowerCase().includes(value.toLowerCase())
         );
         setFilteredDataArray(filteredUsers);
     };
