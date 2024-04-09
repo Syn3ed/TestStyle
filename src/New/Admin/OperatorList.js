@@ -35,7 +35,7 @@ const OperatorList = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('https://www.tgbottp.ru/adminFullList');
+                const response = await axios.get('https://www.tgbottp.ru/adminListOperator');
                 const users = response.data.map(item => ({
                     id: item.id,
                     telegramId: item.telegramId,
