@@ -45,9 +45,9 @@ export const UsListApplic = () => {
         setSelectedStatus(status);
     };
     useEffect(() => {
-        const inProgress = dataArray.filter(item => ((item.status === 'Заявка в обработке!') || (item.status === 'Заявка в обработке'))).length;
+        const inProgress = dataArray.filter(item => ((item.status === 'Заявка в обработке'))).length;
         const awaitingOperator = dataArray.filter(item => item.status === 'ожидает ответа оператора').length;
-        const closed = dataArray.filter(item => ((item.status === 'Заявка закрыта!') || (item.status === 'Заявка закрыта'))).length;
+        const closed = dataArray.filter(item => ((item.status === 'Заявка закрыта'))).length;
 
         setInProgressCount(inProgress);
         setAwaitingOperatorCount(awaitingOperator);
@@ -82,10 +82,10 @@ export const UsListApplic = () => {
                     <div className={`all-list ${getStatusClassName('all')}`} onClick={() => filterDataByStatus('all')}>
                         <div className="textForList">Все {dataArray.length}</div>
                     </div>
-                    <div className={`processing-list ${getStatusClassName('Заявка в обработке!')}`} onClick={() => filterDataByStatus('Заявка в обработке!')}>
+                    <div className={`processing-list ${getStatusClassName('Заявка в обработке')}`} onClick={() => filterDataByStatus('Заявка в обработке')}>
                         <div className="textForList">В обработке {inProgressCount}</div>
                     </div>
-                    <div className={`close-list ${getStatusClassName('Заявка закрыта!')}`} onClick={() => filterDataByStatus('Заявка закрыта!')}><div className="textForList">Закрыты {closedCount}</div></div>
+                    <div className={`close-list ${getStatusClassName('Заявка закрыта')}`} onClick={() => filterDataByStatus('Заявка закрыта')}><div className="textForList">Закрыты {closedCount}</div></div>
                     <div className={`wait-list ${getStatusClassName('ожидает ответа оператора')}`} onClick={() => filterDataByStatus('ожидает ответа оператора')}><div className="textForList">В ожидании {awaitingOperatorCount}</div></div>
                 </div>
             </div>
@@ -94,7 +94,9 @@ export const UsListApplic = () => {
                     <div className='applic' key={row.id} onClick={() => handleRowClick(row.id)}>
                         <div className='applic-label'>
                             <div className='applic-numb'>#{row.id}</div>
-                            <div className={`applic-status${((row.status === 'Заявка в обработке!') || (row.status === 'Заявка в обработке')) ? 'status-in-progress' : (((row.status === 'Заявка закрыта!') || (row.status === 'Заявка закрыта')) ? 'status-closed' : 'status-awaiting-operator')}`}><div className="textForList">{row.status}</div></div>
+                            <div className={`applic-status${(
+                                (row.status === 'Заявка в обработке')) ? 'status-in-progress' : ((
+                                    (row.status === 'Заявка закрыта')) ? 'status-closed' : 'status-awaiting-operator')}`}><div className="textForList">{row.status}</div></div>
                         </div>
                         <div className='applic-nickname'>
                             <div className='nick-label'>

@@ -189,7 +189,7 @@ export const OpApplicInline = () => {
                     <button type="button" className='buttonEl' onClick={onSendPhoto}>Обработать заявку и отправить сообщение</button>
                 </div>
             );
-        } else if (dataArray.length > 0 && ((dataArray[0].status === 'Заявка в обработке!') || dataArray[0].status === 'Заявка в обработке')) {
+        } else if (dataArray.length > 0 && (dataArray[0].status === 'Заявка в обработке')) {
             return (
                 <div className='button-list'>
                     <button type="button" className='buttonEl' onClick={closeReq}>Закрыть заявку</button>
@@ -199,7 +199,7 @@ export const OpApplicInline = () => {
         } else {
             return (
                 <div className='button-list'>
-                    <button type="button" className='buttonEl' onClick={resumeReq}>Отправить фото</button>
+                    <button type="button" className='buttonEl' onClick={resumeReq}>Возобновить заявку</button>
                 </div>
             )
         }
