@@ -180,8 +180,8 @@
 }
 
 .UserMessage {
-    /* height: 0px;
-    opacity: 0; */
+    height: 15px;
+    opacity: 1;
     text-align: right;
 }
 
