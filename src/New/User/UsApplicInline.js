@@ -3,8 +3,8 @@ import React, { useEffect, useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './UsApplic.css';
-import OpSvg from '../component/OpSvg';
-import UsSvg from '../component/UsSvg';
+// import OpSvg from '../component/OpSvg';
+// import UsSvg from '../component/UsSvg';
 import { useParams } from 'react-router-dom';
 
 export const UsApplicInline = () => {
@@ -234,7 +234,9 @@ export const UsApplicInline = () => {
                 <div className='chat-container'>
                     {chatMessages.map((message, index) => (
                         <div key={index} className={message.roleUser === 'User' ? 'User' : 'Operator'}>
-                            <div className={message.roleUser === 'User' ? 'UserMessage' : 'OperatorMessage'}>{message.username}</div>
+                            <div className={message.roleUser === 'User' ? 'UserMessage' : 'OperatorMessage'}>
+                                {message.roleUser === 'User' ? message.username : message.nicknameOperator}
+                            </div>
                             <div className={message.roleUser === 'User' ? 'UserTextMessage' : 'OperatorTextMessage'}> {message.textMessage}</div>
                             {message.IdMedia && (
                                 <button className='buttonPhoto' onClick={() => handleShowPhoto(message.IdMedia)}>
@@ -242,8 +244,8 @@ export const UsApplicInline = () => {
                                 </button>
                             )}
                             <div className={message.roleUser === 'User' ? 'UsMessageTime' : 'OpMessageTime'}>{message.Time}</div>
-                            <div className={message.roleUser === 'User' ? 'lolSvg' : 'OpSvg'}><OpSvg /></div>
-                            <div className={message.roleUser === 'User' ? 'UsSvg' : 'lolSvg'}><UsSvg /></div>
+                            {/* <div className={message.roleUser === 'User' ? 'lolSvg' : 'OpSvg'}><OpSvg /></div>
+                            <div className={message.roleUser === 'User' ? 'UsSvg' : 'lolSvg'}><UsSvg /></div> */}
                         </div>
                     ))}
                 </div>
