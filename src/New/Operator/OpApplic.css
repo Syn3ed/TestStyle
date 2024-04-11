@@ -168,8 +168,9 @@
 
 .UserTextMessage {
     text-align: right;
-    /* margin-top: 5px; */
+    margin-top: 5px;
     margin-bottom: 10px
+
 }
 
 .OperatorTextMessage {
@@ -179,8 +180,9 @@
 }
 
 .UserMessage {
-    height: 0px;
-    opacity: 0;
+    /* height: 0px;
+    opacity: 0; */
+    text-align: right;
 }
 
 .OperatorMessage {
