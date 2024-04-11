@@ -190,7 +190,7 @@ export const OpApplic = () => {
                 <div className='chat-container'>
                     {chatMessages.map((message, index) => (
                         <div key={index} className={message.roleUser === 'User' ? 'Operator' : 'User'}>
-                            <div className={message.roleUser === 'User' ? 'OperatorMessage' : 'UserMessage1'}>{message.username}</div>
+                            <div className={message.roleUser === 'User' ? 'OperatorMessage1' : 'UserMessage1'}>{message.username}</div>
                             <div className={message.roleUser === 'User' ? 'OperatorTextMessage' : 'UserTextMessage'}> {message.textMessage}</div>
                             {message.IdMedia && (
                                 <button className='buttonPhoto' onClick={() => sendPhotoChat(message.IdMedia)}>
