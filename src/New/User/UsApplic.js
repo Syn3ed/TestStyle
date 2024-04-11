@@ -156,10 +156,12 @@ export const UsApplic = () => {
                 <div className='chat-container'>
                     {chatMessages.map((message, index) => (
                         <div key={index} className={message.roleUser === 'User' ? 'User' : 'Operator'}>
-                            <div className={message.roleUser === 'User' ? 'UserMessage' : 'OperatorMessage'}>{message.username}</div>
+                            <div className={message.roleUser === 'User' ? 'UserMessage' : 'OperatorMessage'}>
+                                {message.roleUser === 'User' ? message.username : message.nicknameOperator}
+                            </div>
                             <div className={message.roleUser === 'User' ? 'UserTextMessage' : 'OperatorTextMessage'}> {message.textMessage}</div>
                             {message.IdMedia && (
-                                <button  className='buttonPhoto' onClick={() => sendPhotoChat(message.IdMedia)}>
+                                <button className='buttonPhoto' onClick={() => sendPhotoChat(message.IdMedia)}>
                                     Показать файл
                                 </button>
                             )}
