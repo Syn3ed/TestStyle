@@ -127,7 +127,7 @@ export const Profile = () => {
                 </div>
                 <div className='theme'>
                     <label className='lable-filling'>Роль</label>
-                    <div className='TextApplic'>{filteredArray.length > 0 ? roleMap[filteredArray[0]?.id] : ''}</div>
+                    <div className='TextApplic'>{filteredArray.length > 0 ? roleMap[filteredArray[0]?.RoleId] : ''}</div>
                 </div>
                 {renderButtons()}
             </div>
