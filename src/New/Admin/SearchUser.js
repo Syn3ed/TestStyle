@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import './AdminStyle.css';
 import { useNavigate } from 'react-router-dom';
@@ -26,11 +26,11 @@ const SearchUser = () => {
         };
     }, [navigate, tg]);
 
-    const roleMap = useMemo(() => ({
+    const roleMap = {
         1: 'Администратор',
         2: 'Пользователь',
         3: 'Оператор'
-    }), []);
+    };
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -39,7 +39,7 @@ const SearchUser = () => {
                     id: item.id,
                     telegramId: item.telegramId,
                     username: item.username,
-                    RoleId: roleMap[item.RoleId],
+                    RoleId: item.RoleId,
                 }));
                 setDataArray(users);
                 setFilteredDataArray(users);
@@ -49,7 +49,7 @@ const SearchUser = () => {
         };
 
         fetchData();
-    }, [roleMap]);
+    }, []);
 
     const handleRowClick = (id) => {
         navigate(`/Profile/${id}`);
@@ -82,7 +82,7 @@ const SearchUser = () => {
                         </div>
                         <div className='applic-theme'>
                             <div className='nick-label'>Роль</div>
-                            <div className='nick'>{user.RoleId}</div>
+                            <div className='nick'>{roleMap[user.RoleId]}</div>
                         </div>
                         <div className='applic-theme'>
                             <div className='nick-label'>ID телеграмма</div>

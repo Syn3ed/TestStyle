@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import './AdminStyle.css';
 import { useNavigate } from 'react-router-dom';
@@ -13,7 +13,7 @@ const OperatorList = () => {
 
     useEffect(() => {
         tg.MainButton.hide()
-        tg.BackButton.hide()
+        tg.BackButton.show()
     }, [tg])
 
     useEffect(() => {
@@ -27,7 +27,7 @@ const OperatorList = () => {
     }, [navigate, tg]);
 
 
-    const roleMap = useMemo(() => ({
+    const roleMap = (() => ({
         1: 'Администратор',
         2: 'Пользователь',
         3: 'Оператор'
@@ -40,7 +40,7 @@ const OperatorList = () => {
                     id: item.id,
                     telegramId: item.telegramId,
                     username: item.username,
-                    RoleId: roleMap[item.RoleId],
+                    RoleId: item.RoleId,
                 }));
                 setDataArray(users);
                 setFilteredDataArray(users);
@@ -50,7 +50,7 @@ const OperatorList = () => {
         };
 
         fetchData();
-    }, [roleMap]);
+    }, []);
 
     const handleRowClick = (id) => {
         navigate(`/Profile/${id}`);
@@ -61,7 +61,7 @@ const OperatorList = () => {
         const filteredUsers = dataArray.filter(user =>
             user.telegramId.toLowerCase().includes(value.toLowerCase()) ||
             user.username.toLowerCase().includes(value.toLowerCase()) ||
-            roleMap[user.RoleId].toLowerCase().includes(value.toLowerCase())
+            user.RoleId.toLowerCase().includes(value.toLowerCase())
         );
         setFilteredDataArray(filteredUsers);
     };
@@ -85,7 +85,7 @@ const OperatorList = () => {
                         </div>
                         <div className='applic-theme'>
                             <div className='nick-label'>Роль</div>
-                            <div className='nick'>{user.RoleId}</div>
+                            <div className='nick'>{roleMap[user.RoleId]}</div>
                         </div>
                         <div className='applic-theme'>
                             <div className='nick-label'>ID телеграмма</div>
