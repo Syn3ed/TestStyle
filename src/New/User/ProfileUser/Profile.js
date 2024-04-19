@@ -37,6 +37,7 @@ export const UserProfile = () => {
                 }));
 
                 const filteredData = data.filter(item => item.id === parseInt(id));
+                console.log(filteredData)
                 setFilteredArray(filteredData);
             } catch (e) {
                 console.log(e);
@@ -89,16 +90,11 @@ export const UserProfile = () => {
         <div className="UserApplicForm">
             <div className="UserApplicFormFilling">
                 <div className='adres'>
-
                     <label className='lable-filling'>Имя пользователя</label>
-
-
                     <div className='TextApplic'>{filteredArray.length > 0 ? filteredArray[0]?.username : ''}</div>
                 </div>
                 <div className='adres'>
-
                     <label className='lable-filling'>Телеграм id</label>
-
                     <div className='TextApplic'>{filteredArray.length > 0 ? filteredArray[0]?.telegramId : ''}</div>
                 </div>
                 {renderButtons()}
