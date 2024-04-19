@@ -35,7 +35,7 @@ export const UserProfile = () => {
                     username: item.username,
                     RoleId: item.RoleId,
                 }));
-
+                console.log(data)
                 const filteredData = data.filter(item => item.id === parseInt(id));
                 console.log(filteredData)
                 setFilteredArray(filteredData);
