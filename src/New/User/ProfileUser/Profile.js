@@ -26,7 +26,7 @@ export const UserProfile = () => {
                 }));
                 
                 console.log(data)
-                const filteredData = data.filter(item => item.telegramId === parseInt(id));
+                const filteredData = data.filter(item => parseInt(item.telegramId) === id);
                 console.log(filteredData)
                 setFilteredArray(filteredData);
             } catch (e) {
