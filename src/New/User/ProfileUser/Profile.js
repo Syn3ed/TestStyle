@@ -79,7 +79,7 @@ export const UserProfile = () => {
         if (filteredArray.length > 0 && filteredArray[0].id === 1) {
             return (
                 <div className='button-list'>
-                    <button type="button" className='buttonEl' onClick={changeName}>Изменить роль на пользователя </button>
+                    <button type="button" className='buttonEl' onClick={changeName}>Изменить ФИО</button>
                 </div>
             )
         }
