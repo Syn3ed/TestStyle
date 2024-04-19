@@ -25,6 +25,7 @@ import Profile from './New/Admin/Profile';
 import OperatorList from './New/Admin/OperatorList';
 import UserList from './New/Admin/UserList';
 import SearchUser from './New/Admin/SearchUser';
+import UserProfile from './New/User/ProfileUser/Profile'
 const App = () => {
   return (
     <BrowserRouter>
@@ -42,6 +43,7 @@ const App = () => {
         <Route path="/AdminIndex/OperatorList" element={< OperatorList/>} />
         <Route path="/AdminIndex/UserList" element={< UserList/>} />
         <Route path="/Profile/:id" element={< Profile/>} />
+        <Route path="/UserProfile/:id" element={< UserProfile/>} />
         <Route path="/InlineFormReq" element={<InlineFormReq/>} />
         <Route path="/SearchUser" element={<SearchUser/>} />
       </Routes>
