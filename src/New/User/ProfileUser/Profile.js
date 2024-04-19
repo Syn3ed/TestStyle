@@ -20,7 +20,7 @@ export const UserProfile = () => {
                 const response = await axios.get('https://www.tgbottp.ru/adminFullList');
                 const data = response.data.map(item => ({
                     id: item.id,
-                    telegramId: item.telegramId,
+                    telegramId: parseInt(item.telegramId),
                     username: item.username,
                     RoleId: item.RoleId,
                 }));
