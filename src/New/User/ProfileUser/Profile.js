@@ -24,9 +24,9 @@ export const UserProfile = () => {
                     username: item.username,
                     RoleId: item.RoleId,
                 }));
-                
+
                 console.log(data)
-                const filteredData = data.filter(item => parseInt(item.telegramId) === id);
+                const filteredData = data.filter(item => parseInt(item.telegramId) === parseInt(id));
                 console.log(filteredData)
                 setFilteredArray(filteredData);
             } catch (e) {
@@ -42,7 +42,7 @@ export const UserProfile = () => {
     //     2: 'Пользователь',
     //     3: 'Оператор'
     // };
-    
+
 
 
     const changeName = useCallback(() => {
