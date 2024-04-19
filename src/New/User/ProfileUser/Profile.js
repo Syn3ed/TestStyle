@@ -1,12 +1,10 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
 export const UserProfile = () => {
     const { id } = useParams();
     const tg = window.Telegram.WebApp;
-    const navigate = useNavigate();
     const [filteredArray, setFilteredArray] = useState([]);
 
 
@@ -15,15 +13,6 @@ export const UserProfile = () => {
         tg.BackButton.hide()
     }, [tg])
 
-    useEffect(() => {
-        const handleBackButton = () => {
-            navigate(-1);
-        };
-        tg.BackButton.onClick(handleBackButton);
-        return () => {
-            tg.BackButton.offClick(handleBackButton);
-        };
-    }, [navigate, tg]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -35,6 +24,7 @@ export const UserProfile = () => {
                     username: item.username,
                     RoleId: item.RoleId,
                 }));
+                
                 console.log(data)
                 const filteredData = data.filter(item => item.telegramId === parseInt(id));
                 console.log(filteredData)
@@ -46,26 +36,13 @@ export const UserProfile = () => {
 
         fetchData();
     }, [id]);
+    console.log(id)
     // const roleMap = {
     //     1: 'Администратор',
     //     2: 'Пользователь',
     //     3: 'Оператор'
     // };
-    useEffect(() => {
-        tg.BackButton.show();
-    }, [navigate, tg]);
-
-
-    useEffect(() => {
-        const handleBackButton = () => {
-            navigate(-1);
-        };
-        tg.BackButton.onClick(handleBackButton);
-        return () => {
-            tg.BackButton.offClick(handleBackButton);
-        };
-    }, [navigate, tg.BackButton]);
-
+    
 
 
     const changeName = useCallback(() => {
