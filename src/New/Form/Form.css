@@ -67,7 +67,7 @@ body {
 .button-send {
   width: 93%;
   height: 40px;
-  background-color: linear-gradient(90.36deg, #47D69D 0%, #47D69D 0.01%, #009966 100%);
+  background-color: #009c63;
   margin-top: 17px;
   border-radius: 8px;
   display: flex;
