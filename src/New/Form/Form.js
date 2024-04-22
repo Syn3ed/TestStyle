@@ -199,7 +199,7 @@ export const Form = () => {
                 {isFormValid && (
                 <div className='button-send' onClick={onSendData}>
                     {/* <div className='Skrepka'><Skrepka/></div> */}
-                    <div>Отправить заявку</div>
+                    <div>Создать заявку</div>
                 </div>)}
             </div>
         </div>

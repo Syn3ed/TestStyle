@@ -170,8 +170,8 @@ const RequestForm = () => {
                 </div>
 
                 {isFormValid && (
-                    <button type="submit" onClick={onSendData}>
-                        Отправить заявку
+                    <button type="submit" className='SendReq' onClick={onSendData}>
+                        Создать заявку
                     </button>
                 )}
             </form>
