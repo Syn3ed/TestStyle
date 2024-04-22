@@ -10,13 +10,18 @@ export const OpListApplic = () => {
     const [awaitingOperatorCount, setAwaitingOperatorCount] = useState(0);
     const [closedCount, setClosedCount] = useState(0);
     const [applyAnimation, setApplyAnimation] = useState(false);
-
+    const tg = window.Telegram.WebApp;
 
     const navigate = useNavigate();
 
     const handleRowClick = (id) => {
         navigate(`/requestsOperator/${id}`);
     };
+
+    useEffect(() => {
+        tg.BackButton.hide();
+    }, [navigate, tg]);
+
     useEffect(() => {
         const fetchData = async () => {
             try {

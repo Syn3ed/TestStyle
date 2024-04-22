@@ -11,6 +11,7 @@ export const UsListApplic = () => {
     const [awaitingOperatorCount, setAwaitingOperatorCount] = useState(0);
     const [closedCount, setClosedCount] = useState(0);
     const [applyAnimation, setApplyAnimation] = useState(false);
+    const tg = window.Telegram.WebApp;
 
 
     const { id } = useParams();
@@ -20,6 +21,10 @@ export const UsListApplic = () => {
     const handleRowClick = (id) => {
         navigate(`/requests/${id}`);
     };
+    
+    useEffect(() => {
+        tg.BackButton.hide();
+    }, [navigate, tg]);
 
     useEffect(() => {
         const fetchData = async () => {
